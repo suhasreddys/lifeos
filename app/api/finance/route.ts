@@ -1,5 +1,4 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
-import path from "path";
+import { readJsonStorage, writeJsonStorage } from "@/lib/storage";
 import type { DocumentRecord } from "../documents/route";
 
 export type TransactionRecord = {
@@ -16,23 +15,13 @@ export type TransactionRecord = {
   createdAt: string;
 };
 
-const financeDir = path.join(process.cwd(), "data", "finance");
-const txFilePath = path.join(financeDir, "transactions.json");
-const docsFilePath = path.join(process.cwd(), "data", "documents", "documents.json");
-
 async function getUserTransactions(): Promise<TransactionRecord[]> {
-  await mkdir(financeDir, { recursive: true });
-  try {
-    return JSON.parse(await readFile(txFilePath, "utf8")) as TransactionRecord[];
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") return [];
-    throw error;
-  }
+  return readJsonStorage<TransactionRecord[]>("finance", "transactions.json", []);
 }
 
 async function getDocumentFinancials(): Promise<TransactionRecord[]> {
   try {
-    const docs = JSON.parse(await readFile(docsFilePath, "utf8")) as DocumentRecord[];
+    const docs = await readJsonStorage<DocumentRecord[]>("documents", "documents.json", []);
     const items: TransactionRecord[] = [];
 
     docs.forEach((doc) => {
@@ -105,6 +94,6 @@ export async function POST(request: Request) {
   };
 
   const updated = [newTx, ...userTx];
-  await writeFile(txFilePath, JSON.stringify(updated, null, 2), "utf8");
+  await writeJsonStorage("finance", "transactions.json", updated);
   return Response.json(newTx, { status: 201 });
 }

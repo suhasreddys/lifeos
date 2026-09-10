@@ -1,5 +1,4 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
-import path from "path";
+import { readJsonStorage, writeJsonStorage } from "@/lib/storage";
 import type { DocumentRecord } from "../documents/route";
 
 export type CustomEvent = {
@@ -21,10 +20,6 @@ export type CalendarEvent = {
   documentName?: string;
   detail?: string;
 };
-
-const calendarDir = path.join(process.cwd(), "data", "calendar");
-const calendarEventsPath = path.join(calendarDir, "events.json");
-const docsEventsPath = path.join(process.cwd(), "data", "documents", "documents.json");
 
 const GOOGLE_HOLIDAY_FEED_URL = "https://calendar.google.com/calendar/ical/en.indian%23holiday%40group.v.calendar.google.com/public/basic.ics";
 
@@ -60,11 +55,7 @@ function parseICS(icsText: string): Array<{ title: string; date: string; descrip
 
     const dateStr = parseICalDate(dtstart);
     if (summary && dateStr) {
-      events.push({
-        title: summary.replace(/\\,/g, ",").replace(/\\;/g, ";"),
-        date: dateStr,
-        description: "Google Public Holiday"
-      });
+      events.push({ title: summary, date: dateStr, description });
     }
   }
 
@@ -72,28 +63,27 @@ function parseICS(icsText: string): Array<{ title: string; date: string; descrip
 }
 
 async function ensureGoogleHolidaysLoaded(existingCustom: CustomEvent[]): Promise<CustomEvent[]> {
-  const hasHolidays = existingCustom.some(e => e.category === "Holidays");
+  const hasHolidays = existingCustom.some((e) => e.category === "Holidays");
   if (hasHolidays) return existingCustom;
 
   try {
-    const response = await fetch(GOOGLE_HOLIDAY_FEED_URL, { headers: { "User-Agent": "LifeOS-Auto-Holidays/1.0" } });
-    if (!response.ok) return existingCustom;
+    const res = await fetch(GOOGLE_HOLIDAY_FEED_URL, { cache: "no-store" });
+    if (!res.ok) return existingCustom;
 
-    const icsText = await response.text();
+    const icsText = await res.text();
     const parsedHolidays = parseICS(icsText);
-    if (parsedHolidays.length === 0) return existingCustom;
 
-    const holidayEvents: CustomEvent[] = parsedHolidays.map(e => ({
-      id: `holiday-${crypto.randomUUID()}`,
-      title: e.title,
-      date: e.date,
+    const holidayEvents: CustomEvent[] = parsedHolidays.map((h, idx) => ({
+      id: `google-holiday-${h.date}-${idx}`,
+      title: `🇮🇳 ${h.title}`,
+      date: h.date,
       category: "Holidays",
-      description: e.description || "Google Public Holiday",
+      description: h.description || "Public Holiday (Google Calendar Feed)",
       createdAt: new Date().toISOString()
     }));
 
     const updated = [...holidayEvents, ...existingCustom];
-    await writeFile(calendarEventsPath, JSON.stringify(updated, null, 2), "utf8");
+    await writeJsonStorage("calendar", "events.json", updated);
     return updated;
   } catch {
     return existingCustom;
@@ -101,22 +91,13 @@ async function ensureGoogleHolidaysLoaded(existingCustom: CustomEvent[]): Promis
 }
 
 async function getCustomEvents(): Promise<CustomEvent[]> {
-  await mkdir(calendarDir, { recursive: true });
-  try {
-    const custom = JSON.parse(await readFile(calendarEventsPath, "utf8")) as CustomEvent[];
-    return await ensureGoogleHolidaysLoaded(custom);
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      const initialWithHolidays = await ensureGoogleHolidaysLoaded([]);
-      return initialWithHolidays;
-    }
-    throw error;
-  }
+  const custom = await readJsonStorage<CustomEvent[]>("calendar", "events.json", []);
+  return await ensureGoogleHolidaysLoaded(custom);
 }
 
 async function getDocumentEvents(): Promise<CalendarEvent[]> {
   try {
-    const docs = JSON.parse(await readFile(docsEventsPath, "utf8")) as DocumentRecord[];
+    const docs = await readJsonStorage<DocumentRecord[]>("documents", "documents.json", []);
     const events: CalendarEvent[] = [];
 
     docs.forEach((doc) => {
@@ -156,7 +137,7 @@ async function getDocumentEvents(): Promise<CalendarEvent[]> {
 
 async function getRentalEvents(): Promise<CalendarEvent[]> {
   try {
-    const rentals = JSON.parse(await readFile(path.join(process.cwd(), "data", "rental", "rentals.json"), "utf8"));
+    const rentals = await readJsonStorage<any>("rental", "rentals.json", {});
     const events: CalendarEvent[] = [];
 
     rentals.properties?.forEach((prop: any) => {
@@ -213,6 +194,6 @@ export async function POST(request: Request) {
   };
 
   const updated = [newEvent, ...customEvents];
-  await writeFile(calendarEventsPath, JSON.stringify(updated, null, 2), "utf8");
+  await writeJsonStorage("calendar", "events.json", updated);
   return Response.json(newEvent, { status: 201 });
 }

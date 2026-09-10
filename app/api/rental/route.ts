@@ -1,5 +1,4 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
-import path from "path";
+import { readJsonStorage, writeJsonStorage } from "@/lib/storage";
 import { callGeminiApi } from "../../../lib/gemini";
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -115,9 +114,6 @@ export type RentalDataStore = {
   notices: NoticeRecord[];
   inspections: MoveInspectionRecord[];
 };
-
-const rentalDir = path.join(process.cwd(), "data", "rental");
-const rentalFilePath = path.join(rentalDir, "rentals.json");
 
 const initialSeedData: RentalDataStore = {
   properties: [
@@ -284,31 +280,20 @@ const initialSeedData: RentalDataStore = {
 };
 
 export async function getRentalData(): Promise<RentalDataStore> {
-  await mkdir(rentalDir, { recursive: true });
-  try {
-    const raw = await readFile(rentalFilePath, "utf8");
-    const parsed = JSON.parse(raw) as Partial<RentalDataStore>;
-    return {
-      properties: parsed.properties || [],
-      payments: parsed.payments || [],
-      deposits: parsed.deposits || [],
-      maintenance: parsed.maintenance || [],
-      meterReadings: parsed.meterReadings || [],
-      notices: parsed.notices || [],
-      inspections: parsed.inspections || []
-    };
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      await writeFile(rentalFilePath, JSON.stringify(initialSeedData, null, 2), "utf8");
-      return initialSeedData;
-    }
-    throw error;
-  }
+  const parsed = await readJsonStorage<Partial<RentalDataStore>>("rental", "rentals.json", initialSeedData);
+  return {
+    properties: parsed.properties || [],
+    payments: parsed.payments || [],
+    deposits: parsed.deposits || [],
+    maintenance: parsed.maintenance || [],
+    meterReadings: parsed.meterReadings || [],
+    notices: parsed.notices || [],
+    inspections: parsed.inspections || []
+  };
 }
 
 export async function saveRentalData(data: RentalDataStore): Promise<void> {
-  await mkdir(rentalDir, { recursive: true });
-  await writeFile(rentalFilePath, JSON.stringify(data, null, 2), "utf8");
+  await writeJsonStorage("rental", "rentals.json", data);
 }
 
 export async function GET() {

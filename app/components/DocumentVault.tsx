@@ -66,13 +66,26 @@ export default function DocumentVault() {
     }
 
     setIsSaving(true);
+    setMessage("");
+
     try {
       const formData = new FormData();
       formData.append("file", selectedFile);
       formData.append("category", "General");
       const response = await fetch("/api/documents", { method: "POST", body: formData });
-      const result = await response.json() as DocumentRecord & { error?: string };
-      if (!response.ok) throw new Error(result.error ?? "Upload failed");
+
+      const responseText = await response.text();
+      let result: any = {};
+      try {
+        result = responseText ? JSON.parse(responseText) : {};
+      } catch {
+        throw new Error(`Server returned status ${response.status}. Please check your connection or try a smaller file.`);
+      }
+
+      if (!response.ok) {
+        throw new Error(result.error ?? `Could not save document (${response.status})`);
+      }
+
       const document = result as DocumentRecord;
       setDocuments((current) => [document, ...current]);
       setSelectedFile(null);

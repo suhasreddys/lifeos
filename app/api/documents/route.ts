@@ -1,5 +1,6 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
+import { mkdir, writeFile } from "fs/promises";
 import path from "path";
+import { getStorageDir, readJsonStorage, writeJsonStorage } from "@/lib/storage";
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const pdf = require("pdf-parse/lib/pdf-parse.js");
@@ -26,15 +27,11 @@ export type DocumentRecord = {
   analysis?: AnalysisRecord;
 };
 
-const dataDirectory = path.join(process.cwd(), "data", "documents");
-const recordsPath = path.join(dataDirectory, "documents.json");
 const allowedExtensions = new Set(["pdf", "doc", "docx", "png", "jpg", "jpeg", "webp"]);
 const maximumFileSize = 10 * 1024 * 1024;
 
 async function getRecords(): Promise<DocumentRecord[]> {
-  await mkdir(dataDirectory, { recursive: true });
-  try { return JSON.parse(await readFile(recordsPath, "utf8")) as DocumentRecord[]; }
-  catch (error) { if ((error as NodeJS.ErrnoException).code === "ENOENT") return []; throw error; }
+  return readJsonStorage<DocumentRecord[]>("documents", "documents.json", []);
 }
 
 export async function GET() { return Response.json(await getRecords()); }
@@ -74,8 +71,12 @@ Be precise. If it is a lease, tenancy, rental agreement, or rent receipt, set is
     } else {
       let docText = "";
       if (fileType === "application/pdf" || fileName.toLowerCase().endsWith(".pdf")) {
-        const parsed = await pdf(fileBuffer);
-        docText = parsed.text;
+        try {
+          const parsed = await pdf(fileBuffer);
+          docText = parsed?.text || "";
+        } catch {
+          docText = "";
+        }
       } else {
         docText = fileBuffer.toString("utf8");
       }
@@ -102,30 +103,22 @@ Be precise. If it is a lease, tenancy, rental agreement, or rent receipt, set is
     const payload = await response.json();
     const textResult = payload.candidates?.[0]?.content?.parts?.[0]?.text;
     if (!textResult) return;
-
     const parsedResult = JSON.parse(textResult);
     const records = await getRecords();
     const docIndex = records.findIndex(r => r.id === docId);
 
     if (docIndex !== -1 && parsedResult.detectedCategory) {
-      // Auto-update document category in Document Vault if user selected General or if AI found specific category
       if (initialCategory === "General" || parsedResult.isLeaseAgreement) {
         const newCategory = parsedResult.isLeaseAgreement ? "Agreements" : parsedResult.detectedCategory;
         records[docIndex].category = newCategory;
-        await writeFile(recordsPath, JSON.stringify(records, null, 2), "utf8");
+        await writeJsonStorage("documents", "documents.json", records);
       }
     }
 
-    // If it's a rental/lease agreement, auto-sync to Tenant & Landlord Manager
     if (parsedResult.isLeaseAgreement || initialCategory === "Agreements" || fileName.toLowerCase().includes("lease") || fileName.toLowerCase().includes("rent")) {
-      const rentalDir = path.join(process.cwd(), "data", "rental");
-      const rentalPath = path.join(rentalDir, "rentals.json");
-      await mkdir(rentalDir, { recursive: true });
-
-      let rentalData: { properties: any[]; payments: any[]; deposits: any[]; maintenance: any[]; meterReadings: any[]; notices: any[]; inspections: any[] } = {
+      let rentalData: { properties: any[]; payments: any[]; deposits: any[]; maintenance: any[]; meterReadings: any[]; notices: any[]; inspections: any[] } = await readJsonStorage("rental", "rentals.json", {
         properties: [], payments: [], deposits: [], maintenance: [], meterReadings: [], notices: [], inspections: []
-      };
-      try { rentalData = JSON.parse(await readFile(rentalPath, "utf8")); } catch {}
+      });
 
       const propId = `doc-vault-${docId}`;
       if (!rentalData.properties.some(p => p.id === propId)) {
@@ -162,7 +155,7 @@ Be precise. If it is a lease, tenancy, rental agreement, or rent receipt, set is
           });
         }
 
-        await writeFile(rentalPath, JSON.stringify(rentalData, null, 2), "utf8");
+        await writeJsonStorage("rental", "rentals.json", rentalData);
       }
     }
   } catch {
@@ -171,25 +164,50 @@ Be precise. If it is a lease, tenancy, rental agreement, or rent receipt, set is
 }
 
 export async function POST(request: Request) {
-  const formData = await request.formData();
-  const file = formData.get("file");
-  const category = formData.get("category");
-  if (!(file instanceof File) || typeof category !== "string") return Response.json({ error: "Choose a file and category." }, { status: 400 });
-  if (file.size === 0 || file.size > maximumFileSize) return Response.json({ error: "Files must be between 1 byte and 10 MB." }, { status: 400 });
-  const extension = file.name.split(".").pop()?.toLowerCase() ?? "";
-  if (!allowedExtensions.has(extension)) return Response.json({ error: "Use a PDF, Word document, PNG, JPG, or WEBP file." }, { status: 400 });
+  try {
+    const docsDir = getStorageDir("documents");
+    await mkdir(docsDir, { recursive: true });
 
-  const id = crypto.randomUUID();
-  const storedName = `${id}.${extension}`;
-  const record: DocumentRecord = { id, name: path.basename(file.name), storedName, size: file.size, type: file.type, category, uploadedAt: new Date().toISOString() };
-  const records = await getRecords();
-  const fileBuffer = Buffer.from(await file.arrayBuffer());
+    const formData = await request.formData();
+    const file = formData.get("file");
+    const category = formData.get("category");
+    if (!(file instanceof File) || typeof category !== "string") {
+      return Response.json({ error: "Choose a file and category." }, { status: 400 });
+    }
+    if (file.size === 0 || file.size > maximumFileSize) {
+      return Response.json({ error: "Files must be between 1 byte and 10 MB." }, { status: 400 });
+    }
+    const extension = file.name.split(".").pop()?.toLowerCase() ?? "";
+    if (!allowedExtensions.has(extension)) {
+      return Response.json({ error: "Use a PDF, Word document, PNG, JPG, or WEBP file." }, { status: 400 });
+    }
 
-  await writeFile(path.join(dataDirectory, storedName), fileBuffer);
-  await writeFile(recordsPath, JSON.stringify([record, ...records], null, 2), "utf8");
+    const id = crypto.randomUUID();
+    const storedName = `${id}.${extension}`;
+    const record: DocumentRecord = {
+      id,
+      name: path.basename(file.name),
+      storedName,
+      size: file.size,
+      type: file.type || (extension === "pdf" ? "application/pdf" : "application/octet-stream"),
+      category,
+      uploadedAt: new Date().toISOString()
+    };
+    const records = await getRecords();
+    const fileBuffer = Buffer.from(await file.arrayBuffer());
 
-  // Trigger Gemini Auto-Categorization & Syncing in background
-  autoCategorizeAndSync(id, file.name, fileBuffer, file.type, category);
+    await writeFile(path.join(docsDir, storedName), fileBuffer);
+    await writeJsonStorage("documents", "documents.json", [record, ...records]);
 
-  return Response.json(record, { status: 201 });
+    // Trigger Gemini Auto-Categorization & Syncing in background safely
+    autoCategorizeAndSync(id, file.name, fileBuffer, record.type, category).catch(() => {});
+
+    return Response.json(record, { status: 201 });
+  } catch (err) {
+    console.error("Document upload error:", err);
+    return Response.json(
+      { error: err instanceof Error ? err.message : "Failed to process document upload." },
+      { status: 500 }
+    );
+  }
 }

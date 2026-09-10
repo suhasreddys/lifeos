@@ -1,21 +1,10 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
 import { NextResponse } from "next/server";
-import path from "path";
+import { readJsonStorage, writeJsonStorage } from "@/lib/storage";
 import type { DayPlanRecord } from "./generate/route";
 
-const dataDir = path.join(process.cwd(), "data");
-const plannerDir = path.join(dataDir, "planner");
-const plansPath = path.join(plannerDir, "plans.json");
-const tasksDir = path.join(dataDir, "tasks");
-const tasksPath = path.join(tasksDir, "tasks.json");
-
 export async function GET() {
-  try {
-    const plans: DayPlanRecord[] = JSON.parse(await readFile(plansPath, "utf8"));
-    return NextResponse.json(plans);
-  } catch {
-    return NextResponse.json([]);
-  }
+  const plans = await readJsonStorage<DayPlanRecord[]>("planner", "plans.json", []);
+  return NextResponse.json(plans);
 }
 
 // POST endpoint to import plan action items into LifeOS Tasks
@@ -30,12 +19,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "No action items to import." }, { status: 400 });
     }
 
-    await mkdir(tasksDir, { recursive: true });
-    let existingTasks: Array<{ id: string; title: string; category: string; priority: string; completed: boolean; dueDate?: string; notes?: string; source: string; createdAt: string }> = [];
-    try {
-      existingTasks = JSON.parse(await readFile(tasksPath, "utf8"));
-    } catch {}
-
+    const existingTasks = await readJsonStorage<Array<{ id: string; title: string; category: string; priority: string; completed: boolean; dueDate?: string; notes?: string; source: string; createdAt: string }>>("tasks", "tasks.json", []);
     const existingTitles = new Set(existingTasks.map((t) => t.title.trim().toLowerCase()));
 
     const todayStr = new Date().toISOString().split("T")[0];
@@ -60,7 +44,7 @@ export async function POST(request: Request) {
     });
 
     const updated = [...newTasks, ...existingTasks];
-    await writeFile(tasksPath, JSON.stringify(updated, null, 2), "utf8");
+    await writeJsonStorage("tasks", "tasks.json", updated);
 
     return NextResponse.json({ importedCount: newTasks.length });
   } catch (err) {
@@ -79,21 +63,16 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: "Plan ID is required." }, { status: 400 });
     }
 
-    await mkdir(plannerDir, { recursive: true });
-    let plans: DayPlanRecord[] = [];
-    try {
-      plans = JSON.parse(await readFile(plansPath, "utf8"));
-    } catch {}
-
+    const plans = await readJsonStorage<DayPlanRecord[]>("planner", "plans.json", []);
     const index = plans.findIndex((p) => p.id === body.id);
     if (index !== -1) {
       plans[index] = { ...plans[index], ...body };
-      await writeFile(plansPath, JSON.stringify(plans, null, 2), "utf8");
+      await writeJsonStorage("planner", "plans.json", plans);
       return NextResponse.json(plans[index]);
     }
 
     return NextResponse.json({ error: "Plan not found." }, { status: 404 });
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: "Failed to update plan." }, { status: 500 });
   }
 }

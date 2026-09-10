@@ -1,5 +1,4 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
-import path from "path";
+import { readJsonStorage, writeJsonStorage } from "@/lib/storage";
 import type { DocumentRecord } from "../documents/route";
 
 export type TaskRecord = {
@@ -16,38 +15,21 @@ export type TaskRecord = {
   createdAt: string;
 };
 
-const tasksDir = path.join(process.cwd(), "data", "tasks");
-const tasksFilePath = path.join(tasksDir, "tasks.json");
-const deletedFilePath = path.join(tasksDir, "deleted.json");
-const docsFilePath = path.join(process.cwd(), "data", "documents", "documents.json");
-
 async function getUserTasks(): Promise<TaskRecord[]> {
-  await mkdir(tasksDir, { recursive: true });
-  try {
-    return JSON.parse(await readFile(tasksFilePath, "utf8")) as TaskRecord[];
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") return [];
-    throw error;
-  }
+  return readJsonStorage<TaskRecord[]>("tasks", "tasks.json", []);
 }
 
 async function getDeletedTaskIds(): Promise<string[]> {
-  await mkdir(tasksDir, { recursive: true });
-  try {
-    return JSON.parse(await readFile(deletedFilePath, "utf8")) as string[];
-  } catch {
-    return [];
-  }
+  return readJsonStorage<string[]>("tasks", "deleted.json", []);
 }
 
 async function saveDeletedTaskIds(ids: string[]): Promise<void> {
-  await mkdir(tasksDir, { recursive: true });
-  await writeFile(deletedFilePath, JSON.stringify(ids, null, 2), "utf8");
+  await writeJsonStorage("tasks", "deleted.json", ids);
 }
 
 async function getDocumentActionItems(): Promise<TaskRecord[]> {
   try {
-    const docs = JSON.parse(await readFile(docsFilePath, "utf8")) as DocumentRecord[];
+    const docs = await readJsonStorage<DocumentRecord[]>("documents", "documents.json", []);
     const items: TaskRecord[] = [];
 
     docs.forEach((doc) => {
@@ -112,7 +94,7 @@ export async function POST(request: Request) {
   };
 
   const updated = [newTask, ...userTasks];
-  await writeFile(tasksFilePath, JSON.stringify(updated, null, 2), "utf8");
+  await writeJsonStorage("tasks", "tasks.json", updated);
   return Response.json(newTask, { status: 201 });
 }
 
@@ -126,7 +108,7 @@ export async function PATCH(request: Request) {
   const index = userTasks.findIndex((t) => t.id === body.id);
   if (index !== -1) {
     userTasks[index].completed = body.completed;
-    await writeFile(tasksFilePath, JSON.stringify(userTasks, null, 2), "utf8");
+    await writeJsonStorage("tasks", "tasks.json", userTasks);
     return Response.json(userTasks[index]);
   }
 
@@ -151,7 +133,7 @@ export async function DELETE(request: Request) {
   const userTasks = await getUserTasks();
   const updatedUserTasks = userTasks.filter((t) => t.id !== id);
   if (updatedUserTasks.length !== userTasks.length) {
-    await writeFile(tasksFilePath, JSON.stringify(updatedUserTasks, null, 2), "utf8");
+    await writeJsonStorage("tasks", "tasks.json", updatedUserTasks);
   }
 
   const deletedIds = await getDeletedTaskIds();
