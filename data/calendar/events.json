@@ -1,0 +1,4194 @@
+[
+  {
+    "id": "holiday-629ec5ea-774d-4e39-a008-a0b1bf4135ff",
+    "title": "Vasant Panchami",
+    "date": "2021-02-16",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.219Z"
+  },
+  {
+    "id": "holiday-4eeb50ca-ce91-4f53-94b9-8d02b4679b1b",
+    "title": "Chaitra Sukhladi",
+    "date": "2021-04-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.222Z"
+  },
+  {
+    "id": "holiday-2dbae0e6-6efe-4586-a874-1c4576939b39",
+    "title": "Janmashtami",
+    "date": "2021-08-30",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.222Z"
+  },
+  {
+    "id": "holiday-54f6e390-9caf-4984-b408-fbca9db8ab41",
+    "title": "Mahatma Gandhi Jayanti",
+    "date": "2021-10-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.222Z"
+  },
+  {
+    "id": "holiday-f7f59cc9-40f9-4901-a577-fdeeb618f38a",
+    "title": "Makar Sankranti",
+    "date": "2022-01-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.222Z"
+  },
+  {
+    "id": "holiday-6c4f1101-3e24-420b-a56d-8f197a950af8",
+    "title": "Chaitra Sukhladi",
+    "date": "2022-04-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.223Z"
+  },
+  {
+    "id": "holiday-e0a832da-69d9-40e0-b8ff-1cd0522561a6",
+    "title": "Birthday of Rabindranath",
+    "date": "2023-05-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.223Z"
+  },
+  {
+    "id": "holiday-c7142ec2-cd6f-4c4c-ae52-41d778aa1fbb",
+    "title": "Muharram/Ashura",
+    "date": "2023-07-29",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.223Z"
+  },
+  {
+    "id": "holiday-95495d1c-1349-4d51-980b-fb83f4d7135e",
+    "title": "New Year's Day",
+    "date": "2024-01-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.223Z"
+  },
+  {
+    "id": "holiday-a150927f-34e1-476f-a35a-5a7366cfd7b8",
+    "title": "Guru Govind Singh Jayanti",
+    "date": "2024-01-17",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-aec5b424-38d3-44e4-a53b-c4d1eedd6c41",
+    "title": "Gudi Padwa",
+    "date": "2024-04-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-8d7553d2-8499-420d-b912-7ab99b3bc07a",
+    "title": "Vaisakhi",
+    "date": "2024-04-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-1070526e-8cf9-407e-b31c-256acc8748a5",
+    "title": "Mahatma Gandhi Jayanti",
+    "date": "2024-10-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-b8c7a841-9aa9-4c49-b026-889e6220b00d",
+    "title": "Birthday of Rabindranath",
+    "date": "2025-05-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-9e5ac841-ca6e-4f1b-a9fb-da4b58d767d6",
+    "title": "Janmashtami (Smarta)",
+    "date": "2025-08-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-56162e9b-3406-42ee-b31a-a8084a0e39e2",
+    "title": "New Year's Day",
+    "date": "2026-01-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-ad513a5c-6f82-47f9-8945-e3da04da41a1",
+    "title": "Rath Yatra",
+    "date": "2026-07-16",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-a2807348-e1ab-4380-8dd5-69aa5e8023bb",
+    "title": "Republic Day",
+    "date": "2027-01-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-6ef6d47e-a0a7-48eb-b350-7770efc50935",
+    "title": "Ugadi",
+    "date": "2027-04-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-aee725c8-7435-4042-9b78-e5daf014c543",
+    "title": "Ambedkar Jayanti",
+    "date": "2027-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-92f115a4-4713-4490-afa1-db9d4bf5c4a0",
+    "title": "Christmas",
+    "date": "2027-12-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-38b8e4ad-b101-42e1-bf64-f75f1e281f8e",
+    "title": "Gudi Padwa",
+    "date": "2028-03-27",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-0414e601-c65f-448e-a2f1-fbbfbff1e85b",
+    "title": "Diwali/Deepavali",
+    "date": "2028-10-17",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-1a7ad762-f4e2-4b43-828a-0353ad15a814",
+    "title": "Christmas",
+    "date": "2028-12-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-a42824e6-9f52-418e-ab80-c950cb8c4185",
+    "title": "Independence Day",
+    "date": "2029-08-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-ff8a5361-f701-4706-bb35-7e047312be8b",
+    "title": "Onam",
+    "date": "2029-08-22",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-727c2d49-3ce8-40e2-9375-0107da3bde50",
+    "title": "First Day of Sharad Navratri",
+    "date": "2029-10-08",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-e9c247e9-1358-4fbc-881b-8e0185cd2d04",
+    "title": "Parsi New Year",
+    "date": "2021-08-16",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-c47a3d45-b85d-4198-b655-85fc644c59ad",
+    "title": "Muharram/Ashura",
+    "date": "2021-08-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-5773fe04-2936-4be6-ba96-ef211ba3bafc",
+    "title": "Maha Saptami",
+    "date": "2021-10-12",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-e717b39e-a321-4ed5-ba70-c24dea8f0859",
+    "title": "Maharishi Valmiki Jayanti",
+    "date": "2021-10-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-4234a9cc-e79f-4075-9fbc-96881bdf58bc",
+    "title": "Bhai Duj",
+    "date": "2021-11-06",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-33da6671-5482-4aed-917b-74f28ad5cb9a",
+    "title": "Chhat Puja (Pratihar Sashthi/Surya Sashthi)",
+    "date": "2021-11-10",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-6e5e2827-bba0-4cdc-829f-9134383c0d26",
+    "title": "Good Friday",
+    "date": "2022-04-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-cc2f0bcb-d42f-458c-87c2-fc661ee57d0b",
+    "title": "Muharram/Ashura",
+    "date": "2022-08-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-e91b6fad-ae37-4395-ba3c-f06fdf3bdae2",
+    "title": "New Year's Day",
+    "date": "2023-01-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-7302af2b-2be3-47c7-a5a2-324fd69fcdfb",
+    "title": "Pongal",
+    "date": "2023-01-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-3f164ac5-4a38-4e74-9a5b-46e03de8d915",
+    "title": "Hazarat Ali's Birthday",
+    "date": "2023-02-05",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-75cd1f85-0f39-4604-9795-18cad2090620",
+    "title": "Gudi Padwa",
+    "date": "2023-03-22",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-0f771d77-0954-4b7a-9b16-40014d64c3a0",
+    "title": "Chaitra Sukhladi",
+    "date": "2023-03-22",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-b87b064a-4a7c-496a-8b16-b573e2363735",
+    "title": "Mahavir Jayanti",
+    "date": "2023-04-04",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-3553b8ff-67a1-4850-89af-9c1d180de900",
+    "title": "Ambedkar Jayanti",
+    "date": "2023-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-18558383-4490-4c5b-81c7-04da04b531c2",
+    "title": "Christmas",
+    "date": "2023-12-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-00db8927-a83d-4a94-bce8-4885636855e9",
+    "title": "Vasant Panchami",
+    "date": "2024-02-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-44e6ca1e-deee-454c-9d7a-8ea8e6a024f1",
+    "title": "Ugadi",
+    "date": "2024-04-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-86b6af53-7cc5-46aa-9e33-bcd2436dbeeb",
+    "title": "Rama Navami",
+    "date": "2024-04-17",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-98f48840-a1bc-4e54-9ac3-f773e917fed4",
+    "title": "Birthday of Rabindranath",
+    "date": "2024-05-08",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-6863396d-4c7f-4de7-9119-0de406a2a996",
+    "title": "Dussehra",
+    "date": "2024-10-12",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-d4d390e8-7f23-4cbd-b83e-324319207474",
+    "title": "Maharishi Valmiki Jayanti",
+    "date": "2024-10-17",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-88373826-8183-430d-8da6-0917f62b34a1",
+    "title": "Bhai Duj",
+    "date": "2024-11-03",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.224Z"
+  },
+  {
+    "id": "holiday-6bca5dd7-4a58-4359-9390-c3babcd30c76",
+    "title": "Chhat Puja (Pratihar Sashthi/Surya Sashthi)",
+    "date": "2024-11-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-55716d29-1095-44ae-9b18-581bdf8cbbe8",
+    "title": "Makar Sankranti",
+    "date": "2025-01-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-84cc4034-54fe-4072-9fdd-6dfe1a2530a2",
+    "title": "Shivaji Jayanti",
+    "date": "2025-02-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-0f3587fe-2709-46a8-8743-c3043974303c",
+    "title": "Diwali/Deepavali",
+    "date": "2025-10-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-cdf4bcca-513c-494e-a417-744fbae047b2",
+    "title": "Gudi Padwa",
+    "date": "2026-03-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-b4eb21d8-b2e5-4c3e-a859-ac3b78f68e02",
+    "title": "Diwali/Deepavali",
+    "date": "2026-11-08",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-4e9d2129-3637-4ca2-803b-dece05c4605e",
+    "title": "Janmashtami (Smarta)",
+    "date": "2027-08-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-c2fa7546-d0c1-44d6-a6ff-f75a6dda0ab9",
+    "title": "Bhai Duj",
+    "date": "2027-10-31",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-2cd683ed-784d-4ddf-a49d-e154294133f4",
+    "title": "Pongal",
+    "date": "2028-01-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-5be837fb-7a19-434f-8089-72d40abc0091",
+    "title": "Republic Day",
+    "date": "2028-01-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-e40685d3-3d10-4c69-875c-984a7a762b2d",
+    "title": "Holi",
+    "date": "2028-03-11",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-bfb34804-b8a7-400b-94ff-ff148087c1c7",
+    "title": "Vasant Panchami",
+    "date": "2029-01-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-fbb1ff91-bab5-48f3-823e-591567380e9e",
+    "title": "Ambedkar Jayanti",
+    "date": "2029-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-4178fa98-c385-4145-b87a-0176a55ea1cc",
+    "title": "New Year's Day",
+    "date": "2021-01-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-df6fe011-e7bd-4213-989e-c48c5a848df5",
+    "title": "Pongal",
+    "date": "2021-01-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-dc116c49-2551-42d1-9bcd-c599fac99b0d",
+    "title": "Republic Day",
+    "date": "2021-01-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-86593853-d15f-49da-bea5-8b413ae61764",
+    "title": "Guru Ravidas Jayanti",
+    "date": "2021-02-27",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-c31a6272-a2af-49b8-9d9a-60f97aa50435",
+    "title": "Mesadi",
+    "date": "2021-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-d5f48be6-9729-447d-806e-246bf13bdb42",
+    "title": "Vaisakhi",
+    "date": "2021-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-5c038afe-1613-4efc-b1e5-30f4b69b857b",
+    "title": "Ambedkar Jayanti",
+    "date": "2021-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-94f3e47a-e6ee-445c-bbde-393c96921e45",
+    "title": "Rama Navami",
+    "date": "2021-04-21",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-b68e4a4a-76f0-4f88-a28c-af89dd732bce",
+    "title": "Independence Day",
+    "date": "2021-08-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-6e4a6a57-ca6c-43ac-bc1a-92eb503fa167",
+    "title": "Christmas Eve",
+    "date": "2021-12-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-ef315566-7915-47b2-862c-f13d5484d568",
+    "title": "Republic Day",
+    "date": "2022-01-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-1eefa890-1ca0-465f-8aa1-8763298fd9c6",
+    "title": "Shivaji Jayanti",
+    "date": "2022-02-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-9652ea7c-1120-4b2d-96cd-49daa22cece3",
+    "title": "Holika Dahana",
+    "date": "2022-03-17",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-15d51613-bf23-4909-b043-970d26821434",
+    "title": "Rath Yatra",
+    "date": "2022-07-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-19d24a0d-818f-404a-929d-39d49bbae2a2",
+    "title": "Naraka Chaturdasi",
+    "date": "2022-10-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-5215ea92-8731-469c-86f0-28ecd79af90e",
+    "title": "Ugadi",
+    "date": "2023-03-22",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-dc8f42cc-4f20-45f0-9d73-0c4090becd57",
+    "title": "Rath Yatra",
+    "date": "2023-06-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-596a37ed-f5e8-474d-879d-09259c192d47",
+    "title": "Naraka Chaturdasi",
+    "date": "2023-11-12",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-379f0062-14ec-4c49-85da-55dc0dfd5853",
+    "title": "Christmas Eve",
+    "date": "2023-12-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-cd1f0604-7c64-4fb4-8a11-85208c07b820",
+    "title": "Shivaji Jayanti",
+    "date": "2024-02-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-5e03bd6e-6abe-4e69-addc-e77fb71e9390",
+    "title": "Republic Day",
+    "date": "2025-01-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-fca145d3-6879-4f47-8ce7-8e23b916e77d",
+    "title": "Maharishi Dayanand Saraswati Jayanti",
+    "date": "2025-02-23",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-f356c422-6123-417c-8334-9cb14c4d056a",
+    "title": "Maha Ashtami",
+    "date": "2025-09-30",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-9ef2d71f-1aaa-4701-98d0-8b726515bc07",
+    "title": "Christmas Eve",
+    "date": "2026-12-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-59ef16e3-1379-4d3b-98f3-62d35000725e",
+    "title": "New Year's Day",
+    "date": "2027-01-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-3b61a49f-e600-477d-8a8b-70ce7c5a20b3",
+    "title": "First Day of Durga Puja Festivities",
+    "date": "2027-10-05",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-b130c183-8d1b-4c0f-b893-93c6701f4a06",
+    "title": "Christmas Eve",
+    "date": "2028-12-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-3e967f1d-41b4-4764-86fd-018f8647d6bf",
+    "title": "Republic Day",
+    "date": "2029-01-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-bdd30345-2460-43d8-b71d-e320ad077aa0",
+    "title": "Gudi Padwa",
+    "date": "2029-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-f11c3c46-27b8-40b7-9d57-9d794b3c367e",
+    "title": "Guru Tegh Bahadur's Martyrdom Day",
+    "date": "2029-11-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-7fe1c7e6-4035-4e52-95bb-af570fe7dc48",
+    "title": "Ugadi",
+    "date": "2021-04-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-15b67a4f-c961-4cbb-a642-0bca5c3eb028",
+    "title": "Gudi Padwa",
+    "date": "2021-04-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-7e74dde2-e4d1-4a91-9534-080958faac4d",
+    "title": "Dussehra",
+    "date": "2021-10-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-b6e6367a-197e-4417-b8c4-3c1b55028361",
+    "title": "Guru Nanak Jayanti",
+    "date": "2021-11-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-28454501-4e92-479f-bbee-886e55cc48c1",
+    "title": "Hazarat Ali's Birthday",
+    "date": "2022-02-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-bbfbd264-14a8-4f07-ad9c-d8ceebb74d89",
+    "title": "Parsi New Year",
+    "date": "2022-08-16",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-65f9f457-f6de-4d05-8306-e84f2d94e2ce",
+    "title": "Janmashtami",
+    "date": "2022-08-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-74f86c59-9c22-4015-98cd-67682c252eed",
+    "title": "First Day of Sharad Navratri",
+    "date": "2022-09-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-fab10cce-15a6-4f28-a0fe-0b9759c497f0",
+    "title": "Mahatma Gandhi Jayanti",
+    "date": "2022-10-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-aabb537e-fe98-417f-a21d-57ea0997ff60",
+    "title": "Christmas Eve",
+    "date": "2022-12-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-a1cafe1a-448c-44c9-bed7-f543d8df1604",
+    "title": "Republic Day",
+    "date": "2023-01-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-afe7a551-3a04-4415-876b-66d5f279c183",
+    "title": "Parsi New Year",
+    "date": "2023-08-16",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-7159b87c-9cd1-4ea3-98f6-71986bccdcb9",
+    "title": "First Day of Durga Puja Festivities",
+    "date": "2023-10-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-57de61dd-f88c-4c02-83ac-52c00d1f9d2e",
+    "title": "Maha Navami",
+    "date": "2023-10-23",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-9d9c5ac7-dcb4-45e7-bf77-f0fc260b21a8",
+    "title": "Pongal",
+    "date": "2024-01-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-fbd8ac1b-deb2-4002-8100-4eaa190beda0",
+    "title": "Hazarat Ali's Birthday",
+    "date": "2024-01-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-c8d6a9a5-8972-49b8-9c66-9e42dd27751c",
+    "title": "Holika Dahana",
+    "date": "2024-03-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-3a78123a-2934-44ff-8587-cd5570973e8f",
+    "title": "Ambedkar Jayanti",
+    "date": "2024-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-de3c16c9-b8d1-41c6-a773-e0478a0e391f",
+    "title": "Independence Day",
+    "date": "2024-08-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-64310d66-770e-42d1-8f47-98e7867ddbea",
+    "title": "Vasant Panchami",
+    "date": "2025-02-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-d5a0bd97-256a-4b47-9f4b-c9e3e672e91f",
+    "title": "Ambedkar Jayanti",
+    "date": "2025-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-072f8675-168d-4e32-b2a1-5768089a1f05",
+    "title": "Independence Day",
+    "date": "2025-08-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-d28cb95d-282d-4dfb-9cae-d5ef35bc23bd",
+    "title": "Christmas Eve",
+    "date": "2025-12-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.225Z"
+  },
+  {
+    "id": "holiday-15d9e758-35db-4cd2-8e76-6930bd60baf6",
+    "title": "Shivaji Jayanti",
+    "date": "2026-02-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-448ad528-0089-418e-8a02-81a36f2ee89c",
+    "title": "Mahatma Gandhi Jayanti",
+    "date": "2026-10-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-5977997c-8190-46ad-ac54-01af79e31520",
+    "title": "First Day of Sharad Navratri",
+    "date": "2026-10-11",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-da3d2615-37e2-425f-9475-9e159a292e44",
+    "title": "Guru Tegh Bahadur's Martyrdom Day",
+    "date": "2027-11-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-35c691cb-3cc1-4241-9513-0e8e6459b772",
+    "title": "Hazarat Ali's Birthday",
+    "date": "2027-12-12",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-636ec44e-d3f0-41af-be12-cb9b4cf9b879",
+    "title": "Ambedkar Jayanti",
+    "date": "2028-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-e44a0e70-1e96-4d85-996d-b9fc643e8616",
+    "title": "Onam",
+    "date": "2028-09-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-da245ae1-d885-4a89-89ff-8fad365f056b",
+    "title": "Chhat Puja (Pratihar Sashthi/Surya Sashthi)",
+    "date": "2028-10-23",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-cdc7eda0-141f-4acd-ad60-63142e68483d",
+    "title": "Holi",
+    "date": "2029-03-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-ac96c198-6315-4c5c-a074-197ffd6e68b2",
+    "title": "Janmashtami (Smarta)",
+    "date": "2029-09-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-7c20a8f8-8d9a-4b2f-ae89-bf0d249ebc91",
+    "title": "Good Friday",
+    "date": "2021-04-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-dccbe270-1bcc-40ed-8b3c-5ac58a2770db",
+    "title": "First Day of Durga Puja Festivities",
+    "date": "2021-10-11",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-5308fb9d-1308-48d0-ab01-a84c40d33e7d",
+    "title": "Maha Ashtami",
+    "date": "2021-10-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-9cdd32dd-485b-4ed5-89f3-625f3b18fe3d",
+    "title": "New Year's Day",
+    "date": "2022-01-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-bfba13b3-eb0c-44e2-8559-344df715bef3",
+    "title": "Vaisakhi",
+    "date": "2022-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-63f0f34f-1603-49bd-9696-974d687b73c2",
+    "title": "Govardhan Puja",
+    "date": "2022-10-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-bc5a7f6c-b214-443d-a823-5ade678d7711",
+    "title": "Guru Govind Singh Jayanti",
+    "date": "2022-12-29",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-64a609c4-0dec-4eaf-8c0d-974f594a8817",
+    "title": "Holi",
+    "date": "2023-03-08",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-edaa1898-be60-40c1-838e-204bcea2ba91",
+    "title": "Janmashtami",
+    "date": "2023-09-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-5573988e-aaf0-4518-a003-3b9e4267bbf7",
+    "title": "Maha Saptami",
+    "date": "2023-10-21",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-7ca7027c-12f7-41a5-a682-3fa0d83962db",
+    "title": "Govardhan Puja",
+    "date": "2023-11-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-288c464d-65fc-4653-91f0-880de91ce475",
+    "title": "Bhai Duj",
+    "date": "2023-11-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-35c554a3-aa2c-4d10-b6c9-5f7fd0e1dff7",
+    "title": "Guru Nanak Jayanti",
+    "date": "2023-11-27",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-268564f4-7306-4580-9d05-3401b49b8f1a",
+    "title": "Guru Ravidas Jayanti",
+    "date": "2024-02-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-a8e0e220-9b73-434e-8fa0-967a85a2437f",
+    "title": "Janmashtami",
+    "date": "2024-08-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-7b38db9f-d3e0-4bad-b2de-89b2a9e4bbd6",
+    "title": "First Day of Durga Puja Festivities",
+    "date": "2024-10-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-9d85efe1-3d00-4aa2-8f21-e4d0dbea54ae",
+    "title": "Diwali/Deepavali",
+    "date": "2024-10-31",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-f9087d0c-d060-4719-a5d9-8fc6d1d1b5f8",
+    "title": "Christmas Eve",
+    "date": "2024-12-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-c33dcce3-23ec-4ac5-a608-c67225412227",
+    "title": "Guru Ravidas Jayanti",
+    "date": "2025-02-12",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-f356607b-4e16-4bad-ac91-4e589f2b831e",
+    "title": "Gudi Padwa",
+    "date": "2025-03-30",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-19a558de-8820-47b7-94ec-c3537b58cd2b",
+    "title": "First Day of Sharad Navratri",
+    "date": "2025-09-22",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-000015a1-c0e4-4d11-a49a-86e731145bfe",
+    "title": "Maha Saptami",
+    "date": "2025-09-29",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-3b3efd3b-7b0e-4897-8440-e6479d54f737",
+    "title": "Maha Navami",
+    "date": "2025-10-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-40ca638b-f866-4855-a132-d341e3ebd3a7",
+    "title": "Maharishi Valmiki Jayanti",
+    "date": "2025-10-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-ce62289f-d431-459e-b65b-bcd4fd3cc820",
+    "title": "Vasant Panchami",
+    "date": "2026-01-23",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-aa84346f-605c-4b9d-a5f6-d4a77b4c492e",
+    "title": "Bhai Duj",
+    "date": "2026-11-11",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-55cae6ce-8b0d-4345-9330-87dfb2379ef0",
+    "title": "Independence Day",
+    "date": "2027-08-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-fbdc9196-26e0-43d2-95df-4f8451345c8c",
+    "title": "Rath Yatra",
+    "date": "2029-07-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-715eb4ae-916d-49e7-be3a-fc356f290697",
+    "title": "Chhat Puja (Pratihar Sashthi/Surya Sashthi)",
+    "date": "2029-11-11",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-227aaf06-a122-45cc-96a1-248feab2dfef",
+    "title": "Rath Yatra",
+    "date": "2021-07-12",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-69eb8bb0-c3c1-4572-ad2f-51e0f56e5587",
+    "title": "Onam",
+    "date": "2021-08-21",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-ca5d04fb-3949-4659-a647-826ec2c9e0ec",
+    "title": "Holi",
+    "date": "2022-03-18",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-725ec727-7c13-4c66-8d32-f573200566ca",
+    "title": "Rama Navami",
+    "date": "2022-04-10",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-94518b75-63e6-4783-a755-9b2fa4da1da5",
+    "title": "Independence Day",
+    "date": "2022-08-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-c265d858-0a99-4f50-8100-3373e3f2feff",
+    "title": "Maha Saptami",
+    "date": "2022-10-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-fcca6e72-694f-4ca8-8a1c-b222c31362cb",
+    "title": "Dussehra",
+    "date": "2022-10-05",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-4d6cbac1-76c6-44b7-b302-dabebdb54a43",
+    "title": "Maharishi Valmiki Jayanti",
+    "date": "2022-10-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-64dc69e1-cd43-474b-ae24-8dc97b4f1321",
+    "title": "Holika Dahana",
+    "date": "2023-03-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-cf737e76-a120-4078-84fc-bcab89a85b0f",
+    "title": "Chhat Puja (Pratihar Sashthi/Surya Sashthi)",
+    "date": "2023-11-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-18719ad5-fa25-4e72-bab8-880ec7a6b9a2",
+    "title": "Republic Day",
+    "date": "2024-01-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-e7a98bfc-feac-4a20-b105-9d06ff74ef06",
+    "title": "Mahavir Jayanti",
+    "date": "2024-04-21",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-da189fcb-09cb-435c-8830-bcf3967c35f1",
+    "title": "Maha Saptami",
+    "date": "2024-10-10",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-6f51364f-b942-4e41-835f-274ad4a47756",
+    "title": "Naraka Chaturdasi",
+    "date": "2024-10-31",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-74acfd7d-de99-4480-a952-89d368e670ad",
+    "title": "Hazarat Ali's Birthday",
+    "date": "2025-01-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-1dedd1d6-1cb8-41f8-ab25-15b14737524b",
+    "title": "Chaitra Sukhladi",
+    "date": "2025-03-30",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-17114480-936c-4a9c-a7b6-e28a1df6db67",
+    "title": "Guru Nanak Jayanti",
+    "date": "2025-11-05",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-4d9e95e3-38eb-4503-b5d9-24b6e9d518c0",
+    "title": "Guru Tegh Bahadur's Martyrdom Day",
+    "date": "2025-11-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-66e7b482-0c89-4373-9613-d11615e26762",
+    "title": "Hazarat Ali's Birthday",
+    "date": "2026-01-03",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-b7c647b7-48eb-4854-a0d8-8aea003014b1",
+    "title": "Onam",
+    "date": "2026-08-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-66ea94a1-c143-4e9b-af1c-98bc7a9794c5",
+    "title": "Guru Tegh Bahadur's Martyrdom Day",
+    "date": "2026-11-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-86e451b7-e68e-4175-91be-f331f3c7e6b5",
+    "title": "Mahatma Gandhi Jayanti",
+    "date": "2027-10-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-b8795042-1a9b-4970-bb69-e62c5d95b9a5",
+    "title": "Diwali/Deepavali",
+    "date": "2027-10-29",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-37d911c9-bf25-49e8-bbd4-d7d002e48ee0",
+    "title": "Shivaji Jayanti",
+    "date": "2028-02-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-d5a95078-ad73-4b56-9f96-1b4d7f78bf74",
+    "title": "Mahatma Gandhi Jayanti",
+    "date": "2028-10-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-7799e97d-47f5-4e4c-afd6-1524f6ab7b3d",
+    "title": "Hazarat Ali's Birthday",
+    "date": "2028-12-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-54879fc8-5dfc-462b-9530-fb8d73169363",
+    "title": "New Year's Day",
+    "date": "2029-01-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-7060c120-6e44-456b-92c8-58712b3c64ad",
+    "title": "Ugadi",
+    "date": "2029-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-bebb39e9-9f1c-465a-ab38-b1e8d4967ffe",
+    "title": "Dussehra",
+    "date": "2029-10-16",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-977d188d-7fc9-4109-80ba-a6154fcdaebf",
+    "title": "Birthday of Rabindranath",
+    "date": "2021-05-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-e5117d81-822d-4748-b540-c49191db5ac4",
+    "title": "Janmashtami (Smarta)",
+    "date": "2022-08-18",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-367b16e1-92d4-4fa6-bd6a-35882c6d7f6f",
+    "title": "Onam",
+    "date": "2022-09-08",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-7a30dd96-856d-4e2c-a454-edf660043ce6",
+    "title": "First Day of Durga Puja Festivities",
+    "date": "2022-10-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-0f2010bc-8c07-497a-aa5e-5fd1b0065be2",
+    "title": "Guru Tegh Bahadur's Martyrdom Day",
+    "date": "2022-11-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-c6c9ef46-bd1b-4983-aaea-4265750ae9fd",
+    "title": "Makar Sankranti",
+    "date": "2023-01-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-3ac5e60e-2657-4a07-8a02-342df02ded31",
+    "title": "Vaisakhi",
+    "date": "2023-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-f4d7bac9-b327-44ad-87b4-0e174ecaeed6",
+    "title": "Vinayaka Chathurthi",
+    "date": "2023-08-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-7edd89c4-9845-4eff-b9d6-04e9a9ad3535",
+    "title": "Mahatma Gandhi Jayanti",
+    "date": "2023-10-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-19d35dea-f5e7-4f97-ba30-99597c521144",
+    "title": "Dussehra",
+    "date": "2023-10-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-c97bb69e-e490-444f-bd2a-8992a9767297",
+    "title": "Guru Tegh Bahadur's Martyrdom Day",
+    "date": "2023-11-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-a2e137ad-3cc6-4cd1-b3e2-c4bbbdc1caf1",
+    "title": "Makar Sankranti",
+    "date": "2024-01-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-62f5cf70-0bbd-49e7-a354-8520e8839b00",
+    "title": "Guru Tegh Bahadur's Martyrdom Day",
+    "date": "2024-11-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-779e31cb-a218-4cc6-9cac-7c18a9ee7d5b",
+    "title": "Janmashtami",
+    "date": "2025-08-16",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-2c5ed2ae-545b-4976-a2af-56f532ed5647",
+    "title": "Dussehra",
+    "date": "2025-10-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-ef36bffd-1be2-4110-83aa-55f933235090",
+    "title": "Mahatma Gandhi Jayanti",
+    "date": "2025-10-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-88ca4b4d-798a-4a99-b523-556764b0f22d",
+    "title": "Christmas",
+    "date": "2025-12-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-50cb480a-19de-4d95-89f5-83ce5b76d7f4",
+    "title": "Pongal",
+    "date": "2026-01-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-4785f458-3df0-41ed-af61-6fc7bc91df27",
+    "title": "Rama Navami",
+    "date": "2026-03-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-ce0b244f-36d9-4322-8c6c-4e0613cc10d8",
+    "title": "Pongal",
+    "date": "2027-01-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-f99d7d69-24d4-467c-b0eb-e6b4de18472d",
+    "title": "Janmashtami",
+    "date": "2027-08-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-630917cb-82e6-49d4-addd-09f573980ea0",
+    "title": "Dussehra",
+    "date": "2027-10-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-e805c8dd-098b-4d86-94d8-d8d033448edc",
+    "title": "Chhat Puja (Pratihar Sashthi/Surya Sashthi)",
+    "date": "2027-11-04",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-92ac63b7-aa12-4385-81d1-496975eda147",
+    "title": "Rath Yatra",
+    "date": "2028-06-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-1960030f-cdee-4c5b-82d7-adddfbe4d26d",
+    "title": "Dussehra",
+    "date": "2028-09-27",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-e03b8cf9-cc96-47ab-a960-09e1f04340cc",
+    "title": "First Day of Durga Puja Festivities",
+    "date": "2029-10-12",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-4335a244-8676-4155-9646-d60594413d06",
+    "title": "Hazarat Ali's Birthday",
+    "date": "2029-11-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-eddbbc27-6ea4-42bc-b0d2-42734cad0b8b",
+    "title": "Govardhan Puja",
+    "date": "2021-11-05",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-5b67211c-8cea-4f4e-af02-e5cba15e6f37",
+    "title": "Pongal",
+    "date": "2022-01-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-52d301ac-f82b-49d5-92b4-8b9305d51278",
+    "title": "Bhai Duj",
+    "date": "2022-10-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-eb106f32-ae61-48ed-bd6e-a753c73edb78",
+    "title": "Christmas",
+    "date": "2022-12-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-3025ef7c-6418-4c7c-8131-bb72df53ca8b",
+    "title": "Ramadan Start",
+    "date": "2023-03-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-ad993d2e-0929-4744-86cb-6cc762e47d86",
+    "title": "Independence Day",
+    "date": "2023-08-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-d1502e26-ba7f-4755-a801-d9ffb3d25f10",
+    "title": "Janmashtami (Smarta)",
+    "date": "2023-09-06",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-35337e2d-d46d-450b-aab4-7df7a248ba98",
+    "title": "First Day of Sharad Navratri",
+    "date": "2023-10-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-63d6bc96-12f1-4a36-8258-bc70e0566fc5",
+    "title": "Maha Ashtami",
+    "date": "2023-10-22",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-76e6cd7f-b569-4964-9ced-b483c807b34b",
+    "title": "Chaitra Sukhladi",
+    "date": "2024-04-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-431b36ea-9280-4aca-b33b-9d7585d6bc02",
+    "title": "Parsi New Year",
+    "date": "2024-08-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-4b710547-2536-48f3-86b4-a6f214ebe488",
+    "title": "Onam",
+    "date": "2024-09-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-42d4cf1f-fb79-4ca5-8005-0a857113e306",
+    "title": "Maha Ashtami",
+    "date": "2024-10-11",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-7b17a750-f65d-4bb0-93fa-af9762b22414",
+    "title": "New Year's Day",
+    "date": "2025-01-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-969e7f87-946d-4985-9081-5ab0887dc978",
+    "title": "Ugadi",
+    "date": "2025-03-30",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-5e9fc9b7-1453-44a6-ac84-a13d700273c7",
+    "title": "Onam",
+    "date": "2025-09-05",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-787f734e-1ee7-4222-aa76-30824697c971",
+    "title": "Republic Day",
+    "date": "2026-01-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-ebbb91d0-7ee8-4759-88b8-ce838223a75d",
+    "title": "Holi",
+    "date": "2026-03-04",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-3d256e76-1d50-480a-9bc2-3c101c9832cb",
+    "title": "Janmashtami",
+    "date": "2026-09-04",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-139f3f72-63e4-4b8b-b2ed-ac8a430984bf",
+    "title": "Good Friday",
+    "date": "2027-03-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-6873b107-2dc0-4f7f-89bb-7ac17bc4a75a",
+    "title": "New Year's Day",
+    "date": "2028-01-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-f355bde2-5f5e-4681-af53-0ed9b8caedcb",
+    "title": "Vasant Panchami",
+    "date": "2028-01-31",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-0553a4a8-c628-4be0-8788-8bbcf6ad4044",
+    "title": "Bhai Duj",
+    "date": "2028-10-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-a61ceac6-621d-4f85-8212-1adba17730ad",
+    "title": "Makar Sankranti",
+    "date": "2029-01-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-8ab2b6cf-3fa8-4f52-8943-85085f032809",
+    "title": "Good Friday",
+    "date": "2029-03-30",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.229Z"
+  },
+  {
+    "id": "holiday-b70a6e49-1453-4361-85d6-a1c9810d7582",
+    "title": "Guru Govind Singh Jayanti",
+    "date": "2021-01-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.230Z"
+  },
+  {
+    "id": "holiday-c276ad95-a6ba-4f7c-a398-098db431cf86",
+    "title": "First Day of Sharad Navratri",
+    "date": "2021-10-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.230Z"
+  },
+  {
+    "id": "holiday-4c90b866-42e2-4e89-83a5-0eeafe002df7",
+    "title": "Guru Ravidas Jayanti",
+    "date": "2022-02-16",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.230Z"
+  },
+  {
+    "id": "holiday-6998768c-202e-4121-a7ec-102a9102e23c",
+    "title": "Maharishi Dayanand Saraswati Jayanti",
+    "date": "2022-02-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.230Z"
+  },
+  {
+    "id": "holiday-c2773407-71d0-4dcd-8444-a4781c98c28b",
+    "title": "Mahavir Jayanti",
+    "date": "2022-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.230Z"
+  },
+  {
+    "id": "holiday-66218508-efa0-4c9d-98ec-04c2c584aa34",
+    "title": "Vasant Panchami",
+    "date": "2023-01-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.230Z"
+  },
+  {
+    "id": "holiday-6611e8dd-9692-4bc8-8115-40a626f02d10",
+    "title": "Maharishi Dayanand Saraswati Jayanti",
+    "date": "2023-02-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.230Z"
+  },
+  {
+    "id": "holiday-6e44d6fc-837b-4071-948e-45d3d69b511b",
+    "title": "Shivaji Jayanti",
+    "date": "2023-02-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.230Z"
+  },
+  {
+    "id": "holiday-32b1f222-0ad9-4652-bfff-8340b5254fd0",
+    "title": "Good Friday",
+    "date": "2023-04-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-ab36fc9f-de80-47ee-a1ee-792a85f21a24",
+    "title": "Maharishi Dayanand Saraswati Jayanti",
+    "date": "2024-03-06",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-b1e54648-883f-47c1-a41b-ee86092a038b",
+    "title": "Ramadan Start",
+    "date": "2024-03-12",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-44b31f78-0005-49e2-9273-ce566f1d3db5",
+    "title": "Holi",
+    "date": "2024-03-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-34acc0f8-b10b-4179-adf3-a952ffbccf56",
+    "title": "First Day of Sharad Navratri",
+    "date": "2024-10-03",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-763cc458-ad11-4726-844d-44f64ddabc75",
+    "title": "Good Friday",
+    "date": "2025-04-18",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-63b91c05-a1ac-4b26-b9bd-ec427e2807da",
+    "title": "First Day of Durga Puja Festivities",
+    "date": "2025-09-28",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-95bcff6a-f55b-4e39-a066-361f695e3048",
+    "title": "Bhai Duj",
+    "date": "2025-10-23",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-76f43751-63a5-42fd-b166-e233ccf13b29",
+    "title": "Good Friday",
+    "date": "2026-04-03",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-ff645e3e-28ea-4aca-ba6e-e02ef5150416",
+    "title": "First Day of Durga Puja Festivities",
+    "date": "2026-10-17",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-c373e608-4887-4f43-9abc-f071a291fe5a",
+    "title": "Chhat Puja (Pratihar Sashthi/Surya Sashthi)",
+    "date": "2026-11-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-e7e36086-cd97-443c-b928-09570f00d246",
+    "title": "Christmas",
+    "date": "2026-12-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-c2950629-6998-4ba0-8a3e-6a43226aa67d",
+    "title": "Makar Sankranti",
+    "date": "2027-01-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-cf90fb3d-208d-4fde-854e-9ff8279ea8c2",
+    "title": "Shivaji Jayanti",
+    "date": "2027-02-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-b28da998-29f2-4f80-ae47-422249d370d6",
+    "title": "Good Friday",
+    "date": "2028-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-c9d2e13b-0778-4b65-b5e3-267ea6004ca7",
+    "title": "Janmashtami (Smarta)",
+    "date": "2028-08-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-309dc551-63df-46bf-8e68-6fa0804208b1",
+    "title": "Janmashtami",
+    "date": "2028-08-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-f7baf54d-c137-4907-8ddc-74047cd09df0",
+    "title": "First Day of Sharad Navratri",
+    "date": "2028-09-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-d5803d33-ef4d-493f-969e-b0c449975e74",
+    "title": "Guru Tegh Bahadur's Martyrdom Day",
+    "date": "2028-11-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-f248b0e3-a875-472c-ab2d-0bd64119d8a7",
+    "title": "Pongal",
+    "date": "2029-01-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-b304d497-bee2-4976-8f57-9d3a6bdbfbe3",
+    "title": "Shivaji Jayanti",
+    "date": "2029-02-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-17832a01-fad0-4a93-a7b1-a9ff4eb24a04",
+    "title": "Rama Navami",
+    "date": "2029-04-22",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-2e59ecf5-b254-4680-8da3-e6803038a0c4",
+    "title": "Mahatma Gandhi Jayanti",
+    "date": "2029-10-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-8832a4ab-4962-45f6-99f1-90fe7839b92e",
+    "title": "Christmas",
+    "date": "2029-12-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-e657d3e1-bd73-4e4b-a32a-dc9724035b8b",
+    "title": "Makar Sankranti",
+    "date": "2021-01-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-8b4ad167-3c13-47fd-bc67-eb9a5cccf5c4",
+    "title": "Hazarat Ali's Birthday",
+    "date": "2021-02-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-1540901c-ef7f-48ce-9e8b-8ce950c5162a",
+    "title": "Maharishi Dayanand Saraswati Jayanti",
+    "date": "2021-03-08",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-17c86eb7-6a23-4683-9dde-3f1725345c6b",
+    "title": "Holika Dahana",
+    "date": "2021-03-28",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-78764e75-8997-4b6d-ac55-04ff27d960e7",
+    "title": "Holi",
+    "date": "2021-03-29",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-a93243b1-1c44-479c-8980-b623d360bb83",
+    "title": "Mahavir Jayanti",
+    "date": "2021-04-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-e32dcd5e-d17d-4d53-8f11-36dff7b2787b",
+    "title": "Jamat Ul-Vida",
+    "date": "2021-05-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-379492b5-6151-4506-a021-f23890439160",
+    "title": "Naraka Chaturdasi",
+    "date": "2021-11-04",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-2e7d5baa-72d6-4e09-aec6-6976146928e4",
+    "title": "Guru Govind Singh Jayanti",
+    "date": "2022-01-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-f037b9ec-49a2-45ad-878f-d8866f5f7b30",
+    "title": "Vasant Panchami",
+    "date": "2022-02-05",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-c67ba355-d1a8-4274-9b9f-6ce8c09d2cd3",
+    "title": "Gudi Padwa",
+    "date": "2022-04-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-b72543eb-c7c7-4db4-a4fd-b99213ab3db4",
+    "title": "Birthday of Rabindranath",
+    "date": "2022-05-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-aad8bcd4-e324-4c2b-856b-4e01ea5ecaa8",
+    "title": "Guru Nanak Jayanti",
+    "date": "2022-11-08",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-9a59e252-2ec7-4068-866d-b704f298643f",
+    "title": "Onam",
+    "date": "2023-08-29",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-3dfdc4a0-39a6-4f96-837b-25ac9649bb60",
+    "title": "Maharishi Valmiki Jayanti",
+    "date": "2023-10-28",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-1e73d1db-456e-41f9-825d-a5bff5b274d5",
+    "title": "Rath Yatra",
+    "date": "2024-07-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-0c92eed2-4793-4c4e-a246-e63325c0fb6a",
+    "title": "Muharram/Ashura",
+    "date": "2024-07-17",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-ce0e5213-9969-474e-9b32-e97b8c66cc89",
+    "title": "Maha Navami",
+    "date": "2024-10-11",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-a2512ff9-f8fe-4159-9704-1ae4f3afaf25",
+    "title": "Govardhan Puja",
+    "date": "2024-11-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-50bd937c-46b1-4be1-9d57-1f4d062b482b",
+    "title": "Guru Nanak Jayanti",
+    "date": "2024-11-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-bd15809b-ba13-48c1-9478-eedbb094cd43",
+    "title": "Christmas",
+    "date": "2024-12-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-61b1547d-1fd8-42ec-b703-dee21efaa34b",
+    "title": "Rath Yatra",
+    "date": "2025-06-27",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-6e21a56e-fc85-467f-aee7-eb988cf1b1b4",
+    "title": "Parsi New Year",
+    "date": "2025-08-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-bde8fb42-9921-4f21-b784-82a123d8dfb8",
+    "title": "Naraka Chaturdasi",
+    "date": "2025-10-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-1057f667-dfc0-4185-a454-2113d467dd81",
+    "title": "Makar Sankranti",
+    "date": "2026-01-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-36747809-2bf6-4f1e-ae5d-a16accd8a016",
+    "title": "Ugadi",
+    "date": "2026-03-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-5ad8d139-dc00-48c3-bf24-83433203e96e",
+    "title": "Independence Day",
+    "date": "2026-08-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-124a1b62-a116-4989-8110-68b7683dcf10",
+    "title": "Janmashtami (Smarta)",
+    "date": "2026-09-04",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-8611725d-f27e-46ef-9880-f1d4a0a2ff70",
+    "title": "Dussehra",
+    "date": "2026-10-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-440eff7b-ef3f-4d09-aada-b602bbd3eafb",
+    "title": "Hazarat Ali's Birthday",
+    "date": "2026-12-23",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-2dd5423a-032b-4b14-b4c8-d2dfcaa6b063",
+    "title": "Gudi Padwa",
+    "date": "2027-04-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-d8777dd8-188a-4d22-bd66-5969abd436ad",
+    "title": "Onam",
+    "date": "2027-09-12",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-f650a28f-d1b2-4b19-bd23-f4e33864f0e9",
+    "title": "First Day of Durga Puja Festivities",
+    "date": "2028-09-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-4c10f9b9-aef3-4834-91fa-7adeb7e5bf00",
+    "title": "Bhai Duj",
+    "date": "2029-11-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-543c1f59-d4bd-4669-a2c5-6d0f120afb20",
+    "title": "Shivaji Jayanti",
+    "date": "2021-02-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-c4fe5ded-81d2-4d8f-acf1-0d669fde70e7",
+    "title": "Janmashtami (Smarta)",
+    "date": "2021-08-30",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-754ca9bc-403c-4cca-8836-b5701f340768",
+    "title": "Maha Navami",
+    "date": "2021-10-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-2f13d153-c261-4e98-959b-327179352704",
+    "title": "Diwali/Deepavali",
+    "date": "2021-11-04",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-53b23611-7d15-4a6f-84ad-313bd0e3e59a",
+    "title": "Christmas",
+    "date": "2021-12-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-01dd46a1-b433-48c5-bf76-993795f2da24",
+    "title": "Ugadi",
+    "date": "2022-04-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-465c6e02-08e4-40e2-b36b-4fc45267c6f5",
+    "title": "Maha Navami",
+    "date": "2022-10-04",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-1aa833c1-0947-4b31-9362-2aea81bec1e8",
+    "title": "Diwali/Deepavali",
+    "date": "2022-10-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-6bcacb69-868c-408e-9194-97e5ac4b0318",
+    "title": "Chhat Puja (Pratihar Sashthi/Surya Sashthi)",
+    "date": "2022-10-30",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-2364ce3c-bc1c-42ed-8927-7c6c54f26f27",
+    "title": "Guru Ravidas Jayanti",
+    "date": "2023-02-05",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-d332c5a0-3685-44c7-8293-3589d0f40523",
+    "title": "Rama Navami",
+    "date": "2023-03-30",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-eb66a140-a4f6-4272-99fe-526a54f39299",
+    "title": "Diwali/Deepavali",
+    "date": "2023-11-12",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-e0d0eefb-cb22-48d2-8079-f5bc128710b0",
+    "title": "Good Friday",
+    "date": "2024-03-29",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-ae50192c-7ae0-4998-b31f-9b76d983f53c",
+    "title": "Janmashtami (Smarta)",
+    "date": "2024-08-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-ce3dc832-13af-45f7-ac32-e32c4419cc3b",
+    "title": "Holika Dahana",
+    "date": "2025-03-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-21b5eb66-7412-4396-b2e9-590e9b6067f2",
+    "title": "Mahavir Jayanti",
+    "date": "2025-04-10",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-9df4959d-847d-463a-b17b-a306312692d5",
+    "title": "Holi",
+    "date": "2027-03-22",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-a5194264-e70d-470c-ab2e-0cf47d5840c3",
+    "title": "Rath Yatra",
+    "date": "2027-07-05",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-7914d586-5540-482a-bf8e-8b2e6690180f",
+    "title": "First Day of Sharad Navratri",
+    "date": "2027-09-30",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-8b4da1a5-0dd6-48f0-b51d-065e0cc093fc",
+    "title": "Ugadi",
+    "date": "2028-03-27",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-3736cf57-932c-4d6c-9aa7-1977a7cfe1e0",
+    "title": "Rama Navami",
+    "date": "2028-04-03",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-3a0fe133-d82a-4579-99bb-977c8a2f97f0",
+    "title": "Independence Day",
+    "date": "2028-08-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-d6576cea-3542-44ed-82cf-3297f71422f0",
+    "title": "Janmashtami",
+    "date": "2029-09-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-fbfa9f4d-5c9e-4768-843b-9cdaf09c8bbc",
+    "title": "Diwali/Deepavali",
+    "date": "2029-11-05",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-5f683f18-0112-41b1-b6fb-41ae5e52fa1f",
+    "title": "Christmas Eve",
+    "date": "2029-12-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-b637d0de-dd7a-4e16-9a51-86f2ac1212e8",
+    "title": "Guru Tegh Bahadur's Martyrdom Day",
+    "date": "2021-11-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-79bb9b7e-bb58-4767-aea7-49594f6c9868",
+    "title": "Ambedkar Jayanti",
+    "date": "2022-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.231Z"
+  },
+  {
+    "id": "holiday-57a9cebf-f665-4f19-bd14-b0123dd505a5",
+    "title": "Maha Ashtami",
+    "date": "2022-10-03",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-e2e3084b-167e-40cb-9841-4fb0d4dab16a",
+    "title": "Pongal",
+    "date": "2025-01-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-b15a10ff-7ed7-49de-aaac-bceec5d09779",
+    "title": "Holi",
+    "date": "2025-03-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-1bba923c-6f99-43a4-a92a-74a91911671a",
+    "title": "Govardhan Puja",
+    "date": "2025-10-22",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-61a75079-c8fd-4fb4-a7c2-ff4b8b1cb961",
+    "title": "Vasant Panchami",
+    "date": "2027-02-11",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-9fd717d8-fae4-4b2f-a5a3-0296aaa5f391",
+    "title": "Rama Navami",
+    "date": "2027-04-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-3dc05497-a972-4ae0-817b-7dded13e0c27",
+    "title": "Christmas Eve",
+    "date": "2027-12-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-3a4b4d87-b15d-48d1-847f-11414b2b9dee",
+    "title": "Makar Sankranti",
+    "date": "2028-01-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-538d5faf-e56e-442d-b9e2-4455b26a04cd",
+    "title": "Ramadan Start (tentative)",
+    "date": "2027-02-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-4e4e23d8-a1ed-4f6b-bf75-2dfa24a5d025",
+    "title": "Muharram/Ashura (tentative)",
+    "date": "2027-06-16",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-bb612a7b-a14c-4dc1-bc21-eb00b6203247",
+    "title": "Ramadan Start (tentative)",
+    "date": "2028-01-29",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-19462e97-3c95-481f-98c2-73895c8cb09d",
+    "title": "Muharram/Ashura (tentative)",
+    "date": "2028-06-04",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-121f685c-6d45-4f63-b830-65ef368d0327",
+    "title": "Ramadan Start (tentative)",
+    "date": "2029-01-17",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-4173300e-3918-477e-a6e6-4d8321bd7aee",
+    "title": "Muharram/Ashura (tentative)",
+    "date": "2029-05-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-d0bc5a57-1118-42ed-82f8-664dd1bf847c",
+    "title": "Jamat Ul-Vida",
+    "date": "2022-04-29",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-8a0440d3-c56d-411d-a896-295f80dfb8c2",
+    "title": "Jamat Ul-Vida",
+    "date": "2023-04-21",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-4ec739db-b36b-470e-9e60-d61de270217e",
+    "title": "Jamat Ul-Vida",
+    "date": "2024-04-05",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-f3be4e4c-e52f-41fd-9b34-9d5acafd9040",
+    "title": "Guru Govind Singh Jayanti",
+    "date": "2025-01-06",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-9d0c8dde-9bcc-4026-80a0-eaade61f27ae",
+    "title": "Rama Navami",
+    "date": "2025-04-06",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-0cec39d7-a4bb-4177-8ed4-0568e0d6516a",
+    "title": "Vaisakhi",
+    "date": "2025-04-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-df4a1eaf-5712-4c85-b122-43e3fc80666a",
+    "title": "Mesadi",
+    "date": "2025-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-96a11e3c-214f-4aed-a269-939db31a286c",
+    "title": "Chhat Puja (Pratihar Sashthi/Surya Sashthi)",
+    "date": "2025-10-28",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-245234ca-c5f7-49e7-95ca-5e50de5f25b0",
+    "title": "Lohri",
+    "date": "2021-01-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-c9e0405f-0de3-4c14-b863-173c78862c82",
+    "title": "Dolyatra",
+    "date": "2021-03-28",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-6eeee65a-642f-45c7-ac90-3d2c1118d3d8",
+    "title": "Lohri",
+    "date": "2022-01-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-7043765b-8e2a-4ab0-995f-dc979c5ca16d",
+    "title": "Dolyatra",
+    "date": "2022-03-18",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-b6c21ee7-00d5-48b9-b849-d87b71c5f5c5",
+    "title": "Dolyatra",
+    "date": "2023-03-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-34de1bb5-308e-492c-93a6-e9797a0f56dc",
+    "title": "Lohri",
+    "date": "2024-01-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-a71035fa-dec8-4e80-8012-e00cd0aa511a",
+    "title": "Dolyatra",
+    "date": "2024-03-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-a17e27fa-542a-42c1-8ecb-a5141f2856b1",
+    "title": "Dolyatra",
+    "date": "2025-03-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-4264ebe6-14a8-49db-a633-24575c2c8a2e",
+    "title": "New Year's Day",
+    "date": "2030-01-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-de89ea07-0096-40ce-b4e2-1107e6f254a6",
+    "title": "Ramadan Start (tentative)",
+    "date": "2030-01-06",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-07ac536e-807f-4d1e-85a1-33f52d466638",
+    "title": "Makar Sankranti",
+    "date": "2030-01-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-ad6e15de-ac85-4b52-8f4c-c229a14b2fa7",
+    "title": "Pongal",
+    "date": "2030-01-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-82f83932-53d2-4c12-a1ba-938630cedfa3",
+    "title": "Republic Day",
+    "date": "2030-01-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-e54952ed-dd03-4848-8e32-5d14bcde1efc",
+    "title": "Vasant Panchami",
+    "date": "2030-02-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-2a3733b6-7ee6-44a5-85e3-794d61bfc4f4",
+    "title": "Shivaji Jayanti",
+    "date": "2030-02-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-ddb8cfb8-f3a9-4191-93ee-4446d6464f02",
+    "title": "Holi",
+    "date": "2030-03-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-ec550548-f6e5-41d8-8a63-6e00607c8457",
+    "title": "Gudi Padwa",
+    "date": "2030-04-03",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-c9ed4d41-5ffb-4613-b921-01833c97d594",
+    "title": "Ugadi",
+    "date": "2030-04-03",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-7a3e8bf3-e86f-43a4-8d5f-dd5c456fd240",
+    "title": "Rama Navami",
+    "date": "2030-04-12",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-77c2fc8a-a784-4fec-9af3-5de580633d7c",
+    "title": "Ambedkar Jayanti",
+    "date": "2030-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-577d896b-24d2-4762-b2dc-bc0d8d03dfdd",
+    "title": "Good Friday",
+    "date": "2030-04-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-7b503ab0-6b2e-4b56-bb9b-fc96a14c53d4",
+    "title": "Muharram/Ashura (tentative)",
+    "date": "2030-05-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-bd7f0117-1ef8-4712-921f-1542693f0eb3",
+    "title": "Rath Yatra",
+    "date": "2030-07-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-4c2d4a83-427d-4ea2-bcfa-d4775be1fc3c",
+    "title": "Independence Day",
+    "date": "2030-08-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-52e32f9e-43b2-4142-b37c-e4e9ed5b27c0",
+    "title": "Janmashtami",
+    "date": "2030-08-21",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-a2986a41-b1b9-459e-bfa7-0f47fc76013b",
+    "title": "Janmashtami (Smarta)",
+    "date": "2030-08-21",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-bac143ff-1bb7-4666-98b3-d3dbe11a50fe",
+    "title": "Onam",
+    "date": "2030-09-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-f766faa8-167a-468d-91eb-561193b91110",
+    "title": "First Day of Sharad Navratri",
+    "date": "2030-09-28",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-e006461d-6afc-4385-8ecc-da9973eedbde",
+    "title": "Mahatma Gandhi Jayanti",
+    "date": "2030-10-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.232Z"
+  },
+  {
+    "id": "holiday-0c180e3d-432d-405b-a7eb-4a7dd3ad542f",
+    "title": "First Day of Durga Puja Festivities",
+    "date": "2030-10-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-b99030ff-8e5f-4df2-b216-a3acfe351716",
+    "title": "Dussehra",
+    "date": "2030-10-06",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-19c3805d-1b31-437b-afdc-9d1b84d781d0",
+    "title": "Diwali/Deepavali",
+    "date": "2030-10-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-d8583cd1-ee95-4be0-ba0e-3fa48cae9535",
+    "title": "Bhai Duj",
+    "date": "2030-10-28",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-735cf716-e895-431d-be01-5ae17f1c7bfb",
+    "title": "Chhat Puja (Pratihar Sashthi/Surya Sashthi)",
+    "date": "2030-11-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-ccc70f78-e46b-4aba-9f40-71f0208689e4",
+    "title": "Hazarat Ali's Birthday",
+    "date": "2030-11-10",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-aa890478-9981-4bee-bdd3-6aadce634fbb",
+    "title": "Guru Tegh Bahadur's Martyrdom Day",
+    "date": "2030-11-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-0f61e6a5-9865-4fea-9f26-bce69adf2f26",
+    "title": "Christmas Eve",
+    "date": "2030-12-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-cff3aa54-08bf-40f4-8b56-5bfbac223123",
+    "title": "Christmas",
+    "date": "2030-12-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-22ef6a0f-e600-4bec-bb36-4eff3dc4fbc6",
+    "title": "Ramadan Start (tentative)",
+    "date": "2030-12-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-798d3016-b2fb-49df-bbb1-89e3e6e13bbf",
+    "title": "Ramadan Start",
+    "date": "2025-03-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-7a168972-72d6-445e-8dfc-1bb56d813aef",
+    "title": "Bakrid",
+    "date": "2021-07-21",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-3a9f1870-866d-42a0-85f0-c5e018f5e2af",
+    "title": "Bakrid",
+    "date": "2022-07-10",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-b71ef1be-f5d5-43d4-bcd3-280993d68eb9",
+    "title": "Bakrid",
+    "date": "2023-06-29",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-d49ef127-d482-4996-8428-d9c49aa2d879",
+    "title": "Bakrid",
+    "date": "2024-06-17",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-38bf6b62-ab37-4dc8-b72f-22e728cf5172",
+    "title": "Bakrid (tentative)",
+    "date": "2027-05-17",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-5f5b7f0e-de16-4615-9f93-c991bdddc8b5",
+    "title": "Bakrid (tentative)",
+    "date": "2028-05-06",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-9805e858-8ad4-46c7-bcf1-7b8ff29f755e",
+    "title": "Bakrid (tentative)",
+    "date": "2029-04-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-c995fba2-4ce9-4c53-a181-70f85d0e1029",
+    "title": "Bakrid (tentative)",
+    "date": "2030-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-32a5204f-9793-4330-a88c-19f4cf2abad8",
+    "title": "Jamat Ul-Vida",
+    "date": "2025-03-28",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-7e958ca5-9cd1-472d-9b35-e8a401e08b92",
+    "title": "Ramzan Id",
+    "date": "2021-05-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-54848e84-a729-4774-9032-fcd65c429075",
+    "title": "Ramzan Id",
+    "date": "2022-05-03",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-d6ade720-5316-49c7-b2c1-86e312ade3d1",
+    "title": "Ramzan Id",
+    "date": "2023-04-22",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-5a8d2ad8-93c8-4eca-ad9d-7791c8887176",
+    "title": "Ramzan Id",
+    "date": "2024-04-11",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-baa59a6b-f710-41f4-979b-12df09d742e9",
+    "title": "Ramzan Id",
+    "date": "2025-03-31",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-c9cd2383-979c-43ea-83a3-85db7968da84",
+    "title": "Ramzan Id (tentative)",
+    "date": "2027-03-10",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-ecd80882-b9c8-49fc-924f-a7c074c9efe6",
+    "title": "Ramzan Id (tentative)",
+    "date": "2028-02-27",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-b7147cd9-1314-4b18-9fd7-c6bcd69eaff3",
+    "title": "Ramzan Id (tentative)",
+    "date": "2029-02-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-2dc76128-3f50-40a9-bb2f-82d808d9023e",
+    "title": "Ramzan Id (tentative)",
+    "date": "2030-02-05",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-b0e22405-2346-42f7-8e75-5f6ea2d4d9e9",
+    "title": "Bakrid",
+    "date": "2025-06-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-c2d1e64a-ead1-481d-a4cf-26e9fe5e250e",
+    "title": "Muharram/Ashura",
+    "date": "2025-07-06",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-755e3c59-933f-43dc-996b-984053701d2e",
+    "title": "Guru Ravidas Jayanti",
+    "date": "2026-02-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-06285f8c-412a-419a-8ea2-b1c8a591158d",
+    "title": "Maharishi Dayanand Saraswati Jayanti",
+    "date": "2026-02-12",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-5c74371f-eb5e-48aa-b909-c7c2df98c11a",
+    "title": "Holika Dahana",
+    "date": "2026-03-03",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-2f80c942-8dc7-4ffd-a553-1a701f154da7",
+    "title": "Jamat Ul-Vida",
+    "date": "2026-03-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-7c0c01be-604b-4a51-837a-4a786c1a64b7",
+    "title": "Mahavir Jayanti",
+    "date": "2026-03-31",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-b9e06bb7-57c2-400f-9890-97086897c769",
+    "title": "Vaisakhi",
+    "date": "2026-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-e30ed45f-eeb7-45cd-b693-2334f2d21af8",
+    "title": "Mesadi",
+    "date": "2026-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-381a864e-8ac1-4c40-8f12-91f9324695a3",
+    "title": "Birthday of Rabindranath",
+    "date": "2026-05-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-1f8f04cd-f6a6-4b41-9de5-faebdfe3efaf",
+    "title": "Maha Saptami",
+    "date": "2026-10-18",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-0acea635-6090-4593-a50b-ec832dde395b",
+    "title": "Maha Ashtami",
+    "date": "2026-10-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-27c8c692-21b2-4020-a65d-b011aab50e28",
+    "title": "Maharishi Valmiki Jayanti",
+    "date": "2026-10-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-7654dc1e-e8a5-4b1d-a3cf-cb120b9efbe7",
+    "title": "Naraka Chaturdasi",
+    "date": "2026-11-08",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-7610670c-9198-4455-b223-17fe83178338",
+    "title": "Govardhan Puja",
+    "date": "2026-11-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-f0769522-b4c9-4c71-90a9-be4097f0d591",
+    "title": "Guru Nanak Jayanti",
+    "date": "2026-11-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-11d2d9ac-2f2f-43a7-b936-d3c5de3832c9",
+    "title": "Milad un-Nabi",
+    "date": "2021-10-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-911d2ed6-7854-47c0-9d32-5acdc5233d9e",
+    "title": "Milad un-Nabi",
+    "date": "2022-10-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-c97e3852-cd7b-445e-a506-9ad0a39dc24c",
+    "title": "Milad un-Nabi",
+    "date": "2023-09-28",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-20e4b42c-36f0-488f-abad-2a2da881b3e1",
+    "title": "Milad un-Nabi",
+    "date": "2024-09-16",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-d3e7f455-97ff-479c-8bea-a9427c8d6b09",
+    "title": "Milad un-Nabi",
+    "date": "2025-09-05",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-ee70ee78-a63b-463d-a8be-edd8cf1f1b3f",
+    "title": "Maha Shivaratri",
+    "date": "2021-03-11",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-a3f82d9e-aea0-48c2-8a88-1e50aa9fcfaf",
+    "title": "Bahag Bihu",
+    "date": "2021-04-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-22fe3834-427a-4d83-8dc0-76813fe6e9d6",
+    "title": "Raksha Bandhan",
+    "date": "2021-08-22",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-f5a25f17-a7da-4639-ad73-28e62093c1a5",
+    "title": "Ganesh Chaturthi",
+    "date": "2021-09-10",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-a1a750e0-b247-4cc6-ae1a-b4ef53a82171",
+    "title": "Maha Shivaratri",
+    "date": "2022-03-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-b3a42cb0-2973-48bf-9d29-c485257a5d16",
+    "title": "Mesadi",
+    "date": "2022-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-920cf2fc-f6ec-484b-9487-32e47c90b61d",
+    "title": "Buddha Purnima",
+    "date": "2022-05-16",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-0bf51836-4ae1-40cf-8dab-d1d4b9b51def",
+    "title": "Raksha Bandhan",
+    "date": "2022-08-11",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-50e7e051-b63c-463a-8aeb-f529d5c92db1",
+    "title": "Ganesh Chaturthi",
+    "date": "2022-08-31",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-31382f6a-d424-4904-bfd5-11489b80ade5",
+    "title": "Karaka Chaturthi",
+    "date": "2022-10-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-ef2494ee-27fc-43d5-84a1-77da0c6b877b",
+    "title": "Maha Shivaratri",
+    "date": "2023-02-18",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-285b0418-11bf-4b95-9752-e901aab23097",
+    "title": "Mesadi",
+    "date": "2023-04-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-4d57a809-8786-4f11-b4e2-9c9847484b84",
+    "title": "Buddha Purnima",
+    "date": "2023-05-05",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-5ca261d1-45ea-4d74-90aa-e0109138ccb3",
+    "title": "Raksha Bandhan",
+    "date": "2023-08-30",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-e0fb49bf-e29a-4af3-9e70-92843054b615",
+    "title": "Karaka Chaturthi",
+    "date": "2023-11-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-67302dc2-8d68-423b-99c6-53f441ccc307",
+    "title": "Maha Shivaratri",
+    "date": "2024-03-08",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-6b84d7e6-7040-4103-a629-2a5f318d5138",
+    "title": "Mesadi",
+    "date": "2024-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-9e47dc78-ec5a-4a6c-b201-2527a5530d31",
+    "title": "Buddha Purnima",
+    "date": "2024-05-23",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-cd52f90c-9e89-479c-bc29-d46e9138f80c",
+    "title": "Ganesh Chaturthi",
+    "date": "2024-09-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-24045fd9-05ca-4bd4-b33d-3fe3979120b1",
+    "title": "Karaka Chaturthi",
+    "date": "2024-10-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-24d2ad82-2167-4c7e-a719-9191264e33f8",
+    "title": "Bahag Bihu",
+    "date": "2025-04-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-a3055510-ff11-4fd9-a709-f721f7b432e8",
+    "title": "Buddha Purnima",
+    "date": "2025-05-12",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-2a2e52e1-02a8-4fe1-a6e4-60004b93305b",
+    "title": "Raksha Bandhan",
+    "date": "2025-08-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-db0ae0cb-7de2-47df-8f38-6455044262dd",
+    "title": "Ganesh Chaturthi",
+    "date": "2025-08-27",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-4fdcb6b6-e745-4e37-951a-dc28ceaae268",
+    "title": "Maha Shivaratri",
+    "date": "2026-02-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-505c1191-30e7-40d6-aef5-af4e41a0c58a",
+    "title": "Bahag Bihu",
+    "date": "2026-04-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-c34f38b5-ff03-409c-ad6a-9524525aaff8",
+    "title": "Buddha Purnima",
+    "date": "2026-05-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-0d6258de-41b2-4a82-9b64-3c23015d2990",
+    "title": "Raksha Bandhan",
+    "date": "2026-08-28",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-1b1c8b99-7528-4a15-b07d-c35aa4219bd4",
+    "title": "Ganesh Chaturthi",
+    "date": "2026-09-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-28d0bef9-556a-4089-9bec-2d9925efe1db",
+    "title": "Karaka Chaturthi",
+    "date": "2026-10-29",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-a6331135-8117-4856-a996-acd37d4f31a2",
+    "title": "Maha Shivaratri",
+    "date": "2027-03-06",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-4de8cf48-6ed6-4038-a9fb-36c50d6c0650",
+    "title": "Raksha Bandhan",
+    "date": "2027-08-17",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-f144a5f7-c031-4efe-9403-21fc721c6604",
+    "title": "Ganesh Chaturthi",
+    "date": "2027-09-04",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-b282e2fb-3a9c-4e97-ad74-6b377fb50ef6",
+    "title": "Karaka Chaturthi",
+    "date": "2027-10-18",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-0354311e-558b-4dea-8798-b36c745226d8",
+    "title": "Maha Shivaratri",
+    "date": "2028-02-23",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-d583bd26-3bd8-4238-8b1e-e65a2d060c8a",
+    "title": "Raksha Bandhan",
+    "date": "2028-08-05",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-0e82fd3a-2770-429d-a5e4-d877f67d6423",
+    "title": "Ganesh Chaturthi",
+    "date": "2028-08-23",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-ca40877b-6587-44ca-a428-bffd478b8388",
+    "title": "Karaka Chaturthi",
+    "date": "2028-10-07",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-58d3d564-e018-4394-8914-d2e1e3eb2c93",
+    "title": "Maha Shivaratri",
+    "date": "2029-02-11",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-4f581225-46ef-42f4-8b4e-0c1c7b946621",
+    "title": "Raksha Bandhan",
+    "date": "2029-08-23",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-a2048b05-b81a-4f6c-9454-5791b6ecbdd6",
+    "title": "Ganesh Chaturthi",
+    "date": "2029-09-11",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-523f1412-727a-4aca-bafd-3b6abb7e2df0",
+    "title": "Karaka Chaturthi",
+    "date": "2029-10-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-efe56457-879c-4176-a4de-b4cef1ddd86d",
+    "title": "Raksha Bandhan",
+    "date": "2030-08-13",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-767da96f-a68c-47db-bb1e-efe6cf88ed0c",
+    "title": "Ganesh Chaturthi",
+    "date": "2030-09-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-57bcd16a-7927-4eb9-94a0-27ffceb29b5f",
+    "title": "Karaka Chaturthi",
+    "date": "2030-10-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-16b8a7cc-4cc8-416e-b0f4-058e48b6b3a3",
+    "title": "Buddha Purnima",
+    "date": "2021-05-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-295e7928-93de-48e9-b48d-7d08e9ae1043",
+    "title": "Karaka Chaturthi",
+    "date": "2021-10-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-cdae95fd-08f9-474b-acbb-892e1124f1a3",
+    "title": "Ganesh Chaturthi",
+    "date": "2023-09-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-8ddf53bb-c2e3-40f1-ae5a-023af5169b60",
+    "title": "Raksha Bandhan",
+    "date": "2024-08-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.233Z"
+  },
+  {
+    "id": "holiday-9de30b14-eb96-4d5d-86fe-9a40a9f0a0d5",
+    "title": "Maha Shivaratri",
+    "date": "2025-02-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-70ebcd36-80ed-4a7a-9853-27f38d4927fa",
+    "title": "Karaka Chaturthi",
+    "date": "2025-10-10",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-b31404e3-f68e-40ce-9480-031db274da11",
+    "title": "Maha Shivaratri",
+    "date": "2030-03-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-4f1fc912-181e-476e-87c2-1d13d4baba65",
+    "title": "New Year's Day",
+    "date": "2031-01-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-01797b29-c090-46ce-9f54-f7ebb6f8e480",
+    "title": "Pongal",
+    "date": "2031-01-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-886acc64-437d-4c8a-b1ea-1f79235b3e52",
+    "title": "Makar Sankranti",
+    "date": "2031-01-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-9de438a2-81dc-4ad3-8cef-b2cfd164a07e",
+    "title": "Ramzan Id (tentative)",
+    "date": "2031-01-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-2d5b2f29-0a2c-4232-b549-ee7ff0e3545c",
+    "title": "Republic Day",
+    "date": "2031-01-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-51e3ac1e-21ed-4158-8863-837a92bad8d6",
+    "title": "Vasant Panchami",
+    "date": "2031-01-27",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-6899f72f-7361-4dbd-a57a-3f81b078584b",
+    "title": "Shivaji Jayanti",
+    "date": "2031-02-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-8c332bd8-5942-4094-9ffb-eb02eaab6af2",
+    "title": "Maha Shivaratri",
+    "date": "2031-02-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-27a6bf66-40d5-449c-bb0e-06df5ab6ca27",
+    "title": "Holi",
+    "date": "2031-03-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-4c0989b9-8723-455a-ae73-cab7d7506898",
+    "title": "Gudi Padwa",
+    "date": "2031-03-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-2ad4a22a-a3e2-4ddf-9914-d9af90b064c0",
+    "title": "Ugadi",
+    "date": "2031-03-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-aab713ad-2d72-4543-8b7a-5b7f7297f381",
+    "title": "Rama Navami",
+    "date": "2031-04-01",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-3e0cc443-9fdc-4de5-a4b1-aa6059d17ddc",
+    "title": "Bakrid (tentative)",
+    "date": "2031-04-03",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-e2ace9a4-c1f9-4999-9855-74f249ef0292",
+    "title": "Good Friday",
+    "date": "2031-04-11",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-01678a5c-6958-44ab-abde-62bd4fe1d4e3",
+    "title": "Ambedkar Jayanti",
+    "date": "2031-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-707d6ecd-e510-4a76-96e4-48a9a2373467",
+    "title": "Muharram/Ashura (tentative)",
+    "date": "2031-05-03",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-64b8e573-3628-4a68-bff2-c265f113d033",
+    "title": "Rath Yatra",
+    "date": "2031-06-22",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-19db80e8-5a24-4fac-8372-1a4fd8274fc4",
+    "title": "Raksha Bandhan",
+    "date": "2031-08-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.234Z"
+  },
+  {
+    "id": "holiday-bac94a99-dc18-439a-8ce9-b430ef3cbc26",
+    "title": "Janmashtami (Smarta)",
+    "date": "2031-08-09",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-59d13137-b682-4189-8d74-6525dc940531",
+    "title": "Janmashtami",
+    "date": "2031-08-10",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-68f532a0-7175-41cd-ac58-ac6fd9fe56eb",
+    "title": "Independence Day",
+    "date": "2031-08-15",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-6d524245-5571-479c-85ae-64b1c204afc8",
+    "title": "Onam",
+    "date": "2031-08-30",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-68b65242-1ebc-4dad-8740-034ce8c8ef58",
+    "title": "Ganesh Chaturthi",
+    "date": "2031-09-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-a3b609f5-f26e-47bc-9f3a-21c51a065813",
+    "title": "Mahatma Gandhi Jayanti",
+    "date": "2031-10-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-d64e50a6-0d42-4ae1-a4f2-a947341058ea",
+    "title": "First Day of Sharad Navratri",
+    "date": "2031-10-17",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-38c6f1f2-5b64-45f6-acd4-7c8798ef9ad5",
+    "title": "First Day of Durga Puja Festivities",
+    "date": "2031-10-21",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-f9fe4be3-f590-4c13-b282-df6dd571b1eb",
+    "title": "Dussehra",
+    "date": "2031-10-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-4a85fc38-bc42-42b0-b935-6f13975fd5fb",
+    "title": "Hazarat Ali's Birthday",
+    "date": "2031-10-31",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-44cf0614-8958-4a70-82aa-a30630374d55",
+    "title": "Karaka Chaturthi",
+    "date": "2031-11-02",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-4c078a62-2077-4429-b6c5-96ddcdeec158",
+    "title": "Diwali/Deepavali",
+    "date": "2031-11-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-1f9c51c2-4fc1-4230-956a-86c7bc31465d",
+    "title": "Bhai Duj",
+    "date": "2031-11-16",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-11e9103d-153e-4f15-a937-7262e3e07ce7",
+    "title": "Chhat Puja (Pratihar Sashthi/Surya Sashthi)",
+    "date": "2031-11-20",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-56c48b12-17f1-42e4-873e-d24d0076c91f",
+    "title": "Guru Tegh Bahadur's Martyrdom Day",
+    "date": "2031-11-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-2ef4317d-3a85-4cdf-b97e-54b9e867e16f",
+    "title": "Ramadan Start (tentative)",
+    "date": "2031-12-16",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-d22fea06-cdfe-42fb-bd77-4e96abc4d63f",
+    "title": "Christmas Eve",
+    "date": "2031-12-24",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-2b0f0348-6080-4fa6-91e9-e8602db37f1d",
+    "title": "Christmas",
+    "date": "2031-12-25",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-82ef145d-de5d-423a-8849-41dd577e3655",
+    "title": "Ramadan Start",
+    "date": "2026-02-19",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-d8a90e9e-6063-497d-9812-5c27c05290f4",
+    "title": "Ramzan Id",
+    "date": "2026-03-21",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-82e52c79-8fcf-4ae0-bfbd-30b118aa5a01",
+    "title": "Ambedkar Jayanti",
+    "date": "2026-04-14",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-163e6e76-a3a5-4f7e-8b95-01389fdb6b48",
+    "title": "Bakrid",
+    "date": "2026-05-28",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-ea3280ec-f7f6-4633-a8d5-bca737426ec7",
+    "title": "Muharram/Ashura",
+    "date": "2026-06-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "holiday-1bf2ad8f-f7ef-446b-9be0-06050bcf20c8",
+    "title": "Milad un-Nabi",
+    "date": "2026-08-26",
+    "category": "Holidays",
+    "description": "Public Holiday (India Holidays)",
+    "createdAt": "2026-09-09T19:01:48.235Z"
+  }
+]

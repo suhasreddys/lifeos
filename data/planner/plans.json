@@ -1,0 +1,359 @@
+[
+  {
+    "id": "plan-1789007128297",
+    "date": "2026-09-10",
+    "mode": "balanced",
+    "intentions": "what is my todays plan",
+    "targetHours": 6,
+    "focusMantra": "Master the fundamentals of deep learning through structured execution and mindful iteration.",
+    "summary": "Today is dedicated to high-impact technical execution, focusing on setting up your Jupyter environment and implementing character-level GPT from scratch. We will maintain steady momentum with balanced focus sprints and refreshing breaks.",
+    "schedule": [
+      {
+        "timeBlock": "08:30 AM - 09:00 AM",
+        "title": "Morning Kickoff, Priority Planning & Hydration",
+        "category": "Personal",
+        "description": "Start the day with hydration, review today's deep work objectives, and set up your workspace.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Drink 500ml of water",
+          "Review daily productivity targets"
+        ]
+      },
+      {
+        "timeBlock": "09:00 AM - 10:30 AM",
+        "title": "Deep Work / Study Focus Sprint 1: Environment Setup",
+        "category": "Deep Work",
+        "description": "Set up Google Colab or your local Jupyter Notebook environment for the GPT-from-scratch project.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Set up Google Colab / Jupyter Notebook for GPT-from-scratch",
+          "Verify GPU availability and package dependencies (PyTorch)"
+        ]
+      },
+      {
+        "timeBlock": "10:30 AM - 10:45 AM",
+        "title": "Refresh Break",
+        "category": "Break",
+        "description": "15-minute stretch, eye rest, and hydration to maintain cognitive peak.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Step away from the screen",
+          "Perform light stretching"
+        ]
+      },
+      {
+        "timeBlock": "10:45 AM - 12:15 PM",
+        "title": "Deep Work / Study Focus Sprint 2: Model Architecture",
+        "category": "Deep Work",
+        "description": "Begin implementing the character-level GPT model architecture (tokenization, embeddings, and self-attention blocks).",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Draft data loading and tokenization pipeline",
+          "Implement multi-head self-attention module"
+        ]
+      },
+      {
+        "timeBlock": "12:15 PM - 01:15 PM",
+        "title": "Healthy Lunch Reset & Mindful Disconnect",
+        "category": "Personal",
+        "description": "Enjoy a nutritious lunch away from monitors to reset mental bandwidth.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Eat a balanced meal",
+          "Take a short mindful walk"
+        ]
+      },
+      {
+        "timeBlock": "01:15 PM - 03:00 PM",
+        "title": "Afternoon Focus Sprint 3: Training & Optimization",
+        "category": "Deep Work",
+        "description": "Write the training loop, configure hyperparameters, and train the character-level GPT model.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Implement and train the character-level GPT model",
+          "Evaluate generated sample outputs and tune hyperparameters"
+        ]
+      },
+      {
+        "timeBlock": "03:00 PM - 03:20 PM",
+        "title": "Mid-Afternoon Movement & Coffee/Tea Reset",
+        "category": "Break",
+        "description": "Re-energize with a short walk and beverage break.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Hydrate and stretch",
+          "Brief mental reset"
+        ]
+      },
+      {
+        "timeBlock": "03:20 PM - 04:30 PM",
+        "title": "Life Admin, Pending Tasks Sync & Day Recap",
+        "category": "Personal",
+        "description": "Review progress on today's tasks and organize your task backlog.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Review completed tasks in LifeOS",
+          "Organize notes and code snippets for future reference"
+        ]
+      },
+      {
+        "timeBlock": "05:00 PM onwards",
+        "title": "Personal Evening Recharge & Fitness",
+        "category": "Personal",
+        "description": "Unwind from screen time with physical activity, relaxation, and personal time.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Evening workout or walk",
+          "Disconnect for the evening"
+        ]
+      }
+    ],
+    "studyGuide": {
+      "topicBreakdown": [
+        {
+          "topic": "Character-Level GPT Architecture",
+          "keyConcepts": [
+            "Tokenization and Embedding Layers",
+            "Scaled Dot-Product Self-Attention",
+            "Multi-Head Attention mechanism",
+            "Feed-Forward Blocks and Layer Normalization"
+          ],
+          "suggestedDurationMinutes": 90,
+          "focusStrategy": "Break down the architecture block by block, verifying tensor shapes at each layer transformation.",
+          "practiceQuestions": [
+            {
+              "question": "What is the primary role of the embedding layer in a character-level GPT model?",
+              "options": [
+                "To compress the input text into a single scalar value",
+                "To replace the attention mechanism with convolutional filters",
+                "To compute the loss function directly from raw text",
+                "To convert discrete character indices into continuous dense vector representations"
+              ],
+              "correctIndex": 3,
+              "explanation": "Embedding layers map discrete token indices to continuous vector spaces so the network can learn semantic relationships."
+            },
+            {
+              "question": "In self-attention, why is a causal mask (triangular mask) applied during training for autoregressive models like GPT?",
+              "options": [
+                "To prevent the model from attending to future tokens",
+                "To remove padding tokens from the loss calculation",
+                "To normalize the output probabilities to sum to one",
+                "To speed up matrix multiplication on the GPU"
+              ],
+              "correctIndex": 0,
+              "explanation": "Causal masking ensures that when predicting the next token, the model cannot 'cheat' by looking at subsequent tokens in the sequence."
+            },
+            {
+              "question": "What does the query (Q), key (K), and value (V) represent in the attention mechanism analogy?",
+              "options": [
+                "Search query, matching keys, and retrieved content vectors",
+                "Database search operations for external file retrieval",
+                "Hyperparameters for learning rate decay",
+                "Loss gradients used during backpropagation"
+              ],
+              "correctIndex": 0,
+              "explanation": "Q, K, V mirror retrieval systems where queries match keys to compute attention weights over values."
+            },
+            {
+              "question": "Why do Transformer architectures use Layer Normalization rather than Batch Normalization typically in NLP tasks?",
+              "options": [
+                "Layer Normalization eliminates the need for activation functions",
+                "Layer Normalization is faster to compute on CPUs",
+                "Batch Normalization depends on batch size and sequences can have variable lengths",
+                "Batch Normalization cannot be used with PyTorch"
+              ],
+              "correctIndex": 2,
+              "explanation": "Layer Normalization normalizes across features for each individual sample, making it independent of batch size and ideal for variable-length sequences."
+            },
+            {
+              "question": "What is the output shape of a Multi-Head Attention block given batch size B, sequence length T, and embedding dimension C?",
+              "options": [
+                "(B, C)",
+                "(T, C)",
+                "(B, T, T, C)",
+                "(B, T, C)"
+              ],
+              "correctIndex": 3,
+              "explanation": "The output maintains the batch dimension and sequence length while projecting back to the hidden embedding dimension C: (B, T, C)."
+            }
+          ]
+        }
+      ],
+      "focusTips": [
+        "Always print and verify tensor shapes (`tensor.shape`) after implementing each module.",
+        "Start with a small model configuration (fewer layers and smaller embedding dimensions) to ensure fast iteration and quick debugging.",
+        "Use gradient clipping if training becomes unstable."
+      ]
+    },
+    "actionItems": [
+      {
+        "title": "Set up Google Colab / Jupyter Notebook for GPT-from-scratch",
+        "category": "Work",
+        "priority": "High",
+        "notes": "Initialize notebook environment and test PyTorch availability."
+      },
+      {
+        "title": "Implement and train the character-level GPT model",
+        "category": "Work",
+        "priority": "High",
+        "notes": "Build attention blocks, loss calculation, and execute training loop."
+      }
+    ],
+    "createdAt": "2026-09-10T02:25:28.297Z"
+  },
+  {
+    "id": "plan-1788992256435",
+    "date": "2026-09-09",
+    "mode": "study",
+    "intentions": "what are the plan for today",
+    "targetHours": 4,
+    "focusMantra": "Embrace the process of building from first principles; deep focus today yields mastery tomorrow.",
+    "summary": "Today's plan centers on a 4-hour dedicated study block to build and train a character-level GPT model from scratch. We will set up the environment, implement self-attention, and run initial training runs.",
+    "schedule": [
+      {
+        "timeBlock": "09:15 AM - 10:15 AM",
+        "title": "Environment Setup & Data Prep",
+        "category": "Study",
+        "description": "Set up Google Colab/Jupyter and prepare the input text dataset for character-level tokenization.",
+        "actionItems": [
+          "Launch Google Colab and configure GPU acceleration",
+          "Download and preprocess the training text dataset",
+          "Create character-to-integer mapping and tokenization functions"
+        ]
+      },
+      {
+        "timeBlock": "10:15 AM - 10:30 AM",
+        "title": "Refresh Break",
+        "category": "Break",
+        "description": "Step away from the screen, stretch, and hydrate.",
+        "actionItems": [
+          "15-minute screen-free stretch and hydration"
+        ]
+      },
+      {
+        "timeBlock": "10:30 AM - 12:00 PM",
+        "title": "Model Architecture & Training Loop",
+        "category": "Study",
+        "description": "Implement the core Transformer components including Multi-Head Attention and the Feed-Forward network.",
+        "actionItems": [
+          "Implement Scaled Dot-Product Attention with causal masking",
+          "Build the Multi-Head Attention and Feed-Forward blocks",
+          "Assemble the complete GPT decoder architecture and initialize weights"
+        ]
+      },
+      {
+        "timeBlock": "12:00 PM - 12:15 PM",
+        "title": "Eye Rest & Stretch",
+        "category": "Break",
+        "description": "Rest your eyes and do light physical movement.",
+        "actionItems": [
+          "Practice the 20-20-20 rule for eye strain relief"
+        ]
+      },
+      {
+        "timeBlock": "12:15 PM - 01:15 PM",
+        "title": "Evaluation & Hyperparameter Tuning",
+        "category": "Study",
+        "description": "Run the training loop, monitor loss convergence, and generate sample text.",
+        "actionItems": [
+          "Write the training loop with loss evaluation steps",
+          "Train the model and plot training vs validation loss",
+          "Implement the generate function to sample new characters from the model"
+        ]
+      }
+    ],
+    "studyGuide": {
+      "topicBreakdown": [
+        {
+          "topic": "Building a Character-Level GPT from Scratch",
+          "keyConcepts": [
+            "Character-level Tokenization",
+            "Self-Attention Mechanism",
+            "Multi-Head Attention",
+            "Positional Encoding",
+            "Transformer Decoder Block"
+          ],
+          "suggestedDurationMinutes": 210,
+          "focusStrategy": "Implement step-by-step in Google Colab, starting with simple bigram models before scaling to self-attention.",
+          "practiceQuestions": [
+            {
+              "question": "What is the primary purpose of the scaling factor (1/sqrt(d_k)) in scaled dot-product attention?",
+              "options": [
+                "To reduce the number of parameters in the attention block",
+                "To prevent extremely large values before softmax, which leads to vanishing gradients",
+                "To speed up matrix multiplication operations",
+                "To enforce causal masking on future tokens"
+              ],
+              "correctIndex": 1,
+              "explanation": "Scaling by the square root of the key dimension prevents the dot products from growing too large in magnitude, which would push the softmax function into regions with extremely small gradients."
+            },
+            {
+              "question": "In a causal decoder-only Transformer (like GPT), how is look-ahead information prevented from leaking during training?",
+              "options": [
+                "By using bidirectional attention layers",
+                "By removing positional encodings from the input embeddings",
+                "By reducing the learning rate of the optimizer",
+                "By applying a lower-triangular mask to attention scores"
+              ],
+              "correctIndex": 3,
+              "explanation": "A causal mask (lower-triangular matrix of negative infinities) is added to the attention scores before softmax, setting the attention weights of future tokens to zero."
+            },
+            {
+              "question": "What is the vocabulary size (V) of a typical character-level language model compared to a word-level model?",
+              "options": [
+                "Significantly larger",
+                "Exactly the same",
+                "Significantly smaller",
+                "Dependent on the embedding dimension"
+              ],
+              "correctIndex": 2,
+              "explanation": "Character-level models only need to represent individual characters (typically 100-256 unique tokens), whereas word-level models require tens of thousands of unique words."
+            },
+            {
+              "question": "Why are positional encodings necessary in Transformer models?",
+              "options": [
+                "To inject sequence order information since self-attention is permutation-invariant",
+                "To reduce overfitting during training",
+                "To project tokens into a higher-dimensional space",
+                "To normalize the input embeddings"
+              ],
+              "correctIndex": 0,
+              "explanation": "Self-attention treats inputs as an unordered bag of words. Positional encodings add position-dependent signals to the input embeddings to preserve sequence order."
+            },
+            {
+              "question": "Which component in a standard Transformer block is responsible for projecting attention outputs back to the residual path and adding non-linearity?",
+              "options": [
+                "The Softmax layer",
+                "The Layer Normalization layer",
+                "The Query-Key-Value projection matrix",
+                "The Feed-Forward Network (FFN)"
+              ],
+              "correctIndex": 3,
+              "explanation": "The Feed-Forward Network (FFN) consists of two linear transformations with a non-linear activation (like ReLU or GELU) in between, applied to each position individually."
+            }
+          ]
+        }
+      ],
+      "focusTips": [
+        "Eliminate browser distractions during focus blocks.",
+        "Write out the tensor shapes at each step of the attention mechanism to avoid dimension mismatches.",
+        "Keep training runs short initially to verify loss convergence quickly."
+      ]
+    },
+    "actionItems": [
+      {
+        "title": "Set up Google Colab / Jupyter Notebook for GPT-from-scratch",
+        "category": "Work",
+        "priority": "High",
+        "notes": "Configure environment and verify GPU availability."
+      },
+      {
+        "title": "Implement and train the character-level GPT model",
+        "category": "Work",
+        "priority": "High",
+        "notes": "Build the attention layers, decoder blocks, and run the training loop."
+      }
+    ],
+    "createdAt": "2026-09-09T22:17:36.435Z"
+  }
+]

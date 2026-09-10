@@ -1,0 +1,140 @@
+"use client";
+
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import type { DocumentRecord } from "../api/documents/route";
+
+const categories = ["Agreements", "Certificates", "IDs & records", "Bills", "Insurance", "Other"];
+function formatSize(size: number) {
+  if (size < 1024 * 1024) return `${Math.max(1, Math.round(size / 1024))} KB`;
+  return `${(size / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function documentIcon(type: string) {
+  return type.includes("pdf") ? "PDF" : type.includes("image") ? "IMG" : "DOC";
+}
+
+function getExpiryStatus(document: DocumentRecord) {
+  if (!document.analysis?.expiryDate) return null;
+  const expDate = new Date(document.analysis.expiryDate);
+  if (isNaN(expDate.getTime())) return null;
+  const today = new Date();
+  const diffDays = Math.ceil((expDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+  if (diffDays < 0) return { label: "Expired", type: "expired" };
+  if (diffDays <= 30) return { label: `Expires in ${diffDays}d`, type: "expiring" };
+  return { label: `Expires ${document.analysis.expiryDate}`, type: "active" };
+}
+
+export default function DocumentVault() {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [documents, setDocuments] = useState<DocumentRecord[]>([]);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [category, setCategory] = useState(categories[0]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [isSaving, setIsSaving] = useState(false);
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    fetch("/api/documents")
+      .then(async (response) => response.ok ? (response.json() as Promise<DocumentRecord[]>) : Promise.reject())
+      .then((savedDocuments) => setDocuments(savedDocuments))
+      .catch(() => setMessage("Your saved documents could not be loaded."));
+  }, []);
+
+  function chooseFile(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0] ?? null;
+    setSelectedFile(file);
+    setMessage("");
+  }
+
+  const visibleDocuments = documents.filter((document) =>
+    document.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+    (activeCategory === "All" || document.category === activeCategory),
+  );
+
+  const urgentDocuments = documents.filter((doc) => {
+    const status = getExpiryStatus(doc);
+    return status?.type === "expired" || status?.type === "expiring" || (doc.analysis?.actionItems && doc.analysis.actionItems.length > 0);
+  });
+
+  async function handleUpload(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!selectedFile) {
+      setMessage("Choose a document before saving it to your vault.");
+      return;
+    }
+
+    setIsSaving(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+      formData.append("category", "General");
+      const response = await fetch("/api/documents", { method: "POST", body: formData });
+      const result = await response.json() as DocumentRecord & { error?: string };
+      if (!response.ok) throw new Error(result.error ?? "Upload failed");
+      const document = result as DocumentRecord;
+      setDocuments((current) => [document, ...current]);
+      setSelectedFile(null);
+      if (inputRef.current) inputRef.current.value = "";
+      setMessage("Document saved! Gemini AI is automatically categorizing & analyzing your file.");
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "We could not save that document. Please try again.");
+    } finally {
+      setIsSaving(false);
+    }
+  }
+
+  return (
+    <>
+      {urgentDocuments.length > 0 && (
+        <section className="expiry-alert-banner" aria-label="Urgent document alerts">
+          <span className="expiry-alert-icon">⚠️</span>
+          <div>
+            <strong>Reminders & Renewal Alerts</strong>
+            <p>You have {urgentDocuments.length} document(s) requiring attention or with upcoming renewal dates.</p>
+          </div>
+        </section>
+      )}
+
+      <section className="vault-summary" aria-label="Document summary">
+        <div><strong>{documents.length}</strong><span>{documents.length === 1 ? "document saved" : "documents saved"}</span></div>
+        <p>Your files are saved locally in your LifeOS project with automatic Gemini AI analysis and renewal tracking.</p>
+      </section>
+
+      <section className="upload-panel" aria-labelledby="upload-title">
+        <div><p className="eyebrow">ADD A DOCUMENT</p><h2 id="upload-title">Save something important</h2><p>PDFs, images, and common document files are supported.</p></div>
+        <form className="upload-form" onSubmit={handleUpload}>
+          <label className="file-picker" style={{ flex: 1 }}><input ref={inputRef} type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.webp" onChange={chooseFile} /><span>{selectedFile ? selectedFile.name : "Choose a file"}</span><b>Browse</b></label>
+          <button className="primary-button" type="submit" disabled={isSaving}>{isSaving ? "Saving…" : "Save document"}</button>
+        </form>
+        {message && <p className="upload-message" role="status">{message}</p>}
+      </section>
+
+      <section className="section" aria-labelledby="categories-title">
+        <div className="section-heading"><div><p className="eyebrow">CATEGORIES</p><h2 id="categories-title">Organize from the start</h2></div></div>
+        <div className="category-grid">{categories.slice(0, 5).map((item, index) => <button className={`category-card ${activeCategory === item ? "category-card--active" : ""}`} key={item} type="button" onClick={() => setActiveCategory(activeCategory === item ? "All" : item)}><span className="category-card__icon" aria-hidden="true">{["✦", "✓", "▣", "₹", "♡"][index]}</span><h3>{item}</h3><p>{["Contracts and leases", "Education and achievements", "Personal identification", "Receipts and statements", "Policies and claims"][index]}</p><span className="category-card__count">{documents.filter((document) => document.category === item).length} documents</span></button>)}</div>
+      </section>
+
+      <section className="document-list section" aria-labelledby="documents-title">
+        <div className="section-heading"><div><p className="eyebrow">YOUR DOCUMENTS</p><h2 id="documents-title">Recent uploads</h2></div><span className="result-count">{visibleDocuments.length} shown</span></div>
+        <div className="vault-tools"><label className="search-box"><span aria-hidden="true">⌕</span><input value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="Search documents" type="search" /></label><div className="filter-pills">{["All", ...categories].map((item) => <button className={activeCategory === item ? "filter-pill filter-pill--active" : "filter-pill"} key={item} type="button" onClick={() => setActiveCategory(item)}>{item}</button>)}</div></div>
+        {documents.length === 0 ? <div className="empty-state"><span className="empty-state__icon" aria-hidden="true">📄</span><h2>Your vault is ready</h2><p>Your uploaded documents will appear here.</p></div> : visibleDocuments.length === 0 ? <div className="empty-state"><span className="empty-state__icon" aria-hidden="true">⌕</span><h2>No matching documents</h2><p>Try a different search or choose another category.</p></div> : <div className="document-rows">{visibleDocuments.map((document) => {
+          const status = getExpiryStatus(document);
+          return (
+            <Link className="document-row" href={`/documents/${document.id}`} key={document.id}>
+              <span className="document-type">{documentIcon(document.type)}</span>
+              <div>
+                <h3>{document.name}</h3>
+                <p>{document.category} · {formatSize(document.size)} · Added {new Date(document.uploadedAt).toLocaleDateString()}</p>
+              </div>
+              {status && <span className={`status-badge status-badge--${status.type}`}>{status.label}</span>}
+              {document.analysis?.actionItems && document.analysis.actionItems.length > 0 && <span className="status-badge status-badge--action">Follow-up</span>}
+              <span className="document-open" aria-hidden="true">Open →</span>
+            </Link>
+          );
+        })}</div>}
+      </section>
+    </>
+  );
+}
