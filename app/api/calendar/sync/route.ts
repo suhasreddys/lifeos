@@ -1,10 +1,5 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
-import path from "path";
+import { readJsonStorage, writeJsonStorage } from "@/lib/storage";
 import type { CustomEvent } from "../route";
-
-const calendarDir = path.join(process.cwd(), "data", "calendar");
-const eventsPath = path.join(calendarDir, "events.json");
-const settingsPath = path.join(calendarDir, "settings.json");
 
 type CalendarSettings = {
   googleCalendarUrl?: string;
@@ -59,13 +54,8 @@ function parseICS(icsText: string): Array<{ title: string; date: string; descrip
 }
 
 export async function GET() {
-  await mkdir(calendarDir, { recursive: true });
-  try {
-    const settings = JSON.parse(await readFile(settingsPath, "utf8")) as CalendarSettings;
-    return Response.json(settings);
-  } catch {
-    return Response.json({ googleCalendarUrl: "", lastSyncedAt: null });
-  }
+  const settings = await readJsonStorage<CalendarSettings>("calendar", "settings.json", { googleCalendarUrl: "", lastSyncedAt: undefined });
+  return Response.json(settings);
 }
 
 export async function POST(request: Request) {
@@ -95,10 +85,7 @@ export async function POST(request: Request) {
     }
 
     // Load existing custom events
-    let customEvents: CustomEvent[] = [];
-    try {
-      customEvents = JSON.parse(await readFile(eventsPath, "utf8"));
-    } catch {}
+    const customEvents = await readJsonStorage<CustomEvent[]>("calendar", "events.json", []);
 
     // Filter out previous Google Calendar events to avoid duplicates
     const nonGcalEvents = customEvents.filter(e => e.category !== ("Google Calendar" as any));
@@ -113,13 +100,13 @@ export async function POST(request: Request) {
     }));
 
     const updatedEvents = [...newGcalEvents, ...nonGcalEvents];
-    await writeFile(eventsPath, JSON.stringify(updatedEvents, null, 2), "utf8");
+    await writeJsonStorage("calendar", "events.json", updatedEvents);
 
     const settings: CalendarSettings = {
       googleCalendarUrl: url,
       lastSyncedAt: new Date().toISOString()
     };
-    await writeFile(settingsPath, JSON.stringify(settings, null, 2), "utf8");
+    await writeJsonStorage("calendar", "settings.json", settings);
 
     return Response.json({
       success: true,

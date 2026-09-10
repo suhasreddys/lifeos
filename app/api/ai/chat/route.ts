@@ -1,18 +1,15 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
-import path from "path";
 import { callGeminiApi } from "../../../../lib/gemini";
+import { readJsonStorage, writeJsonStorage } from "@/lib/storage";
 import type { DocumentRecord } from "../../documents/route";
 
 type Message = { role: "user" | "model"; content: string };
-
-const dataDir = path.join(process.cwd(), "data");
 
 async function gatherLifeOSContext(): Promise<string> {
   let contextStr = "=== LIFEOS PERSONAL COMMAND CENTER CONTEXT ===\n\n";
 
   // 1. Documents Context
   try {
-    const docs = JSON.parse(await readFile(path.join(dataDir, "documents", "documents.json"), "utf8")) as DocumentRecord[];
+    const docs = await readJsonStorage<DocumentRecord[]>("documents", "documents.json", []);
     contextStr += `📁 SAVED DOCUMENTS (${docs.length}):\n`;
     docs.forEach((doc) => {
       contextStr += `- ${doc.name} (Category: ${doc.category}, Uploaded: ${doc.uploadedAt.split("T")[0]})\n`;
@@ -30,7 +27,7 @@ async function gatherLifeOSContext(): Promise<string> {
 
   // 2. Calendar Events Context
   try {
-    const events = JSON.parse(await readFile(path.join(dataDir, "calendar", "events.json"), "utf8"));
+    const events = await readJsonStorage<any[]>("calendar", "events.json", []);
     contextStr += `📅 CALENDAR & REMINDERS (${events.length}):\n`;
     events.forEach((ev: { title: string; date: string; category: string; description?: string }) => {
       contextStr += `- ${ev.date}: ${ev.title} (${ev.category}) ${ev.description ? `- ${ev.description}` : ""}\n`;
@@ -42,7 +39,7 @@ async function gatherLifeOSContext(): Promise<string> {
 
   // 3. Tasks Context
   try {
-    const tasks = JSON.parse(await readFile(path.join(dataDir, "tasks", "tasks.json"), "utf8"));
+    const tasks = await readJsonStorage<any[]>("tasks", "tasks.json", []);
     contextStr += `✓ TASKS & TO-DOS (${tasks.length}):\n`;
     tasks.forEach((t: { title: string; category: string; priority: string; completed: boolean; dueDate?: string }) => {
       contextStr += `- [${t.completed ? "X" : " "}] ${t.title} (Priority: ${t.priority}, Category: ${t.category}${t.dueDate ? `, Due: ${t.dueDate}` : ""})\n`;
@@ -54,7 +51,7 @@ async function gatherLifeOSContext(): Promise<string> {
 
   // 4. Financial Transactions Context
   try {
-    const txs = JSON.parse(await readFile(path.join(dataDir, "finance", "transactions.json"), "utf8"));
+    const txs = await readJsonStorage<any[]>("finance", "transactions.json", []);
     contextStr += `💰 FINANCIAL TRANSACTIONS (${txs.length}):\n`;
     txs.forEach((tx: { title: string; amount: number; type: string; category: string; date: string }) => {
       contextStr += `- ${tx.date}: ${tx.type === "Income" ? "+" : "-"}₹${tx.amount} — ${tx.title} (${tx.category})\n`;
@@ -66,7 +63,7 @@ async function gatherLifeOSContext(): Promise<string> {
 
   // 5. Tenant & Landlord Rental Context
   try {
-    const rentals = JSON.parse(await readFile(path.join(dataDir, "rental", "rentals.json"), "utf8"));
+    const rentals = await readJsonStorage<any>("rental", "rentals.json", {});
     contextStr += `🏠 TENANT & LANDLORD RENTAL MANAGER:\n`;
     contextStr += `Properties (${rentals.properties?.length || 0}): ${JSON.stringify(rentals.properties || [])}\n`;
     contextStr += `Rent Payments (${rentals.payments?.length || 0}): ${JSON.stringify(rentals.payments || [])}\n`;
@@ -150,13 +147,7 @@ ${latestUserMessage}`;
       const { type, title, date, category, description } = parsedResult.action;
 
       if (type === "add_reminder") {
-        const calendarDir = path.join(dataDir, "calendar");
-        const calendarPath = path.join(calendarDir, "events.json");
-        await mkdir(calendarDir, { recursive: true });
-
-        let events: Array<{ id: string; title: string; date: string; category: string; description?: string; createdAt: string }> = [];
-        try { events = JSON.parse(await readFile(calendarPath, "utf8")); } catch {}
-
+        let events = await readJsonStorage<any[]>("calendar", "events.json", []);
         events.unshift({
           id: crypto.randomUUID(),
           title,
@@ -165,15 +156,9 @@ ${latestUserMessage}`;
           description: description || "Added via LifeOS Personal AI Assistant",
           createdAt: new Date().toISOString()
         });
-        await writeFile(calendarPath, JSON.stringify(events, null, 2), "utf8");
+        await writeJsonStorage("calendar", "events.json", events);
       } else if (type === "add_task") {
-        const tasksDir = path.join(dataDir, "tasks");
-        const tasksPath = path.join(tasksDir, "tasks.json");
-        await mkdir(tasksDir, { recursive: true });
-
-        let tasks: Array<{ id: string; title: string; category: string; priority: string; completed: boolean; dueDate?: string; notes?: string; source: string; createdAt: string }> = [];
-        try { tasks = JSON.parse(await readFile(tasksPath, "utf8")); } catch {}
-
+        let tasks = await readJsonStorage<any[]>("tasks", "tasks.json", []);
         tasks.unshift({
           id: crypto.randomUUID(),
           title,
@@ -185,7 +170,7 @@ ${latestUserMessage}`;
           source: "user",
           createdAt: new Date().toISOString()
         });
-        await writeFile(tasksPath, JSON.stringify(tasks, null, 2), "utf8");
+        await writeJsonStorage("tasks", "tasks.json", tasks);
       }
     }
 

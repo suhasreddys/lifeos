@@ -1,5 +1,4 @@
-import { readFile } from "fs/promises";
-import path from "path";
+import { readJsonStorage } from "@/lib/storage";
 
 function formatICalDate(dateStr: string): string {
   const cleanDate = dateStr.replace(/-/g, "");
@@ -7,47 +6,39 @@ function formatICalDate(dateStr: string): string {
 }
 
 export async function GET() {
-  const dataDir = path.join(process.cwd(), "data");
-
   let events: Array<{ id: string; title: string; date: string; category?: string; description?: string }> = [];
 
   // 1. Custom & Synced Events
-  try {
-    const custom = JSON.parse(await readFile(path.join(dataDir, "calendar", "events.json"), "utf8"));
-    events = [...custom];
-  } catch {}
+  const custom = await readJsonStorage<any[]>("calendar", "events.json", []);
+  events = [...custom];
 
   // 2. Documents Expiry Events
-  try {
-    const docs = JSON.parse(await readFile(path.join(dataDir, "documents", "documents.json"), "utf8"));
-    docs.forEach((doc: any) => {
-      if (doc.analysis?.expiryDate) {
-        events.push({
-          id: `exp-${doc.id}`,
-          title: `Expiration: ${doc.name}`,
-          date: doc.analysis.expiryDate,
-          category: "Document Expiry",
-          description: `Document category: ${doc.category}`
-        });
-      }
-    });
-  } catch {}
+  const docs = await readJsonStorage<any[]>("documents", "documents.json", []);
+  docs.forEach((doc: any) => {
+    if (doc.analysis?.expiryDate) {
+      events.push({
+        id: `exp-${doc.id}`,
+        title: `Expiration: ${doc.name}`,
+        date: doc.analysis.expiryDate,
+        category: "Document Expiry",
+        description: `Document category: ${doc.category}`
+      });
+    }
+  });
 
   // 3. Rental Lease Expiry Events
-  try {
-    const rentals = JSON.parse(await readFile(path.join(dataDir, "rental", "rentals.json"), "utf8"));
-    rentals.properties?.forEach((prop: any) => {
-      if (prop.leaseEnd) {
-        events.push({
-          id: `lease-${prop.id}`,
-          title: `Lease Expiry: ${prop.name} (${prop.tenantName})`,
-          date: prop.leaseEnd,
-          category: "Rent & Property",
-          description: `Monthly Rent: ₹${prop.monthlyRent}`
-        });
-      }
-    });
-  } catch {}
+  const rentals = await readJsonStorage<any>("rental", "rentals.json", {});
+  rentals.properties?.forEach((prop: any) => {
+    if (prop.leaseEnd) {
+      events.push({
+        id: `lease-${prop.id}`,
+        title: `Lease Expiry: ${prop.name} (${prop.tenantName})`,
+        date: prop.leaseEnd,
+        category: "Rent & Property",
+        description: `Monthly Rent: ₹${prop.monthlyRent}`
+      });
+    }
+  });
 
   let icsContent = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//LifeOS//Personal Command Center//EN\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\nX-WR-CALNAME:LifeOS Calendar\r\n";
 

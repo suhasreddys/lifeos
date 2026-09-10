@@ -1,6 +1,7 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
+import { readFile } from "fs/promises";
 import path from "path";
 import { callGeminiApi } from "../../../../../lib/gemini";
+import { getStorageDir, readJsonStorage, writeJsonStorage } from "@/lib/storage";
 import type { DocumentRecord, AnalysisRecord } from "../../route";
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -9,14 +10,11 @@ const pdf = require("pdf-parse/lib/pdf-parse.js");
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const dataDirectory = path.join(process.cwd(), "data", "documents");
-const recordsPath = path.join(dataDirectory, "documents.json");
-
 export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   if (!/^[0-9a-f-]{36}$/i.test(id)) return Response.json({ error: "Document not found." }, { status: 404 });
   try {
-    const records = JSON.parse(await readFile(recordsPath, "utf8")) as DocumentRecord[];
+    const records = await readJsonStorage<DocumentRecord[]>("documents", "documents.json", []);
     const document = records.find((record) => record.id === id);
     if (!document) return Response.json({ error: "Document not found." }, { status: 404 });
     return Response.json(document.analysis ?? null);
@@ -30,13 +28,14 @@ export async function POST(_: Request, { params }: { params: Promise<{ id: strin
   if (!/^[0-9a-f-]{36}$/i.test(id)) return Response.json({ error: "Document not found." }, { status: 404 });
 
   try {
-    const records = JSON.parse(await readFile(recordsPath, "utf8")) as DocumentRecord[];
+    const records = await readJsonStorage<DocumentRecord[]>("documents", "documents.json", []);
     const docIndex = records.findIndex((record) => record.id === id);
     if (docIndex === -1) return Response.json({ error: "Document not found." }, { status: 404 });
     const document = records[docIndex];
     if (document.type !== "application/pdf") return Response.json({ error: "AI analysis currently supports PDFs. You can still preview or download this file." }, { status: 400 });
 
-    const parsed = await pdf(await readFile(path.join(dataDirectory, document.storedName)));
+    const docsDir = getStorageDir("documents");
+    const parsed = await pdf(await readFile(path.join(docsDir, document.storedName)));
     if (!parsed.text.trim()) return Response.json({ error: "This PDF has no readable text. Scanned-image support is the next AI improvement." }, { status: 400 });
 
     const apiKey = process.env.GEMINI_API_KEY;
@@ -111,7 +110,7 @@ ${parsed.text.slice(0, 24000)}`;
       category: updatedCategory,
       analysis: analysisRecord
     };
-    await writeFile(recordsPath, JSON.stringify(records, null, 2), "utf8");
+    await writeJsonStorage("documents", "documents.json", records);
 
     // Auto-sync extracted dates to Calendar, Tasks, & Rental Manager
     await autoSyncRemindersAndTasks(document.id, document.name, document.category, analysisRecord);
@@ -144,13 +143,7 @@ function parseToISODate(dateStr: string): string | null {
 async function autoSyncRemindersAndTasks(docId: string, docName: string, category: string, analysis: AnalysisRecord) {
   try {
     // 1. Sync Calendar Events
-    const calendarDir = path.join(process.cwd(), "data", "calendar");
-    const calendarPath = path.join(calendarDir, "events.json");
-    await mkdir(calendarDir, { recursive: true });
-
-    let calEvents: Array<{ id: string; title: string; date: string; category: string; description?: string; createdAt: string }> = [];
-    try { calEvents = JSON.parse(await readFile(calendarPath, "utf8")); } catch {}
-
+    let calEvents = await readJsonStorage<any[]>("calendar", "events.json", []);
     const newCalEvents = [...calEvents];
 
     if (analysis.expiryDate) {
@@ -187,16 +180,10 @@ async function autoSyncRemindersAndTasks(docId: string, docName: string, categor
       }
     });
 
-    await writeFile(calendarPath, JSON.stringify(newCalEvents, null, 2), "utf8");
+    await writeJsonStorage("calendar", "events.json", newCalEvents);
 
     // 2. Sync Tasks
-    const tasksDir = path.join(process.cwd(), "data", "tasks");
-    const tasksPath = path.join(tasksDir, "tasks.json");
-    await mkdir(tasksDir, { recursive: true });
-
-    let userTasks: Array<{ id: string; title: string; category: string; priority: string; completed: boolean; source: string; documentId?: string; documentName?: string; createdAt: string }> = [];
-    try { userTasks = JSON.parse(await readFile(tasksPath, "utf8")); } catch {}
-
+    let userTasks = await readJsonStorage<any[]>("tasks", "tasks.json", []);
     const newTasks = [...userTasks];
     analysis.actionItems?.forEach((action, idx) => {
       const taskId = `auto-task-${docId}-${idx}`;
@@ -215,24 +202,19 @@ async function autoSyncRemindersAndTasks(docId: string, docName: string, categor
       }
     });
 
-    await writeFile(tasksPath, JSON.stringify(newTasks, null, 2), "utf8");
+    await writeJsonStorage("tasks", "tasks.json", newTasks);
 
     // 3. Sync Rental Agreements to Tenant & Landlord Manager
     const lease = (analysis as any).leaseDetails;
     const isRentalDoc = category === "Rental Agreement" || category === "Agreements" || docName.toLowerCase().includes("lease") || docName.toLowerCase().includes("rent") || lease?.isLeaseAgreement;
 
     if (isRentalDoc) {
-      const rentalDir = path.join(process.cwd(), "data", "rental");
-      const rentalPath = path.join(rentalDir, "rentals.json");
-      await mkdir(rentalDir, { recursive: true });
-
-      let rentalData: { properties: any[]; payments: any[]; deposits: any[]; maintenance: any[]; meterReadings: any[]; notices: any[]; inspections: any[] } = {
+      let rentalData = await readJsonStorage<any>("rental", "rentals.json", {
         properties: [], payments: [], deposits: [], maintenance: [], meterReadings: [], notices: [], inspections: []
-      };
-      try { rentalData = JSON.parse(await readFile(rentalPath, "utf8")); } catch {}
+      });
 
       const propId = `doc-lease-${docId}`;
-      if (!rentalData.properties.some(p => p.id === propId)) {
+      if (!rentalData.properties.some((p: any) => p.id === propId)) {
         const newProperty = {
           id: propId,
           name: lease?.propertyName?.trim() || docName.replace(/\.[^/.]+$/, ""),
@@ -264,7 +246,7 @@ async function autoSyncRemindersAndTasks(docId: string, docName: string, categor
           });
         }
 
-        await writeFile(rentalPath, JSON.stringify(rentalData, null, 2), "utf8");
+        await writeJsonStorage("rental", "rentals.json", rentalData);
       }
     }
   } catch {

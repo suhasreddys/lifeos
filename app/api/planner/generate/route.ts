@@ -1,11 +1,6 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
 import { NextResponse } from "next/server";
-import path from "path";
 import { callGeminiApi } from "../../../../lib/gemini";
-
-const dataDir = path.join(process.cwd(), "data");
-const plannerDir = path.join(dataDir, "planner");
-const plansPath = path.join(plannerDir, "plans.json");
+import { readJsonStorage, writeJsonStorage } from "@/lib/storage";
 
 export type DayPlanScheduleItem = {
   timeBlock: string;
@@ -106,7 +101,7 @@ async function gatherContext(): Promise<string> {
 
   // 1a. LifeOS Calendar Events, Synced Google Calendar & Public Holidays
   try {
-    const events = JSON.parse(await readFile(path.join(dataDir, "calendar", "events.json"), "utf8"));
+    const events = await readJsonStorage<any[]>("calendar", "events.json", []);
     events.forEach((e: any) => {
       if (e.date && e.title) {
         allCalendarEvents.push({
@@ -121,7 +116,7 @@ async function gatherContext(): Promise<string> {
 
   // 1b. Document Expiration & Key Dates (Medical/Doctor Appointments, Renewals)
   try {
-    const docs = JSON.parse(await readFile(path.join(dataDir, "documents", "documents.json"), "utf8"));
+    const docs = await readJsonStorage<any[]>("documents", "documents.json", []);
     docs.forEach((d: any) => {
       if (d.analysis?.expiryDate) {
         allCalendarEvents.push({
@@ -146,7 +141,7 @@ async function gatherContext(): Promise<string> {
 
   // 1c. Rent & Property Due Dates
   try {
-    const rentals = JSON.parse(await readFile(path.join(dataDir, "rental", "rentals.json"), "utf8"));
+    const rentals = await readJsonStorage<any>("rental", "rentals.json", {});
     rentals.properties?.forEach((p: any) => {
       if (p.leaseEnd) {
         allCalendarEvents.push({
@@ -189,7 +184,7 @@ async function gatherContext(): Promise<string> {
 
   // 2. Pending LifeOS Tasks
   try {
-    const tasks = JSON.parse(await readFile(path.join(dataDir, "tasks", "tasks.json"), "utf8"));
+    const tasks = await readJsonStorage<any[]>("tasks", "tasks.json", []);
     const pending = tasks.filter((t: any) => !t.completed);
     if (pending.length > 0) {
       contextStr += `EXISTING PENDING TASKS (${pending.length}):\n`;
@@ -202,7 +197,7 @@ async function gatherContext(): Promise<string> {
 
   // 3. Vault Documents Context
   try {
-    const docs = JSON.parse(await readFile(path.join(dataDir, "documents", "documents.json"), "utf8"));
+    const docs = await readJsonStorage<any[]>("documents", "documents.json", []);
     const actionable = docs.filter((d: any) => d.analysis && !d.category?.toLowerCase().includes("resume") && !d.name?.toLowerCase().includes("resume"));
     if (actionable.length > 0) {
       contextStr += `ACTIONABLE LIFE DOCUMENTS IN VAULT:\n`;
@@ -438,16 +433,10 @@ Required JSON Output Schema (strictly output ONLY JSON matching this format):
     };
 
     // Save plan
-    await mkdir(plannerDir, { recursive: true });
-    let plans: DayPlanRecord[] = [];
-    try {
-      plans = JSON.parse(await readFile(plansPath, "utf8"));
-    } catch {}
-
-    // Remove older plan for today if exists
+    let plans = await readJsonStorage<DayPlanRecord[]>("planner", "plans.json", []);
     plans = plans.filter((p) => p.date !== todayStr);
     plans.unshift(planRecord);
-    await writeFile(plansPath, JSON.stringify(plans, null, 2), "utf8");
+    await writeJsonStorage("planner", "plans.json", plans);
 
     return NextResponse.json(planRecord);
   } catch (err) {

@@ -1,10 +1,5 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
 import { NextResponse } from "next/server";
-import path from "path";
-
-const calendarDir = path.join(process.cwd(), "data", "calendar");
-const eventsPath = path.join(calendarDir, "events.json");
-const settingsPath = path.join(calendarDir, "settings.json");
+import { readJsonStorage, writeJsonStorage } from "@/lib/storage";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -69,12 +64,7 @@ export async function GET(request: Request) {
     const calData = await calRes.json();
     const items: any[] = calData.items || [];
 
-    await mkdir(calendarDir, { recursive: true });
-
-    let existingEvents: any[] = [];
-    try {
-      existingEvents = JSON.parse(await readFile(eventsPath, "utf8"));
-    } catch {}
+    const existingEvents = await readJsonStorage<any[]>("calendar", "events.json", []);
 
     const nonGcalEvents = existingEvents.filter(e => e.category !== "Google Calendar");
 
@@ -91,14 +81,14 @@ export async function GET(request: Request) {
     });
 
     const updated = [...newGcalEvents, ...nonGcalEvents];
-    await writeFile(eventsPath, JSON.stringify(updated, null, 2), "utf8");
+    await writeJsonStorage("calendar", "events.json", updated);
 
     // Save settings
     const settings = {
       connectedAccount: userEmail,
       lastSyncedAt: new Date().toISOString()
     };
-    await writeFile(settingsPath, JSON.stringify(settings, null, 2), "utf8");
+    await writeJsonStorage("calendar", "settings.json", settings);
 
     return NextResponse.redirect(`${origin}/calendar?gcal_success=true&account=${encodeURIComponent(userEmail)}`);
   } catch (err) {

@@ -1,9 +1,5 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
-import path from "path";
+import { readJsonStorage, writeJsonStorage } from "@/lib/storage";
 import type { CustomEvent } from "../route";
-
-const calendarDir = path.join(process.cwd(), "data", "calendar");
-const eventsPath = path.join(calendarDir, "events.json");
 
 const GOOGLE_HOLIDAY_FEEDS = [
   { name: "India Holidays", url: "https://calendar.google.com/calendar/ical/en.indian%23holiday%40group.v.calendar.google.com/public/basic.ics" },
@@ -78,12 +74,7 @@ export async function POST(request: Request) {
       return Response.json({ error: "No holiday events found." }, { status: 400 });
     }
 
-    await mkdir(calendarDir, { recursive: true });
-
-    let existingEvents: CustomEvent[] = [];
-    try {
-      existingEvents = JSON.parse(await readFile(eventsPath, "utf8"));
-    } catch {}
+    const existingEvents = await readJsonStorage<CustomEvent[]>("calendar", "events.json", []);
 
     // Filter out previous Holidays to avoid duplicates
     const nonHolidayEvents = existingEvents.filter(e => e.category !== ("Holidays" as any));
@@ -98,7 +89,7 @@ export async function POST(request: Request) {
     }));
 
     const updated = [...holidayEvents, ...nonHolidayEvents];
-    await writeFile(eventsPath, JSON.stringify(updated, null, 2), "utf8");
+    await writeJsonStorage("calendar", "events.json", updated);
 
     return Response.json({
       success: true,
