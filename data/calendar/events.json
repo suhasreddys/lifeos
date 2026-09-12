@@ -4190,5 +4190,21 @@
     "category": "Holidays",
     "description": "Public Holiday (India Holidays)",
     "createdAt": "2026-09-09T19:01:48.235Z"
+  },
+  {
+    "id": "auto-kd-ef3de94e-ef13-4a96-88a8-5876d76f09f8-0",
+    "title": "10th STD (Gagan Reddy resume.pdf)",
+    "date": "2023-06-01",
+    "category": "Key Date",
+    "description": "Swamy vivekananda vidya nikethana school",
+    "createdAt": "2026-09-12T06:59:27.001Z"
+  },
+  {
+    "id": "auto-kd-ef3de94e-ef13-4a96-88a8-5876d76f09f8-1",
+    "title": "10+2 STD (Gagan Reddy resume.pdf)",
+    "date": "2025-06-01",
+    "category": "Key Date",
+    "description": "Sri swaminarayan gurukul pu college",
+    "createdAt": "2026-09-12T06:59:27.002Z"
   }
 ]

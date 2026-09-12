@@ -126,16 +126,25 @@ async function gatherContext(): Promise<string> {
           detail: `Category: ${d.category}`
         });
       }
-      d.analysis?.keyDates?.forEach((kd: any) => {
-        if (kd.date && kd.label) {
-          allCalendarEvents.push({
-            title: `${kd.label} (${d.name})`,
-            date: kd.date,
-            category: "Key Date / Appointment",
-            detail: kd.context
-          });
-        }
-      });
+      const isEduDoc = d.category === "Certificates" || 
+                       d.category === "Other" ||
+                       d.name?.toLowerCase().includes("resume") || 
+                       d.name?.toLowerCase().includes("marksheet") ||
+                       d.name?.toLowerCase().includes("std");
+
+      if (!isEduDoc) {
+        d.analysis?.keyDates?.forEach((kd: any) => {
+          const isYearRange = /\b20\d{2}\s*[-–—]\s*20\d{2}\b/.test(kd.date || "");
+          if (kd.date && kd.label && !isYearRange) {
+            allCalendarEvents.push({
+              title: `${kd.label} (${d.name})`,
+              date: kd.date,
+              category: "Key Date / Appointment",
+              detail: kd.context
+            });
+          }
+        });
+      }
     });
   } catch {}
 

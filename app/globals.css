@@ -211,8 +211,10 @@ h1 { max-width: 720px; margin-bottom: 16px; font-size: clamp(40px, 6.5vw, 64px);
 .reminder-tag--date { background: rgba(99, 102, 241, 0.18); color: var(--brand); }
 .reminder-tag--action { background: rgba(245, 158, 11, 0.18); color: #f59e0b; }
 .reminder-doc-name { color: var(--muted); font-size: 12px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.reminder-card h3 { margin: 0 0 6px; font-size: 16px; font-weight: 750; color: var(--ink); }
+.reminder-card h3 { margin: 0 0 6px; font-size: 16px; font-weight: 750; color: var(--ink); padding-right: 24px; }
 .reminder-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
+.delete-reminder-button { position: absolute; top: 14px; right: 14px; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; padding: 0; border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 8px; background: rgba(15, 23, 42, 0.6); color: #ef4444; font-size: 13px; cursor: pointer; transition: all 140ms ease; z-index: 5; }
+.delete-reminder-button:hover { background: rgba(239, 68, 68, 0.3); border-color: #ef4444; transform: scale(1.1); }
 
 /* Calendar & Tasks & Finance Views */
 .calendar-header-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }

@@ -7,6 +7,7 @@ import InstallPwaButton from "./components/InstallPwaButton";
 import type { DocumentRecord } from "./api/documents/route";
 
 type ReminderItem = {
+  id: string;
   documentId: string;
   documentName: string;
   type: "expiry" | "date" | "action";
@@ -18,25 +19,50 @@ type ReminderItem = {
 
 export default function Home() {
   const [documents, setDocuments] = useState<DocumentRecord[]>([]);
+  const [dismissedReminders, setDismissedReminders] = useState<string[]>([]);
 
   useEffect(() => {
     fetch("/api/documents")
       .then(async (res) => (res.ok ? (res.json() as Promise<DocumentRecord[]>) : []))
       .then((docs) => setDocuments(docs))
       .catch(() => {});
+
+    try {
+      const saved = localStorage.getItem("lifeos_dismissed_reminders");
+      if (saved) setDismissedReminders(JSON.parse(saved));
+    } catch {}
   }, []);
 
-  const reminders: ReminderItem[] = [];
+  function handleDismiss(reminderId: string, event: React.MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    const updated = [...dismissedReminders, reminderId];
+    setDismissedReminders(updated);
+    try {
+      localStorage.setItem("lifeos_dismissed_reminders", JSON.stringify(updated));
+    } catch {}
+  }
+
+  const rawReminders: ReminderItem[] = [];
   const today = new Date();
 
   documents.forEach((doc) => {
     if (!doc.analysis) return;
+
+    // Check if document is a certificate, resume, or educational document
+    const isEducationOrCert = doc.category === "Certificates" || 
+                              doc.category === "Other" ||
+                              doc.name.toLowerCase().includes("resume") || 
+                              doc.name.toLowerCase().includes("marksheet") ||
+                              doc.name.toLowerCase().includes("std");
+
     if (doc.analysis.expiryDate) {
       const expDate = new Date(doc.analysis.expiryDate);
       if (!isNaN(expDate.getTime())) {
         const diffDays = Math.ceil((expDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
         if (diffDays <= 30) {
-          reminders.push({
+          rawReminders.push({
+            id: `exp-${doc.id}`,
             documentId: doc.id,
             documentName: doc.name,
             type: "expiry",
@@ -48,19 +74,29 @@ export default function Home() {
         }
       }
     }
-    doc.analysis.keyDates?.forEach((kd) => {
-      reminders.push({
-        documentId: doc.id,
-        documentName: doc.name,
-        type: "date",
-        title: `${kd.label}: ${kd.date}`,
-        detail: kd.context,
-        dateStr: kd.date,
-        urgent: false
+
+    // Only process keyDates for non-educational documents or if it's an actual upcoming date
+    if (!isEducationOrCert) {
+      doc.analysis.keyDates?.forEach((kd, idx) => {
+        const isYearRange = /\b20\d{2}\s*[-–—]\s*20\d{2}\b/.test(kd.date);
+        if (!isYearRange) {
+          rawReminders.push({
+            id: `kd-${doc.id}-${idx}`,
+            documentId: doc.id,
+            documentName: doc.name,
+            type: "date",
+            title: `${kd.label}: ${kd.date}`,
+            detail: kd.context,
+            dateStr: kd.date,
+            urgent: false
+          });
+        }
       });
-    });
-    doc.analysis.actionItems?.forEach((action) => {
-      reminders.push({
+    }
+
+    doc.analysis.actionItems?.forEach((action, idx) => {
+      rawReminders.push({
+        id: `act-${doc.id}-${idx}`,
         documentId: doc.id,
         documentName: doc.name,
         type: "action",
@@ -71,6 +107,7 @@ export default function Home() {
     });
   });
 
+  const reminders = rawReminders.filter((r) => !dismissedReminders.includes(r.id));
   const urgentCount = reminders.filter((r) => r.urgent).length;
   const todayStatus = urgentCount > 0 ? `${urgentCount} urgent` : reminders.length > 0 ? `${reminders.length} active` : "Clear";
 
@@ -119,15 +156,26 @@ export default function Home() {
             <span className="result-count">{reminders.length} active items</span>
           </div>
           <div className="reminders-grid">
-            {reminders.map((item, idx) => (
-              <Link href={`/documents/${item.documentId}`} key={`${item.documentId}-${idx}`} className={`reminder-card ${item.urgent ? "reminder-card--urgent" : ""}`}>
-                <div className="reminder-card__header">
-                  <span className={`reminder-tag reminder-tag--${item.type}`}>{item.type.toUpperCase()}</span>
-                  <span className="reminder-doc-name">{item.documentName}</span>
-                </div>
-                <h3>{item.title}</h3>
-                <p>{item.detail}</p>
-              </Link>
+            {reminders.map((item) => (
+              <div key={item.id} className={`reminder-card ${item.urgent ? "reminder-card--urgent" : ""}`} style={{ position: "relative" }}>
+                <Link href={`/documents/${item.documentId}`} style={{ textDecoration: "none", color: "inherit", display: "block", flex: 1 }}>
+                  <div className="reminder-card__header">
+                    <span className={`reminder-tag reminder-tag--${item.type}`}>{item.type.toUpperCase()}</span>
+                    <span className="reminder-doc-name">{item.documentName}</span>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.detail}</p>
+                </Link>
+                <button
+                  className="delete-reminder-button"
+                  type="button"
+                  onClick={(e) => handleDismiss(item.id, e)}
+                  title="Remove reminder"
+                  aria-label="Remove reminder"
+                >
+                  🗑️
+                </button>
+              </div>
             ))}
           </div>
         </section>

@@ -115,18 +115,29 @@ async function getDocumentEvents(): Promise<CalendarEvent[]> {
         });
       }
 
-      doc.analysis.keyDates?.forEach((kd, index) => {
-        events.push({
-          id: `doc-kd-${doc.id}-${index}`,
-          title: `${kd.label} (${doc.name})`,
-          date: kd.date,
-          category: "Key Date",
-          source: "document",
-          documentId: doc.id,
-          documentName: doc.name,
-          detail: kd.context
+      const isEducationOrCert = doc.category === "Certificates" || 
+                                doc.category === "Other" ||
+                                doc.name.toLowerCase().includes("resume") || 
+                                doc.name.toLowerCase().includes("marksheet") ||
+                                doc.name.toLowerCase().includes("std");
+
+      if (!isEducationOrCert) {
+        doc.analysis.keyDates?.forEach((kd, index) => {
+          const isYearRange = /\b20\d{2}\s*[-–—]\s*20\d{2}\b/.test(kd.date);
+          if (!isYearRange) {
+            events.push({
+              id: `doc-kd-${doc.id}-${index}`,
+              title: `${kd.label} (${doc.name})`,
+              date: kd.date,
+              category: "Key Date",
+              source: "document",
+              documentId: doc.id,
+              documentName: doc.name,
+              detail: kd.context
+            });
+          }
         });
-      });
+      }
     });
 
     return events;
