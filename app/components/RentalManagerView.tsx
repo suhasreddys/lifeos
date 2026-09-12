@@ -12,8 +12,6 @@ import type {
   MoveInspectionRecord
 } from "../api/rental/route";
 
-import UpiPaymentModal from "./UpiPaymentModal";
-
 type RentalResponse = {
   summary: {
     totalProperties: number;
@@ -31,19 +29,6 @@ function formatCurrency(amount: number) {
 }
 
 export default function RentalManagerView() {
-  const [upiModalData, setUpiModalData] = useState<{
-    isOpen: boolean;
-    recipientName: string;
-    amount: number;
-    note: string;
-    onMarkAsPaid?: () => void;
-  }>({
-    isOpen: false,
-    recipientName: "",
-    amount: 0,
-    note: ""
-  });
-
   const [data, setData] = useState<RentalResponse["data"]>({
     properties: [],
     payments: [],
@@ -144,18 +129,6 @@ export default function RentalManagerView() {
       })
       .catch(() => {});
   };
-
-  async function handleMarkPaymentPaid(p: RentPaymentRecord) {
-    try {
-      const updated = { ...p, status: "Paid" as const };
-      await fetch("/api/rental", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "payments", item: updated })
-      });
-      loadData();
-    } catch {}
-  }
 
   useEffect(() => {
     loadData();
@@ -511,19 +484,6 @@ export default function RentalManagerView() {
                       </td>
                       <td style={{ padding: 10 }}>
                         <div style={{ display: "flex", gap: 4 }}>
-                          <button
-                            type="button"
-                            onClick={() => setUpiModalData({
-                              isOpen: true,
-                              recipientName: p.tenantName || p.propertyName,
-                              amount: p.amount,
-                              note: `Rent Payment (${p.propertyName} - ${p.period})`,
-                              onMarkAsPaid: () => handleMarkPaymentPaid(p)
-                            })}
-                            style={{ background: "rgba(16, 185, 129, 0.15)", border: "1px solid rgba(16, 185, 129, 0.4)", color: "#34d399", borderRadius: 6, padding: "2px 8px", cursor: "pointer", fontSize: "0.76rem", fontWeight: 700 }}
-                          >
-                            ⚡ Pay via UPI
-                          </button>
                           <button onClick={() => openEditModal("payment", p)} style={{ background: "none", border: "1px solid #cbd5e1", borderRadius: 4, padding: "2px 6px", cursor: "pointer", fontSize: "0.78rem" }}>✏️ Edit</button>
                           <button onClick={() => handleDelete("payments", p.id, `${p.propertyName} Payment`)} style={{ background: "rgba(239, 68, 68, 0.15)", border: "1px solid rgba(239, 68, 68, 0.35)", color: "#ef4444", borderRadius: 6, padding: "2px 8px", cursor: "pointer", fontSize: "0.76rem", fontWeight: 700 }}>Delete</button>
                         </div>
@@ -560,21 +520,7 @@ export default function RentalManagerView() {
                         <span className="reminder-tag reminder-tag--action">{d.status}</span>
                       </td>
                       <td style={{ padding: 10 }}>
-                        <div style={{ display: "flex", gap: 4 }}>
-                          <button
-                            type="button"
-                            onClick={() => setUpiModalData({
-                              isOpen: true,
-                              recipientName: d.tenantName || d.propertyName,
-                              amount: d.amount,
-                              note: `Security Deposit (${d.propertyName})`
-                            })}
-                            style={{ background: "rgba(16, 185, 129, 0.15)", border: "1px solid rgba(16, 185, 129, 0.4)", color: "#34d399", borderRadius: 6, padding: "2px 8px", cursor: "pointer", fontSize: "0.76rem", fontWeight: 700 }}
-                          >
-                            ⚡ Pay via UPI
-                          </button>
-                          <button onClick={() => handleDelete("deposits", d.id, `${d.propertyName} Deposit`)} style={{ background: "rgba(239, 68, 68, 0.15)", border: "1px solid rgba(239, 68, 68, 0.35)", color: "#ef4444", borderRadius: 6, padding: "2px 8px", cursor: "pointer", fontSize: "0.76rem", fontWeight: 700 }}>Delete</button>
-                        </div>
+                        <button onClick={() => handleDelete("deposits", d.id, `${d.propertyName} Deposit`)} style={{ background: "rgba(239, 68, 68, 0.15)", border: "1px solid rgba(239, 68, 68, 0.35)", color: "#ef4444", borderRadius: 6, padding: "2px 8px", cursor: "pointer", fontSize: "0.76rem", fontWeight: 700 }}>Delete</button>
                       </td>
                     </tr>
                   ))}
@@ -1101,15 +1047,6 @@ export default function RentalManagerView() {
           </div>
         </div>
       )}
-
-      <UpiPaymentModal
-        isOpen={upiModalData.isOpen}
-        onClose={() => setUpiModalData((prev) => ({ ...prev, isOpen: false }))}
-        recipientName={upiModalData.recipientName}
-        amount={upiModalData.amount}
-        note={upiModalData.note}
-        onMarkAsPaid={upiModalData.onMarkAsPaid}
-      />
     </>
   );
 }
