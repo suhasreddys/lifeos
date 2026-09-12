@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import type { TransactionRecord } from "../api/finance/route";
+import UpiPaymentModal from "./UpiPaymentModal";
 
 type FinanceData = {
   summary: {
@@ -21,6 +22,13 @@ function formatCurrency(amount: number) {
 }
 
 export default function FinanceView() {
+  const [upiModalData, setUpiModalData] = useState<{ isOpen: boolean; recipientName: string; amount: number; note: string }>({
+    isOpen: false,
+    recipientName: "",
+    amount: 0,
+    note: ""
+  });
+
   const [data, setData] = useState<FinanceData>({
     summary: { netBalance: 0, totalIncome: 0, totalExpenses: 0, transactionCount: 0 },
     transactions: []
@@ -132,24 +140,43 @@ export default function FinanceView() {
             </button>
           ))}
         </div>
-        <button
-          type="button"
-          onClick={() => setShowModal(true)}
-          style={{
-            padding: "8px 18px",
-            borderRadius: 10,
-            background: "linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)",
-            color: "#ffffff",
-            border: "none",
-            fontWeight: 800,
-            fontSize: "0.85rem",
-            cursor: "pointer",
-            boxShadow: "0 4px 12px rgba(99, 102, 241, 0.25)",
-            transition: "all 0.2s"
-          }}
-        >
-          + Add Entry
-        </button>
+        <div style={{ display: "flex", gap: 10 }}>
+          <button
+            type="button"
+            onClick={() => setUpiModalData({ isOpen: true, recipientName: "Personal Payment", amount: 0, note: "Quick UPI Transfer" })}
+            style={{
+              padding: "8px 16px",
+              borderRadius: 10,
+              background: "rgba(16, 185, 129, 0.15)",
+              border: "1px solid rgba(16, 185, 129, 0.4)",
+              color: "#34d399",
+              fontWeight: 800,
+              fontSize: "0.85rem",
+              cursor: "pointer",
+              transition: "all 0.2s"
+            }}
+          >
+            ⚡ Instant UPI Pay & QR
+          </button>
+          <button
+            type="button"
+            onClick={() => setShowModal(true)}
+            style={{
+              padding: "8px 18px",
+              borderRadius: 10,
+              background: "linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)",
+              color: "#ffffff",
+              border: "none",
+              fontWeight: 800,
+              fontSize: "0.85rem",
+              cursor: "pointer",
+              boxShadow: "0 4px 12px rgba(99, 102, 241, 0.25)",
+              transition: "all 0.2s"
+            }}
+          >
+            + Add Entry
+          </button>
+        </div>
       </div>
 
       <section className="document-list section" style={{ paddingTop: 20 }} aria-labelledby="finance-title">
@@ -325,6 +352,14 @@ export default function FinanceView() {
           </div>
         </div>
       )}
+
+      <UpiPaymentModal
+        isOpen={upiModalData.isOpen}
+        onClose={() => setUpiModalData((prev) => ({ ...prev, isOpen: false }))}
+        recipientName={upiModalData.recipientName}
+        amount={upiModalData.amount}
+        note={upiModalData.note}
+      />
     </>
   );
 }
