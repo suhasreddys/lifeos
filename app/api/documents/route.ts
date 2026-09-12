@@ -196,7 +196,7 @@ export async function POST(request: Request) {
     const records = await getRecords();
     const fileBuffer = Buffer.from(await file.arrayBuffer());
 
-    await writeFile(path.join(docsDir, storedName), fileBuffer);
+    await writeFile(path.join(/*turbopackIgnore: true*/ docsDir, storedName), fileBuffer);
     await writeJsonStorage("documents", "documents.json", [record, ...records]);
 
     // Trigger Gemini Auto-Categorization & Syncing in background safely
