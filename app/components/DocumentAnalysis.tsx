@@ -63,9 +63,9 @@ export default function DocumentAnalysis({ documentId }: { documentId: string })
             type="button"
             onClick={deleteDocument}
             title="Delete Document"
-            style={{ width: "auto", padding: "0 14px", fontWeight: "700", gap: "6px" }}
+            style={{ width: "auto", padding: "8px 16px", fontWeight: "750", gap: "6px" }}
           >
-            🗑️ Delete Document
+            Delete Document
           </button>
         </div>
       </div>

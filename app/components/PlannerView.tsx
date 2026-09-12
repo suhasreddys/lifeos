@@ -666,26 +666,19 @@ export default function PlannerView() {
                             onClick={() => handleDeleteScheduleBlock(idx)}
                             title="Remove Schedule Block"
                             aria-label="Remove Schedule Block"
-                            style={{
-                              background: "transparent",
+                             style={{
+                              background: "#ef4444",
                               border: "none",
-                              color: "var(--muted)",
+                              color: "#ffffff",
                               cursor: "pointer",
-                              fontSize: "0.95rem",
-                              padding: "2px 6px",
+                              fontSize: "0.76rem",
+                              fontWeight: 700,
+                              padding: "3px 8px",
                               borderRadius: 6,
                               transition: "all 0.2s"
                             }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.color = "#ef4444";
-                              e.currentTarget.style.background = "rgba(239, 68, 68, 0.15)";
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.color = "var(--muted)";
-                              e.currentTarget.style.background = "transparent";
-                            }}
                           >
-                            🗑️
+                            Delete
                           </button>
                         </div>
                       </div>

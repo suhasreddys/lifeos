@@ -173,7 +173,7 @@ export default function Home() {
                   title="Remove reminder"
                   aria-label="Remove reminder"
                 >
-                  🗑️
+                  Delete
                 </button>
               </div>
             ))}

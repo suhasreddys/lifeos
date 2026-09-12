@@ -252,7 +252,7 @@ export default function DocumentVault() {
                 title={`Delete ${document.name}`}
                 aria-label={`Delete ${document.name}`}
               >
-                🗑️
+                Delete
               </button>
             </div>
           );

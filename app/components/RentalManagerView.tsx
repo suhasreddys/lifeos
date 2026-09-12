@@ -445,7 +445,7 @@ export default function RentalManagerView() {
                   <span style={{ fontSize: "0.8rem", color: "var(--muted)" }}>Deposit: {formatCurrency(prop.securityDeposit)}</span>
                   <div style={{ display: "flex", gap: 6 }}>
                     <button onClick={() => openEditModal("property", prop)} style={{ background: "none", border: "1px solid #cbd5e1", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontSize: "0.8rem" }}>✏️ Edit</button>
-                    <button onClick={() => handleDelete("properties", prop.id, prop.name)} style={{ background: "none", border: "1px solid #fca5a5", color: "#ef4444", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontSize: "0.8rem" }}>🗑️</button>
+                    <button onClick={() => handleDelete("properties", prop.id, prop.name)} style={{ background: "#ef4444", border: 0, color: "#ffffff", borderRadius: 6, padding: "3px 10px", cursor: "pointer", fontSize: "0.78rem", fontWeight: 700 }}>Delete</button>
                   </div>
                 </div>
               </div>
@@ -458,15 +458,14 @@ export default function RentalManagerView() {
         {activeTab === "payments" && (
           <div>
             <h3 style={{ marginBottom: 12, fontSize: "1.1rem" }}>Rent Payments Record</h3>
-            <div style={{ overflowX: "auto", marginBottom: 28 }}>
+            <div style={{ overflowX: "auto" }}>
               <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: "0.9rem" }}>
                 <thead>
                   <tr style={{ borderBottom: "2px solid rgba(0,0,0,0.1)", background: "rgba(0,0,0,0.02)" }}>
-                    <th style={{ padding: 10 }}>Date</th>
-                    <th style={{ padding: 10 }}>Property / Unit</th>
+                    <th style={{ padding: 10 }}>Property</th>
                     <th style={{ padding: 10 }}>Tenant</th>
                     <th style={{ padding: 10 }}>Period</th>
-                    <th style={{ padding: 10 }}>Method</th>
+                    <th style={{ padding: 10 }}>Payment Method</th>
                     <th style={{ padding: 10 }}>Amount</th>
                     <th style={{ padding: 10 }}>Status</th>
                     <th style={{ padding: 10 }}>Actions</th>
@@ -475,7 +474,6 @@ export default function RentalManagerView() {
                 <tbody>
                   {data.payments.map((p) => (
                     <tr key={p.id} style={{ borderBottom: "1px solid rgba(0,0,0,0.05)" }}>
-                      <td style={{ padding: 10 }}>{p.paymentDate}</td>
                       <td style={{ padding: 10, fontWeight: 600 }}>{p.propertyName}</td>
                       <td style={{ padding: 10 }}>{p.tenantName}</td>
                       <td style={{ padding: 10 }}>{p.period}</td>
@@ -487,7 +485,7 @@ export default function RentalManagerView() {
                       <td style={{ padding: 10 }}>
                         <div style={{ display: "flex", gap: 4 }}>
                           <button onClick={() => openEditModal("payment", p)} style={{ background: "none", border: "1px solid #cbd5e1", borderRadius: 4, padding: "2px 6px", cursor: "pointer", fontSize: "0.78rem" }}>✏️ Edit</button>
-                          <button onClick={() => handleDelete("payments", p.id, `${p.propertyName} Payment`)} style={{ background: "none", border: "1px solid #fca5a5", color: "#ef4444", borderRadius: 4, padding: "2px 6px", cursor: "pointer", fontSize: "0.78rem" }}>🗑️</button>
+                          <button onClick={() => handleDelete("payments", p.id, `${p.propertyName} Payment`)} style={{ background: "#ef4444", border: 0, color: "#ffffff", borderRadius: 6, padding: "2px 8px", cursor: "pointer", fontSize: "0.76rem", fontWeight: 700 }}>Delete</button>
                         </div>
                       </td>
                     </tr>
@@ -522,7 +520,7 @@ export default function RentalManagerView() {
                         <span className="reminder-tag reminder-tag--action">{d.status}</span>
                       </td>
                       <td style={{ padding: 10 }}>
-                        <button onClick={() => handleDelete("deposits", d.id, `${d.propertyName} Deposit`)} style={{ background: "none", border: "1px solid #fca5a5", color: "#ef4444", borderRadius: 4, padding: "2px 6px", cursor: "pointer", fontSize: "0.78rem" }}>🗑️</button>
+                        <button onClick={() => handleDelete("deposits", d.id, `${d.propertyName} Deposit`)} style={{ background: "#ef4444", border: 0, color: "#ffffff", borderRadius: 6, padding: "2px 8px", cursor: "pointer", fontSize: "0.76rem", fontWeight: 700 }}>Delete</button>
                       </td>
                     </tr>
                   ))}
@@ -555,7 +553,7 @@ export default function RentalManagerView() {
 
                 <div style={{ display: "flex", justifyContent: "flex-end", gap: 6, borderTop: "1px solid rgba(0,0,0,0.06)", paddingTop: 8, marginTop: 8 }}>
                   <button onClick={() => openEditModal("maintenance", maint)} style={{ background: "none", border: "1px solid #cbd5e1", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontSize: "0.8rem" }}>✏️ Edit</button>
-                  <button onClick={() => handleDelete("maintenance", maint.id, maint.title)} style={{ background: "none", border: "1px solid #fca5a5", color: "#ef4444", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontSize: "0.8rem" }}>🗑️</button>
+                  <button onClick={() => handleDelete("maintenance", maint.id, maint.title)} style={{ background: "#ef4444", border: 0, color: "#ffffff", borderRadius: 6, padding: "3px 10px", cursor: "pointer", fontSize: "0.78rem", fontWeight: 700 }}>Delete</button>
                 </div>
               </div>
             ))}
@@ -593,7 +591,7 @@ export default function RentalManagerView() {
                     <td style={{ padding: 10 }}>
                       <div style={{ display: "flex", gap: 4 }}>
                         <button onClick={() => openEditModal("meter", mr)} style={{ background: "none", border: "1px solid #cbd5e1", borderRadius: 4, padding: "2px 6px", cursor: "pointer", fontSize: "0.78rem" }}>✏️ Edit</button>
-                        <button onClick={() => handleDelete("meterReadings", mr.id, `${mr.meterType} Reading`)} style={{ background: "none", border: "1px solid #fca5a5", color: "#ef4444", borderRadius: 4, padding: "2px 6px", cursor: "pointer", fontSize: "0.78rem" }}>🗑️</button>
+                        <button onClick={() => handleDelete("meterReadings", mr.id, `${mr.meterType} Reading`)} style={{ background: "#ef4444", border: 0, color: "#ffffff", borderRadius: 6, padding: "2px 8px", cursor: "pointer", fontSize: "0.76rem", fontWeight: 700 }}>Delete</button>
                       </div>
                     </td>
                   </tr>
@@ -622,7 +620,7 @@ export default function RentalManagerView() {
 
                   <div style={{ display: "flex", justifyContent: "flex-end", gap: 6, borderTop: "1px solid rgba(0,0,0,0.06)", paddingTop: 8, marginTop: 8 }}>
                     <button onClick={() => openEditModal("notice", not)} style={{ background: "none", border: "1px solid #cbd5e1", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontSize: "0.8rem" }}>✏️ Edit</button>
-                    <button onClick={() => handleDelete("notices", not.id, not.noticeType)} style={{ background: "none", border: "1px solid #fca5a5", color: "#ef4444", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontSize: "0.8rem" }}>🗑️</button>
+                    <button onClick={() => handleDelete("notices", not.id, not.noticeType)} style={{ background: "#ef4444", border: 0, color: "#ffffff", borderRadius: 6, padding: "3px 10px", cursor: "pointer", fontSize: "0.78rem", fontWeight: 700 }}>Delete</button>
                   </div>
                 </div>
               ))}
@@ -649,7 +647,7 @@ export default function RentalManagerView() {
 
                   <div style={{ display: "flex", justifyContent: "flex-end", gap: 6, borderTop: "1px solid rgba(0,0,0,0.06)", paddingTop: 8, marginTop: 8 }}>
                     <button onClick={() => openEditModal("inspection", insp)} style={{ background: "none", border: "1px solid #cbd5e1", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontSize: "0.8rem" }}>✏️ Edit</button>
-                    <button onClick={() => handleDelete("inspections", insp.id, `${insp.type} Inspection`)} style={{ background: "none", border: "1px solid #fca5a5", color: "#ef4444", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontSize: "0.8rem" }}>🗑️</button>
+                    <button onClick={() => handleDelete("inspections", insp.id, `${insp.type} Inspection`)} style={{ background: "#ef4444", border: 0, color: "#ffffff", borderRadius: 6, padding: "3px 10px", cursor: "pointer", fontSize: "0.78rem", fontWeight: 700 }}>Delete</button>
                   </div>
                 </div>
               ))}

@@ -196,28 +196,21 @@ export default function TasksView() {
                   title="Remove Task"
                   aria-label="Remove Task"
                   style={{
-                    background: "transparent",
+                    background: "#ef4444",
                     border: "none",
-                    color: "var(--muted)",
+                    color: "#ffffff",
                     cursor: "pointer",
-                    fontSize: "1.05rem",
-                    padding: "6px 10px",
-                    borderRadius: 8,
+                    fontSize: "0.8rem",
+                    fontWeight: 700,
+                    padding: "4px 10px",
+                    borderRadius: 6,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     transition: "all 0.2s"
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#ef4444";
-                    e.currentTarget.style.background = "rgba(239, 68, 68, 0.15)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "var(--muted)";
-                    e.currentTarget.style.background = "transparent";
-                  }}
                 >
-                  🗑️
+                  Delete
                 </button>
               </div>
             ))}
@@ -289,7 +282,7 @@ export default function TasksView() {
         <div className="modal-backdrop" onClick={() => setTaskToConfirm(null)}>
           <div className="modal-card" onClick={(e) => e.stopPropagation()} style={{ maxWidth: 440, textAlign: "center" }}>
             <div style={{ fontSize: "2.5rem", marginBottom: "12px" }}>
-              {taskToConfirm.action === "complete" ? "✅" : "🗑️"}
+              {taskToConfirm.action === "complete" ? "✅" : "⚠️"}
             </div>
             <h2 style={{ marginBottom: "8px" }}>
               {taskToConfirm.action === "complete" ? "Is this task complete?" : "Remove Task?"}
