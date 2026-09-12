@@ -4206,5 +4206,13 @@
     "category": "Key Date",
     "description": "Sri swaminarayan gurukul pu college",
     "createdAt": "2026-09-12T06:59:27.002Z"
+  },
+  {
+    "id": "auto-kd-d97c5c53-b30d-4ed0-9896-cfc8c640d6fc-0",
+    "title": "Report Generation Date (VTU_SGPA_Report_1BC23AI024 (5).pdf)",
+    "date": "2026-05-22",
+    "category": "Key Date",
+    "description": "Date when the SGPA report was generated",
+    "createdAt": "2026-09-12T07:07:23.886Z"
   }
 ]

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { callGeminiApi } from "../../../../lib/gemini";
+import { readJsonStorage } from "@/lib/storage";
 
 export type YouTubeQuizQuestion = {
   id: string;
@@ -31,6 +32,7 @@ export type YouTubeAnalysisResult = {
   travelGuide?: {
     destination: string;
     overview: string;
+    calendarFitNote?: string;
     itinerary: Array<{ dayOrPhase: string; activities: string[] }>;
     topAttractions: string[];
     packingChecklist: string[];
@@ -104,6 +106,23 @@ export async function POST(request: Request) {
       }
     } catch {}
 
+    // Gather Calendar & Public Holidays context to recommend specific travel dates and long weekends
+    let calendarContext = "";
+    try {
+      const events = await readJsonStorage<any[]>("calendar", "events.json", []);
+      const holidaysAndEvents: string[] = [];
+      events.forEach((e) => {
+        if (e.title && e.date) {
+          holidaysAndEvents.push(`- ${e.date}: ${e.title} (${e.category || "Event"})`);
+        }
+      });
+
+      if (holidaysAndEvents.length > 0) {
+        calendarContext = "UPCOMING USER CALENDAR EVENTS & PUBLIC HOLIDAYS:\n" + 
+          holidaysAndEvents.slice(0, 25).join("\n") + "\n\n";
+      }
+    } catch {}
+
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       return NextResponse.json({ error: "GEMINI_API_KEY is missing in .env.local." }, { status: 500 });
@@ -118,6 +137,7 @@ URL: ${trimmedUrl}
 Title: "${videoTitle}"
 Author/Channel: "${authorName}"
 
+${calendarContext}
 Determine if this video is primarily about:
 - "study" (Educational, lectures, coding tutorials, science, history, academic concepts)
 - "travel" (Travel guides, vlogs, destination tours, places to visit, trip advice)
@@ -166,6 +186,7 @@ IF "contentType" IS "travel":
   "travelGuide": {
     "destination": "string (City/Country/Region name)",
     "overview": "string",
+    "calendarFitNote": "string (CROSS-REFERENCE the UPCOMING USER CALENDAR EVENTS & PUBLIC HOLIDAYS provided above. Recommend specific upcoming public holiday dates, long weekend dates, or optimal leave dates from the calendar to visit this destination)",
     "itinerary": [
       {
         "dayOrPhase": "Day 1 / Morning",
@@ -183,7 +204,7 @@ IF "contentType" IS "travel":
       "notes": "string"
     }
   ]
-}
+},
 
 IF "contentType" IS "general":
 {

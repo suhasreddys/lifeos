@@ -426,13 +426,40 @@ export default function PlannerView() {
 
           {/* MODE B: Travel Guide & Itinerary */}
           {youtubeResult.contentType === "travel" && youtubeResult.travelGuide && (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24 }}>
-              {/* Column 1: Itinerary & Attractions */}
-              <div>
-                <div className="section-heading" style={{ marginBottom: 12 }}>
-                  <h3>✈️ Destination Itinerary: {youtubeResult.travelGuide.destination}</h3>
-                  <span className="result-count">{youtubeResult.travelGuide.itinerary?.length || 0} phase(s)</span>
+            <div>
+              {youtubeResult.travelGuide.calendarFitNote && (
+                <div
+                  style={{
+                    background: "linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%)",
+                    border: "1px solid rgba(99, 102, 241, 0.35)",
+                    borderRadius: 14,
+                    padding: "16px 20px",
+                    marginBottom: 20,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 14,
+                    boxShadow: "var(--shadow-sm)"
+                  }}
+                >
+                  <span style={{ fontSize: "1.6rem", flexShrink: 0 }}>📅</span>
+                  <div>
+                    <strong style={{ fontSize: "0.95rem", color: "var(--brand, #818cf8)", display: "block", marginBottom: 4 }}>
+                      LifeOS Calendar Holiday & Recommended Travel Window:
+                    </strong>
+                    <span style={{ fontSize: "0.88rem", color: "var(--ink)", lineHeight: 1.45 }}>
+                      {youtubeResult.travelGuide.calendarFitNote}
+                    </span>
+                  </div>
                 </div>
+              )}
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24 }}>
+                {/* Column 1: Itinerary & Attractions */}
+                <div>
+                  <div className="section-heading" style={{ marginBottom: 12 }}>
+                    <h3>✈️ Destination Itinerary: {youtubeResult.travelGuide.destination}</h3>
+                    <span className="result-count">{youtubeResult.travelGuide.itinerary?.length || 0} phase(s)</span>
+                  </div>
 
                 <div style={{ display: "grid", gap: 12 }}>
                   {youtubeResult.travelGuide.itinerary?.map((phase, idx) => (
@@ -486,7 +513,8 @@ export default function PlannerView() {
                 </div>
               </div>
             </div>
-          )}
+          </div>
+        )}
         </section>
       )}
 
