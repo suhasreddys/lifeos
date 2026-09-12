@@ -72,6 +72,24 @@ export default function DocumentVault() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState("");
+  const [isAlertDismissed, setIsAlertDismissed] = useState(false);
+
+  useEffect(() => {
+    try {
+      if (typeof window !== "undefined" && window.localStorage.getItem("lifeos_vault_alert_dismissed") === "true") {
+        setIsAlertDismissed(true);
+      }
+    } catch {}
+  }, []);
+
+  function dismissAlert() {
+    setIsAlertDismissed(true);
+    try {
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem("lifeos_vault_alert_dismissed", "true");
+      }
+    } catch {}
+  }
 
   useEffect(() => {
     fetch("/api/documents")
@@ -157,13 +175,21 @@ export default function DocumentVault() {
 
   return (
     <>
-      {urgentDocuments.length > 0 && (
+      {!isAlertDismissed && urgentDocuments.length > 0 && (
         <section className="expiry-alert-banner" aria-label="Urgent document alerts">
           <span className="expiry-alert-icon">⚠️</span>
           <div>
             <strong>Reminders & Renewal Alerts</strong>
             <p>You have {urgentDocuments.length} document(s) requiring attention or with upcoming renewal dates.</p>
           </div>
+          <button
+            className="alert-dismiss-btn"
+            type="button"
+            onClick={dismissAlert}
+            title="Dismiss warning banner"
+          >
+            ✕ Dismiss
+          </button>
         </section>
       )}
 
