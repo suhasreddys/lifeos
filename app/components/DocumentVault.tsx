@@ -77,20 +77,24 @@ export default function DocumentVault() {
       const responseText = await response.text();
       let result: any = {};
       try {
-        result = responseText ? JSON.parse(responseText) : {};
+        result = responseText.trim() ? JSON.parse(responseText.trim()) : {};
       } catch {
-        throw new Error(`Server returned status ${response.status}. Please check your connection or try a smaller file.`);
+        throw new Error(
+          response.ok
+            ? "Document was uploaded, but the server response could not be read. Please refresh your vault."
+            : `Could not save document (Server status: ${response.status}). Please try a smaller file.`
+        );
       }
 
       if (!response.ok) {
-        throw new Error(result.error ?? `Could not save document (${response.status})`);
+        throw new Error(result.error ?? `Could not save document (Server status: ${response.status})`);
       }
 
       const document = result as DocumentRecord;
-      setDocuments((current) => [document, ...current]);
+      setDocuments((current) => [document, ...current.filter((d) => d.id !== document.id)]);
       setSelectedFile(null);
       if (inputRef.current) inputRef.current.value = "";
-      setMessage("Document saved! Gemini AI is automatically categorizing & analyzing your file.");
+      setMessage("Document saved! Gemini AI has categorized & analyzed your file.");
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "We could not save that document. Please try again.");
     } finally {
