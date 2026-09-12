@@ -321,17 +321,31 @@ h1 { max-width: 720px; margin-bottom: 16px; font-size: clamp(40px, 6.5vw, 64px);
 .popover-footer input { flex: 1; padding: 10px 14px; border: 1px solid var(--input-border); border-radius: 10px; font: inherit; font-size: 13px; outline: 0; background: var(--input-bg); color: var(--ink); }
 .popover-send-btn { padding: 10px 16px; border: 0; border-radius: 10px; background: var(--brand); color: #fff; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
 
+/* Document Viewer & Header Styles */
+.viewer-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin: 32px 0 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.viewer-header h1 { margin: 6px 0 8px; font-size: 28px; font-weight: 850; letter-spacing: -.6px; color: var(--ink); line-height: 1.25; word-break: break-word; }
+.viewer-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.download-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border: 1px solid var(--brand); border-radius: 14px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(139, 92, 246, 0.25) 100%); color: #c084fc; font: inherit; font-size: 14px; font-weight: 750; text-decoration: none; transition: all 160ms ease; box-shadow: var(--shadow-sm); }
+.download-button:hover { transform: translateY(-2px); background: var(--brand); color: #fff; box-shadow: var(--shadow-md); }
+
+.document-viewer-container { width: 100%; margin-bottom: 40px; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); background: #0f172a; box-shadow: var(--shadow-md); }
+.document-viewer { width: 100%; height: 75vh; min-height: 550px; max-height: 850px; border: 0; display: block; background: #0f172a; }
+
 @media (max-width: 720px) {
   .app-shell { padding: 20px 18px 110px; }
   .topbar__date { display: none; }
   .hero, .vault-hero { padding: 48px 0 32px; }
   .overview, .life-card-grid, .insights, .reminders-grid { grid-template-columns: 1fr; }
-  .vault-hero, .vault-summary, .viewer-header, .analysis-heading, .calendar-header-toolbar { align-items: flex-start; flex-direction: column; }
+  .vault-hero, .vault-summary, .analysis-heading, .calendar-header-toolbar { align-items: flex-start; flex-direction: column; }
+  .viewer-header { flex-direction: column; align-items: flex-start; gap: 16px; margin: 20px 0 16px; }
+  .viewer-header h1 { font-size: 22px; }
+  .viewer-actions { width: 100%; }
+  .download-button { width: 100%; }
   .vault-summary div { width: 100%; padding-bottom: 14px; border-right: 0; border-bottom: 1px solid var(--line); }
   .category-grid { grid-template-columns: repeat(2, 1fr); }
   .upload-form { grid-template-columns: 1fr; }
   .upload-form .primary-button { width: 100%; }
-  .document-viewer { min-height: 55vh; }
+  .document-viewer { height: 60vh; min-height: 420px; }
   .insights article { grid-column: span 1; }
   .calendar-day { min-height: 64px; padding: 6px; }
   .floating-ai-wrapper { bottom: 18px; right: 18px; }
