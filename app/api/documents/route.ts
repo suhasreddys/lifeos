@@ -46,7 +46,7 @@ async function autoCategorizeAndSync(docId: string, fileName: string, fileBuffer
     const promptText = `You are an expert AI document organizer for LifeOS.
 Analyze the document text or image below and return JSON:
 {
-  "detectedCategory": "Agreements|Bills|Insurance|Identity|Financial|Medical|General",
+  "detectedCategory": "Agreements|Certificates|IDs & records|Bills|Insurance|General",
   "isLeaseAgreement": boolean,
   "propertyName": "string",
   "unit": "string",
@@ -182,6 +182,22 @@ export async function POST(request: Request) {
       return Response.json({ error: "Use a PDF, Word document, PNG, JPG, or WEBP file." }, { status: 400 });
     }
 
+    const lowerName = file.name.toLowerCase();
+    let initialCategory = category;
+    if (initialCategory === "General" || !initialCategory) {
+      if (/sgpa|report|grade|mark|degree|result|college|school|resume|cv|certificate|transcript/.test(lowerName)) {
+        initialCategory = "Certificates";
+      } else if (/lease|rent|agreement|contract/.test(lowerName)) {
+        initialCategory = "Agreements";
+      } else if (/passport|aadhaar|license|id|identity|voter/.test(lowerName)) {
+        initialCategory = "IDs & records";
+      } else if (/bill|receipt|invoice|statement|tax/.test(lowerName)) {
+        initialCategory = "Bills";
+      } else if (/insurance|policy|claim|health|medical/.test(lowerName)) {
+        initialCategory = "Insurance";
+      }
+    }
+
     const id = crypto.randomUUID();
     const storedName = `${id}.${extension}`;
     const record: DocumentRecord = {
@@ -190,7 +206,7 @@ export async function POST(request: Request) {
       storedName,
       size: file.size,
       type: file.type || (extension === "pdf" ? "application/pdf" : "application/octet-stream"),
-      category,
+      category: initialCategory,
       uploadedAt: new Date().toISOString()
     };
     const records = await getRecords();

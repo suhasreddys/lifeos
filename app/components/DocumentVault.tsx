@@ -4,7 +4,45 @@ import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { DocumentRecord } from "../api/documents/route";
 
-const categories = ["Agreements", "Certificates", "IDs & records", "Bills", "Insurance", "Other"];
+const categories = ["Agreements", "Certificates", "IDs & records", "Bills", "Insurance", "General"];
+const categoryIcons = ["✦", "✓", "▣", "₹", "♡", "📁"];
+const categoryDescriptions = [
+  "Contracts and leases",
+  "Education and achievements",
+  "Personal identification",
+  "Receipts and statements",
+  "Policies and claims",
+  "General & uncategorized files",
+];
+
+function matchCategory(docCategory: string, targetCategory: string): boolean {
+  if (targetCategory === "All") return true;
+  const doc = (docCategory || "").toLowerCase().trim();
+  const target = (targetCategory || "").toLowerCase().trim();
+
+  if (doc === target) return true;
+
+  if (target === "certificates") {
+    return doc.includes("certif") || doc.includes("degree") || doc.includes("grade") || doc.includes("sgpa") || doc.includes("report") || doc.includes("resume") || doc.includes("edu");
+  }
+  if (target === "ids & records") {
+    return doc.includes("id") || doc.includes("ident") || doc.includes("passport") || doc.includes("record");
+  }
+  if (target === "agreements") {
+    return doc.includes("agree") || doc.includes("lease") || doc.includes("contract") || doc.includes("rent");
+  }
+  if (target === "bills") {
+    return doc.includes("bill") || doc.includes("receipt") || doc.includes("invoice") || doc.includes("finan");
+  }
+  if (target === "insurance") {
+    return doc.includes("insur") || doc.includes("policy") || doc.includes("claim") || doc.includes("medic");
+  }
+  if (target === "general") {
+    return doc === "general" || doc === "other" || (!matchCategory(docCategory, "Agreements") && !matchCategory(docCategory, "Certificates") && !matchCategory(docCategory, "IDs & records") && !matchCategory(docCategory, "Bills") && !matchCategory(docCategory, "Insurance"));
+  }
+  return false;
+}
+
 function formatSize(size: number) {
   if (size < 1024 * 1024) return `${Math.max(1, Math.round(size / 1024))} KB`;
   return `${(size / (1024 * 1024)).toFixed(1)} MB`;
@@ -50,7 +88,7 @@ export default function DocumentVault() {
 
   const visibleDocuments = documents.filter((document) =>
     document.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-    (activeCategory === "All" || document.category === activeCategory),
+    matchCategory(document.category, activeCategory),
   );
 
   const urgentDocuments = documents.filter((doc) => {
@@ -145,7 +183,23 @@ export default function DocumentVault() {
 
       <section className="section" aria-labelledby="categories-title">
         <div className="section-heading"><div><p className="eyebrow">CATEGORIES</p><h2 id="categories-title">Organize from the start</h2></div></div>
-        <div className="category-grid">{categories.slice(0, 5).map((item, index) => <button className={`category-card ${activeCategory === item ? "category-card--active" : ""}`} key={item} type="button" onClick={() => setActiveCategory(activeCategory === item ? "All" : item)}><span className="category-card__icon" aria-hidden="true">{["✦", "✓", "▣", "₹", "♡"][index]}</span><h3>{item}</h3><p>{["Contracts and leases", "Education and achievements", "Personal identification", "Receipts and statements", "Policies and claims"][index]}</p><span className="category-card__count">{documents.filter((document) => document.category === item).length} documents</span></button>)}</div>
+        <div className="category-grid">
+          {categories.map((item, index) => (
+            <button
+              className={`category-card ${activeCategory === item ? "category-card--active" : ""}`}
+              key={item}
+              type="button"
+              onClick={() => setActiveCategory(activeCategory === item ? "All" : item)}
+            >
+              <span className="category-card__icon" aria-hidden="true">{categoryIcons[index]}</span>
+              <h3>{item}</h3>
+              <p>{categoryDescriptions[index]}</p>
+              <span className="category-card__count">
+                {documents.filter((document) => matchCategory(document.category, item)).length} {documents.filter((document) => matchCategory(document.category, item)).length === 1 ? "document" : "documents"}
+              </span>
+            </button>
+          ))}
+        </div>
       </section>
 
       <section className="document-list section" aria-labelledby="documents-title">

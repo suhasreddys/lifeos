@@ -1,5 +1,207 @@
 [
   {
+    "id": "plan-1789197354114",
+    "date": "2026-09-12",
+    "mode": "balanced",
+    "intentions": "https://www.youtube.com/watch?v=8c74mXV2lJ0&list=PLlGueSbLhZoBRnTsGiDJeTXuQCALOTN07",
+    "targetHours": 6,
+    "focusMantra": "Embrace structured learning and consistent execution to turn every challenge into a stepping stone for academic excellence.",
+    "summary": "Today's balanced schedule prioritizes foundational Python programming in Kannada alongside backlog review and academic planning. We leverage your free Saturday window to strengthen your core technical skills and address pending university requirements.",
+    "schedule": [
+      {
+        "timeBlock": "08:30 AM - 09:00 AM",
+        "title": "Morning Kickoff, Priority Planning & Hydration",
+        "category": "Personal",
+        "description": "Start the day with hydration, light stretching, and reviewing today's balanced focus targets.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Drink 500ml water and review daily objectives",
+          "Set up study workspace for Python learning"
+        ]
+      },
+      {
+        "timeBlock": "09:00 AM - 10:30 AM",
+        "title": "Deep Work / Study Focus Sprint 1: Python Basics in Kannada",
+        "category": "Study",
+        "description": "Begin the dedicated study session for 'Python in Kannada - Introduction to Coding and Python'.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Watch the introductory YouTube tutorial by Engineering in Kannada",
+          "Take notes on basic syntax, variables, and data types"
+        ]
+      },
+      {
+        "timeBlock": "10:30 AM - 10:45 AM",
+        "title": "Refresh Break",
+        "category": "Break",
+        "description": "15-minute physical stretch, eye rest, and hydration to maintain cognitive energy.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Step away from the screen and perform eye exercises",
+          "Refill water bottle"
+        ]
+      },
+      {
+        "timeBlock": "10:45 AM - 12:15 PM",
+        "title": "Deep Work / Study Focus Sprint 2: Coding Concepts & Practice",
+        "category": "Study",
+        "description": "Continue the video study session, focusing on core execution and hands-on code examples.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Complete Topic Breakdown practice questions on Python introduction",
+          "Test basic code snippets in a local Python environment"
+        ]
+      },
+      {
+        "timeBlock": "12:15 PM - 01:15 PM",
+        "title": "Healthy Lunch Reset & Mindful Disconnect",
+        "category": "Personal",
+        "description": "Enjoy a nutritious meal away from screens to recharge for the afternoon.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Eat a balanced lunch and take a short walk"
+        ]
+      },
+      {
+        "timeBlock": "01:15 PM - 03:00 PM",
+        "title": "Afternoon Focus Sprint 3: Academic Backlog & Subject Review",
+        "category": "Study",
+        "description": "Review failed subjects (BCS501 Software Engineering & Project Management, BCS502 Computer Networks) referencing your SGPA report.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Analyze weak areas in BCS501 and BCS502 syllabi",
+          "Draft talking points and questions for academic advisor consultation"
+        ]
+      },
+      {
+        "timeBlock": "03:00 PM - 03:20 PM",
+        "title": "Mid-Afternoon Movement & Coffee/Tea Reset",
+        "category": "Break",
+        "description": "Re-energize with a brief physical reset and beverage.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Light stretching or walking around",
+          "Hydrate or enjoy a cup of tea/coffee"
+        ]
+      },
+      {
+        "timeBlock": "03:20 PM - 04:30 PM",
+        "title": "Life Admin, Pending Tasks Sync & Day Recap",
+        "category": "Deep Work",
+        "description": "Organize pending tasks, finalize administrative notes for backlog clearance, and recap the day.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Confirm advisor meeting action items",
+          "Organize notes from today's Python study session"
+        ]
+      },
+      {
+        "timeBlock": "05:00 PM onwards",
+        "title": "Personal Evening Recharge, Fitness & Family Time",
+        "category": "Personal",
+        "description": "Unwind, engage in physical activity, and prepare for the upcoming week and Ganesh Chaturthi holiday.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Evening workout or outdoor walk",
+          "Relax and disconnect for the evening"
+        ]
+      }
+    ],
+    "studyGuide": {
+      "topicBreakdown": [
+        {
+          "topic": "Python Introduction & Basics in Kannada",
+          "keyConcepts": [
+            "What is Coding and Programming",
+            "Introduction to Python Language",
+            "Setting up Python Environment",
+            "Basic Syntax and Print Statements",
+            "Variables and Data Types"
+          ],
+          "suggestedDurationMinutes": 90,
+          "focusStrategy": "Watch the video with active note-taking in Kannada/English, write down code snippets verbatim, and execute them locally to build muscle memory.",
+          "practiceQuestions": [
+            {
+              "question": "What is Python primarily classified as?",
+              "options": [
+                "A high-level interpreted programming language",
+                "A hardware component",
+                "A low-level assembly language",
+                "An operating system kernel"
+              ],
+              "correctIndex": 0,
+              "explanation": "Python is a high-level, interpreted programming language known for its readability and simplicity."
+            },
+            {
+              "question": "Which symbol is used in Python to write single-line comments?",
+              "options": [
+                "#",
+                "/*",
+                "//",
+                "<!--"
+              ],
+              "correctIndex": 0,
+              "explanation": "In Python, the hash symbol (#) is used to denote single-line comments."
+            },
+            {
+              "question": "Which of the following is a valid variable name in Python?",
+              "options": [
+                "my-variable",
+                "class",
+                "variable_2",
+                "2nd_variable"
+              ],
+              "correctIndex": 2,
+              "explanation": "Variable names cannot start with a number, cannot contain hyphens, and cannot be reserved keywords like 'class'. 'variable_2' is valid."
+            },
+            {
+              "question": "What function is used to output data to the console in Python?",
+              "options": [
+                "echo()",
+                "display()",
+                "write()",
+                "print()"
+              ],
+              "correctIndex": 3,
+              "explanation": "The built-in print() function is used to display output on the console in Python."
+            },
+            {
+              "question": "Which data type would be used to store a decimal number like 98.5 in Python?",
+              "options": [
+                "bool",
+                "str",
+                "int",
+                "float"
+              ],
+              "correctIndex": 3,
+              "explanation": "Numbers with decimal points are represented by the float data type in Python."
+            }
+          ]
+        }
+      ],
+      "focusTips": [
+        "Code along with the tutorial rather than just watching passively.",
+        "Pause the video when a new syntax is introduced and experiment with variations.",
+        "Use bilingual notes (Kannada terms paired with English code terms) for better retention."
+      ]
+    },
+    "actionItems": [
+      {
+        "title": "Review failed subjects: BCS501 Software Engineering & Project Management and BCS502 Computer Networks",
+        "category": "Work",
+        "priority": "High",
+        "notes": "Analyze SGPA report (5.73 SGPA) and identify core weak topics for backlog preparation."
+      },
+      {
+        "title": "Consult academic advisor regarding backlog clearance",
+        "category": "Work",
+        "priority": "High",
+        "notes": "Prepare questions and schedule a meeting to map out the backlog clearance strategy for Semester 5."
+      }
+    ],
+    "createdAt": "2026-09-12T07:15:54.114Z"
+  },
+  {
     "id": "plan-1789007128297",
     "date": "2026-09-10",
     "mode": "balanced",
