@@ -151,8 +151,8 @@ h1 { max-width: 720px; margin-bottom: 16px; font-size: clamp(40px, 6.5vw, 64px);
 .document-row h3 { margin-bottom: 4px; font-size: 16px; font-weight: 700; color: var(--ink); }
 .document-row p { margin-bottom: 0; color: var(--muted); font-size: 13px; }
 .document-open { margin-left: auto; color: var(--brand); font-size: 14px; font-weight: 750; flex-shrink: 0; }
-.delete-doc-button { display: inline-flex; align-items: center; justify-content: center; padding: 6px 14px; border: 0; border-radius: 10px; background: #ef4444; color: #ffffff; font: inherit; font-size: 13px; font-weight: 750; cursor: pointer; transition: all 140ms ease; flex-shrink: 0; }
-.delete-doc-button:hover { background: #dc2626; color: #ffffff; transform: translateY(-1px); }
+.delete-doc-button { display: inline-flex; align-items: center; justify-content: center; padding: 6px 14px; border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 10px; background: rgba(239, 68, 68, 0.15); color: #ef4444; font: inherit; font-size: 13px; font-weight: 750; cursor: pointer; transition: all 140ms ease; flex-shrink: 0; }
+.delete-doc-button:hover { background: #ef4444; color: #ffffff; border-color: #ef4444; transform: translateY(-1px); }
 
 .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
 .category-card { min-height: 180px; padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--card-bg); text-align: left; font: inherit; cursor: pointer; box-shadow: var(--shadow-sm); transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease; }
@@ -215,8 +215,8 @@ h1 { max-width: 720px; margin-bottom: 16px; font-size: clamp(40px, 6.5vw, 64px);
 .reminder-doc-name { color: var(--muted); font-size: 12px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .reminder-card h3 { margin: 0 0 6px; font-size: 16px; font-weight: 750; color: var(--ink); padding-right: 24px; }
 .reminder-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
-.delete-reminder-button { position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; justify-content: center; padding: 4px 10px; border: 0; border-radius: 8px; background: #ef4444; color: #ffffff; font: inherit; font-size: 11px; font-weight: 750; cursor: pointer; transition: all 140ms ease; z-index: 5; }
-.delete-reminder-button:hover { background: #dc2626; color: #ffffff; transform: scale(1.04); }
+.delete-reminder-button { position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; justify-content: center; padding: 4px 10px; border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 8px; background: rgba(239, 68, 68, 0.15); color: #ef4444; font: inherit; font-size: 11px; font-weight: 750; cursor: pointer; transition: all 140ms ease; z-index: 5; }
+.delete-reminder-button:hover { background: #ef4444; color: #ffffff; border-color: #ef4444; transform: scale(1.04); }
 
 /* Calendar & Tasks & Finance Views */
 .calendar-header-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }

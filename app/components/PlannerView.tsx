@@ -667,9 +667,9 @@ export default function PlannerView() {
                             title="Remove Schedule Block"
                             aria-label="Remove Schedule Block"
                              style={{
-                              background: "#ef4444",
-                              border: "none",
-                              color: "#ffffff",
+                              background: "rgba(239, 68, 68, 0.15)",
+                              border: "1px solid rgba(239, 68, 68, 0.35)",
+                              color: "#ef4444",
                               cursor: "pointer",
                               fontSize: "0.76rem",
                               fontWeight: 700,
