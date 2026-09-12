@@ -35,5 +35,51 @@ export default function DocumentAnalysis({ documentId }: { documentId: string })
     finally { setIsAnalyzing(false); }
   }
 
-  return <section className="analysis-panel" aria-labelledby="analysis-title"><div className="analysis-heading"><div><p className="eyebrow">LIFEOS AI · GEMINI</p><h2 id="analysis-title">Understand this PDF</h2><p>Powered by Google Gemini. AI can make mistakes—always verify against the original document.</p></div><button className="primary-button" type="button" onClick={analyze} disabled={isAnalyzing}>{isAnalyzing ? "Analyzing…" : "Analyze with AI"}</button></div>{message && <p className={`upload-message ${message.isError ? "upload-message--error" : ""}`} role="status">{message.text}</p>}{analysis && <div className="insights"><div><span>TYPE</span><strong>{analysis.documentType}</strong></div><div><span>EXPIRY / RENEWAL</span><strong>{analysis.expiryDate || "Not found"}</strong></div><div><span>CONFIDENCE</span><strong>{analysis.confidence}</strong></div><article><h3>Summary</h3><p>{analysis.summary}</p></article>{analysis.keyDates.length > 0 && <article><h3>Key dates</h3><ul>{analysis.keyDates.map((date) => <li key={`${date.label}-${date.date}`}><b>{date.label}: {date.date}</b> — {date.context}</li>)}</ul></article>}{analysis.actionItems.length > 0 && <article><h3>Suggested follow-ups</h3><ul>{analysis.actionItems.map((item) => <li key={item}>{item}</li>)}</ul></article>}</div>}</section>;
+  async function deleteDocument() {
+    if (!window.confirm("Are you sure you want to remove this document from your vault?")) return;
+    try {
+      const response = await fetch(`/api/documents/${documentId}`, { method: "DELETE" });
+      if (!response.ok) throw new Error("Failed to delete document.");
+      window.location.href = "/documents";
+    } catch (error) {
+      setMessage({ text: error instanceof Error ? error.message : "Failed to delete document.", isError: true });
+    }
+  }
+
+  return (
+    <section className="analysis-panel" aria-labelledby="analysis-title">
+      <div className="analysis-heading">
+        <div>
+          <p className="eyebrow">LIFEOS AI · GEMINI</p>
+          <h2 id="analysis-title">Understand this PDF</h2>
+          <p>Powered by Google Gemini. AI can make mistakes—always verify against the original document.</p>
+        </div>
+        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+          <button className="primary-button" type="button" onClick={analyze} disabled={isAnalyzing}>
+            {isAnalyzing ? "Analyzing…" : "Analyze with AI"}
+          </button>
+          <button
+            className="delete-doc-button"
+            type="button"
+            onClick={deleteDocument}
+            title="Delete Document"
+            style={{ width: "auto", padding: "0 14px", fontWeight: "700", gap: "6px" }}
+          >
+            🗑️ Delete Document
+          </button>
+        </div>
+      </div>
+      {message && <p className={`upload-message ${message.isError ? "upload-message--error" : ""}`} role="status">{message.text}</p>}
+      {analysis && (
+        <div className="insights">
+          <div><span>TYPE</span><strong>{analysis.documentType}</strong></div>
+          <div><span>EXPIRY / RENEWAL</span><strong>{analysis.expiryDate || "Not found"}</strong></div>
+          <div><span>CONFIDENCE</span><strong>{analysis.confidence}</strong></div>
+          <article><h3>Summary</h3><p>{analysis.summary}</p></article>
+          {analysis.keyDates.length > 0 && <article><h3>Key dates</h3><ul>{analysis.keyDates.map((date) => <li key={`${date.label}-${date.date}`}><b>{date.label}: {date.date}</b> — {date.context}</li>)}</ul></article>}
+          {analysis.actionItems.length > 0 && <article><h3>Suggested follow-ups</h3><ul>{analysis.actionItems.map((item) => <li key={item}>{item}</li>)}</ul></article>}
+        </div>
+      )}
+    </section>
+  );
 }

@@ -102,6 +102,21 @@ export default function DocumentVault() {
     }
   }
 
+  async function handleDelete(docId: string, docName: string) {
+    if (!window.confirm(`Are you sure you want to remove "${docName}" from your vault?`)) return;
+
+    try {
+      const response = await fetch(`/api/documents/${docId}`, { method: "DELETE" });
+      if (!response.ok) {
+        throw new Error("Could not remove document.");
+      }
+      setDocuments((current) => current.filter((d) => d.id !== docId));
+      setMessage(`"${docName}" has been removed from your vault.`);
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Failed to remove document.");
+    }
+  }
+
   return (
     <>
       {urgentDocuments.length > 0 && (
@@ -139,16 +154,27 @@ export default function DocumentVault() {
         {documents.length === 0 ? <div className="empty-state"><span className="empty-state__icon" aria-hidden="true">📄</span><h2>Your vault is ready</h2><p>Your uploaded documents will appear here.</p></div> : visibleDocuments.length === 0 ? <div className="empty-state"><span className="empty-state__icon" aria-hidden="true">⌕</span><h2>No matching documents</h2><p>Try a different search or choose another category.</p></div> : <div className="document-rows">{visibleDocuments.map((document) => {
           const status = getExpiryStatus(document);
           return (
-            <Link className="document-row" href={`/documents/${document.id}`} key={document.id}>
-              <span className="document-type">{documentIcon(document.type)}</span>
-              <div>
-                <h3>{document.name}</h3>
-                <p>{document.category} · {formatSize(document.size)} · Added {new Date(document.uploadedAt).toLocaleDateString()}</p>
-              </div>
-              {status && <span className={`status-badge status-badge--${status.type}`}>{status.label}</span>}
-              {document.analysis?.actionItems && document.analysis.actionItems.length > 0 && <span className="status-badge status-badge--action">Follow-up</span>}
-              <span className="document-open" aria-hidden="true">Open →</span>
-            </Link>
+            <div className="document-row" key={document.id}>
+              <Link className="document-row-content" href={`/documents/${document.id}`}>
+                <span className="document-type">{documentIcon(document.type)}</span>
+                <div>
+                  <h3>{document.name}</h3>
+                  <p>{document.category} · {formatSize(document.size)} · Added {new Date(document.uploadedAt).toLocaleDateString()}</p>
+                </div>
+                {status && <span className={`status-badge status-badge--${status.type}`}>{status.label}</span>}
+                {document.analysis?.actionItems && document.analysis.actionItems.length > 0 && <span className="status-badge status-badge--action">Follow-up</span>}
+                <span className="document-open" aria-hidden="true">Open →</span>
+              </Link>
+              <button
+                className="delete-doc-button"
+                type="button"
+                onClick={() => handleDelete(document.id, document.name)}
+                title={`Delete ${document.name}`}
+                aria-label={`Delete ${document.name}`}
+              >
+                🗑️
+              </button>
+            </div>
           );
         })}</div>}
       </section>

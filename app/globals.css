@@ -146,10 +146,13 @@ h1 { max-width: 720px; margin-bottom: 16px; font-size: clamp(40px, 6.5vw, 64px);
 .document-row { display: flex; align-items: center; gap: 16px; padding: 18px 22px; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit; transition: background 140ms ease; }
 .document-row:last-child { border-bottom: 0; }
 .document-row:hover { background: rgba(99, 102, 241, 0.05); }
+.document-row-content { display: flex; align-items: center; gap: 16px; flex: 1; min-width: 0; text-decoration: none; color: inherit; }
 .document-type { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 12px; background: rgba(239, 68, 68, 0.15); color: #ef4444; font-size: 12px; font-weight: 900; flex: 0 0 auto; }
 .document-row h3 { margin-bottom: 4px; font-size: 16px; font-weight: 700; color: var(--ink); }
 .document-row p { margin-bottom: 0; color: var(--muted); font-size: 13px; }
-.document-open { margin-left: auto; color: var(--brand); font-size: 14px; font-weight: 750; }
+.document-open { margin-left: auto; color: var(--brand); font-size: 14px; font-weight: 750; flex-shrink: 0; }
+.delete-doc-button { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 10px; background: rgba(239, 68, 68, 0.08); color: #ef4444; font-size: 15px; cursor: pointer; transition: all 140ms ease; flex-shrink: 0; }
+.delete-doc-button:hover { background: rgba(239, 68, 68, 0.25); border-color: #ef4444; transform: scale(1.06); }
 
 .category-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
 .category-card { min-height: 180px; padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--card-bg); text-align: left; font: inherit; cursor: pointer; box-shadow: var(--shadow-sm); transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease; }
