@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#0f172a">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LifeOS SMS Sync Service"
+        android:textColor="#ffffff"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Automatically intercepts incoming bank and UPI SMS notifications and forwards transaction data directly to your LifeOS account."
+        android:textColor="#94a3b8"
+        android:textSize="14sp"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status: Checking..."
+        android:textColor="#34d399"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:padding="12dp"
+        android:background="#1e293b"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LifeOS Webhook URL:"
+        android:textColor="#a5b4fc"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/et_webhook_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="https://your-domain.vercel.app/api/finance/webhook"
+        android:textColor="#ffffff"
+        android:textColorHint="#64748b"
+        android:background="#1e293b"
+        android:padding="12dp"
+        android:inputType="textUri"
+        android:textSize="14sp"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Configuration"
+        android:backgroundTint="#6366f1"
+        android:textColor="#ffffff"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test Webhook Sync"
+        android:backgroundTint="#334155"
+        android:textColor="#34d399"
+        android:padding="12dp" />
+
+</LinearLayout>
