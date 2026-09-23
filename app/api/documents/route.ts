@@ -206,17 +206,12 @@ export async function POST(request: Request) {
     await writeFile(path.join(/*turbopackIgnore: true*/ docsDir, storedName), fileBuffer);
     await writeJsonStorage("documents", "documents.json", [record, ...records], userId);
 
-    // Safely execute Gemini Auto-Categorization & Syncing
-    try {
-      await autoCategorizeAndSync(id, file.name, fileBuffer, record.type, category, userId);
-    } catch {
-      // Fail silently
-    }
+    // Fire background Gemini Auto-Categorization without delaying the POST response
+    autoCategorizeAndSync(id, file.name, fileBuffer, record.type, category, userId).catch((err) => {
+      console.error("Background auto-categorize error:", err);
+    });
 
-    const updatedRecords = await getRecords(userId);
-    const finalRecord = updatedRecords.find((r) => r.id === id) || record;
-
-    return Response.json(finalRecord, { status: 201 });
+    return Response.json(record, { status: 201 });
   } catch (err) {
     console.error("Document upload error:", err);
     return Response.json(

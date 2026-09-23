@@ -123,6 +123,60 @@ export default function DocumentVault() {
     return status?.type === "expired" || status?.type === "expiring" || (doc.analysis?.actionItems && doc.analysis.actionItems.length > 0);
   });
 
+async function compressImageForMobile(file: File): Promise<File> {
+  if (!file.type.includes("image") || file.size <= 2 * 1024 * 1024) {
+    return file;
+  }
+  return new Promise((resolve) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const maxWidth = 1920;
+      const maxHeight = 1920;
+      let width = img.width;
+      let height = img.height;
+
+      if (width > maxWidth || height > maxHeight) {
+        if (width > height) {
+          height = Math.round((height * maxWidth) / width);
+          width = maxWidth;
+        } else {
+          width = Math.round((width * maxHeight) / height);
+          height = maxHeight;
+        }
+      }
+
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) {
+        resolve(file);
+        return;
+      }
+      ctx.drawImage(img, 0, 0, width, height);
+      canvas.toBlob(
+        (blob) => {
+          if (blob) {
+            const compressedFile = new File([blob], file.name, {
+              type: "image/jpeg",
+              lastModified: Date.now(),
+            });
+            resolve(compressedFile);
+          } else {
+            resolve(file);
+          }
+        },
+        "image/jpeg",
+        0.82
+      );
+    };
+    img.onerror = () => resolve(file);
+    img.src = url;
+  });
+}
+
   async function handleUpload(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!selectedFile) {
@@ -134,8 +188,9 @@ export default function DocumentVault() {
     setMessage("");
 
     try {
+      const fileToUpload = await compressImageForMobile(selectedFile);
       const formData = new FormData();
-      formData.append("file", selectedFile);
+      formData.append("file", fileToUpload);
       formData.append("category", "General");
       const response = await fetch("/api/documents", { method: "POST", body: formData });
 
@@ -159,9 +214,13 @@ export default function DocumentVault() {
       setDocuments((current) => [document, ...current.filter((d) => d.id !== document.id)]);
       setSelectedFile(null);
       if (inputRef.current) inputRef.current.value = "";
-      setMessage("Document saved! Gemini AI has categorized & analyzed your file.");
+      setMessage("✨ Document saved successfully! Gemini AI has categorized & analyzed your file.");
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : "We could not save that document. Please try again.");
+      let errMsg = error instanceof Error ? error.message : "We could not save that document. Please try again.";
+      if (errMsg.includes("Failed to fetch") || errMsg.includes("NetworkError") || errMsg.includes("Load failed")) {
+        errMsg = "Mobile upload network error: File may be too large. Try uploading a photo or PDF under 4MB.";
+      }
+      setMessage(errMsg);
     } finally {
       setIsSaving(false);
     }
