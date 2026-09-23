@@ -75,7 +75,7 @@ function getExpiryStatus(document: DocumentRecord) {
 export default function DocumentVault() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [documents, setDocuments] = useState<DocumentRecord[]>([]);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [isSaving, setIsSaving] = useState(false);
@@ -106,9 +106,9 @@ export default function DocumentVault() {
       .catch(() => setMessage("Your saved documents could not be loaded."));
   }, []);
 
-  function chooseFile(event: ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0] ?? null;
-    setSelectedFile(file);
+  function chooseFiles(event: ChangeEvent<HTMLInputElement>) {
+    const files = Array.from(event.target.files ?? []);
+    setSelectedFiles(files);
     setMessage("");
   }
 
@@ -123,107 +123,152 @@ export default function DocumentVault() {
     return status?.type === "expired" || status?.type === "expiring" || (doc.analysis?.actionItems && doc.analysis.actionItems.length > 0);
   });
 
-async function compressImageForMobile(file: File): Promise<File> {
-  if (!file.type.includes("image") || file.size <= 2 * 1024 * 1024) {
-    return file;
-  }
-  return new Promise((resolve) => {
-    const img = new Image();
-    const url = URL.createObjectURL(file);
-    img.onload = () => {
-      URL.revokeObjectURL(url);
-      const maxWidth = 1920;
-      const maxHeight = 1920;
-      let width = img.width;
-      let height = img.height;
+  async function compressImageForMobile(file: File): Promise<File> {
+    if (!file.type.includes("image") || file.size <= 2 * 1024 * 1024) {
+      return file;
+    }
+    return new Promise((resolve) => {
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = () => {
+        URL.revokeObjectURL(url);
+        const maxWidth = 1920;
+        const maxHeight = 1920;
+        let width = img.width;
+        let height = img.height;
 
-      if (width > maxWidth || height > maxHeight) {
-        if (width > height) {
-          height = Math.round((height * maxWidth) / width);
-          width = maxWidth;
-        } else {
-          width = Math.round((width * maxHeight) / height);
-          height = maxHeight;
-        }
-      }
-
-      const canvas = document.createElement("canvas");
-      canvas.width = width;
-      canvas.height = height;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) {
-        resolve(file);
-        return;
-      }
-      ctx.drawImage(img, 0, 0, width, height);
-      canvas.toBlob(
-        (blob) => {
-          if (blob) {
-            const compressedFile = new File([blob], file.name, {
-              type: "image/jpeg",
-              lastModified: Date.now(),
-            });
-            resolve(compressedFile);
+        if (width > maxWidth || height > maxHeight) {
+          if (width > height) {
+            height = Math.round((height * maxWidth) / width);
+            width = maxWidth;
           } else {
-            resolve(file);
+            width = Math.round((width * maxHeight) / height);
+            height = maxHeight;
           }
-        },
-        "image/jpeg",
-        0.82
-      );
-    };
-    img.onerror = () => resolve(file);
-    img.src = url;
-  });
-}
+        }
+
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          resolve(file);
+          return;
+        }
+        ctx.drawImage(img, 0, 0, width, height);
+        canvas.toBlob(
+          (blob) => {
+            if (blob) {
+              const compressedFile = new File([blob], file.name, {
+                type: "image/jpeg",
+                lastModified: Date.now(),
+              });
+              resolve(compressedFile);
+            } else {
+              resolve(file);
+            }
+          },
+          "image/jpeg",
+          0.82
+        );
+      };
+      img.onerror = () => resolve(file);
+      img.src = url;
+    });
+  }
 
   async function handleUpload(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!selectedFile) {
-      setMessage("Choose a document before saving it to your vault.");
+    if (selectedFiles.length === 0) {
+      setMessage("Choose one or more documents before saving to your vault.");
       return;
     }
 
     setIsSaving(true);
-    setMessage("");
+    setMessage(`Starting upload for ${selectedFiles.length} file(s)...`);
 
-    try {
-      const fileToUpload = await compressImageForMobile(selectedFile);
-      const formData = new FormData();
-      formData.append("file", fileToUpload);
-      formData.append("category", "General");
-      const response = await fetch("/api/documents", { method: "POST", body: formData });
+    const uploadedRecords: DocumentRecord[] = [];
+    let failedCount = 0;
 
-      const responseText = await response.text();
-      let result: any = {};
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const originalFile = selectedFiles[i];
+      setMessage(`Uploading ${i + 1} of ${selectedFiles.length}: "${originalFile.name}"...`);
+
       try {
-        result = responseText.trim() ? JSON.parse(responseText.trim()) : {};
-      } catch {
-        throw new Error(
-          response.ok
-            ? "Document was uploaded, but the server response could not be read. Please refresh your vault."
-            : `Could not save document (Server status: ${response.status}). Please try a smaller file.`
-        );
-      }
+        const fileToUpload = await compressImageForMobile(originalFile);
+        const chunkSize = 2 * 1024 * 1024; // 2MB chunks for serverless safety
 
-      if (!response.ok) {
-        throw new Error(result.error ?? `Could not save document (Server status: ${response.status})`);
-      }
+        let docRecord: DocumentRecord;
 
-      const document = result as DocumentRecord;
-      setDocuments((current) => [document, ...current.filter((d) => d.id !== document.id)]);
-      setSelectedFile(null);
-      if (inputRef.current) inputRef.current.value = "";
-      setMessage("✨ Document saved successfully! Gemini AI has categorized & analyzed your file.");
-    } catch (error) {
-      let errMsg = error instanceof Error ? error.message : "We could not save that document. Please try again.";
-      if (errMsg.includes("Failed to fetch") || errMsg.includes("NetworkError") || errMsg.includes("Load failed")) {
-        errMsg = "Mobile upload network error: File may be too large. Try uploading a photo or PDF under 4MB.";
+        if (fileToUpload.size > 3 * 1024 * 1024) {
+          // Large PDF or file -> Chunked Upload
+          const uploadId = `up-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
+          const totalChunks = Math.ceil(fileToUpload.size / chunkSize);
+
+          for (let chunkIdx = 0; chunkIdx < totalChunks; chunkIdx++) {
+            const start = chunkIdx * chunkSize;
+            const end = Math.min(fileToUpload.size, start + chunkSize);
+            const chunkBlob = fileToUpload.slice(start, end);
+            const chunkFile = new File([chunkBlob], fileToUpload.name, { type: fileToUpload.type });
+
+            const chunkForm = new FormData();
+            chunkForm.append("chunk", chunkFile);
+            chunkForm.append("uploadId", uploadId);
+            chunkForm.append("chunkIndex", chunkIdx.toString());
+            chunkForm.append("totalChunks", totalChunks.toString());
+            chunkForm.append("fileName", fileToUpload.name);
+            chunkForm.append("fileType", fileToUpload.type);
+            chunkForm.append("category", "General");
+
+            const chunkRes = await fetch("/api/documents/upload-chunk", { method: "POST", body: chunkForm });
+            if (!chunkRes.ok) {
+              const errData = await chunkRes.json().catch(() => ({}));
+              throw new Error(errData.error || `Chunk ${chunkIdx + 1}/${totalChunks} failed.`);
+            }
+
+            if (chunkIdx === totalChunks - 1) {
+              docRecord = await chunkRes.json();
+              uploadedRecords.push(docRecord);
+            } else {
+              const percent = Math.round(((chunkIdx + 1) / totalChunks) * 100);
+              setMessage(`Uploading ${i + 1}/${selectedFiles.length}: "${fileToUpload.name}" (${percent}%)...`);
+            }
+          }
+        } else {
+          // Small file -> Direct Upload
+          const formData = new FormData();
+          formData.append("file", fileToUpload);
+          formData.append("category", "General");
+
+          const response = await fetch("/api/documents", { method: "POST", body: formData });
+          if (!response.ok) {
+            const errData = await response.json().catch(() => ({}));
+            throw new Error(errData.error || `Could not save document (Server status: ${response.status})`);
+          }
+          docRecord = await response.json();
+          uploadedRecords.push(docRecord);
+        }
+      } catch (error) {
+        console.error(`Failed to upload ${originalFile.name}:`, error);
+        failedCount++;
       }
-      setMessage(errMsg);
-    } finally {
-      setIsSaving(false);
     }
+
+    if (uploadedRecords.length > 0) {
+      setDocuments((current) => [...uploadedRecords, ...current.filter((d) => !uploadedRecords.some((u) => u.id === d.id))]);
+      setSelectedFiles([]);
+      if (inputRef.current) inputRef.current.value = "";
+
+      if (failedCount > 0) {
+        setMessage(`✨ Uploaded ${uploadedRecords.length} document(s)! (${failedCount} failed)`);
+      } else {
+        setMessage(`✨ Successfully uploaded & analyzed all ${uploadedRecords.length} document(s)!`);
+      }
+    } else {
+      setMessage("Could not save selected document(s). Please try again.");
+    }
+
+    setIsSaving(false);
   }
 
   async function handleDelete(docId: string, docName: string) {
@@ -273,20 +318,24 @@ async function compressImageForMobile(file: File): Promise<File> {
 
       <section className="upload-panel" aria-labelledby="upload-title">
         <div>
-          <p className="eyebrow">ADD A DOCUMENT</p>
-          <h2 id="upload-title">Save something important</h2>
-          <p>PDFs, images, receipts, and common document files are supported.</p>
+          <p className="eyebrow">ADD DOCUMENTS</p>
+          <h2 id="upload-title">Save important files & batch PDFs</h2>
+          <p>Select multiple PDFs, images, receipts, or documents up to 50MB each.</p>
         </div>
         <form className="upload-form" onSubmit={handleUpload}>
           <label className="file-picker" style={{ flex: 1 }}>
-            <input ref={inputRef} type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.webp" onChange={chooseFile} />
+            <input ref={inputRef} type="file" multiple accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.webp" onChange={chooseFiles} />
             <IconUpload size={18} />
-            <span>{selectedFile ? selectedFile.name : "Choose or drag a document file"}</span>
-            <b>Browse</b>
+            <span style={{ whiteSpace: "normal", wordBreak: "break-word" }}>
+              {selectedFiles.length > 0
+                ? `${selectedFiles.length} file(s) selected: ${selectedFiles.map((f) => f.name).join(", ")}`
+                : "Choose or drag multiple document files"}
+            </span>
+            <b>Browse Files</b>
           </label>
-          <button className="primary-button" type="submit" disabled={isSaving}>
+          <button className="primary-button" type="submit" disabled={isSaving || selectedFiles.length === 0}>
             <IconSparkles size={16} />
-            <span>{isSaving ? "Analyzing..." : "Save document"}</span>
+            <span>{isSaving ? "Uploading..." : `Save ${selectedFiles.length > 1 ? `${selectedFiles.length} files` : "document"}`}</span>
           </button>
         </form>
         {message && <p className="upload-message" role="status">{message}</p>}

@@ -29,7 +29,7 @@ export type DocumentRecord = {
 };
 
 const allowedExtensions = new Set(["pdf", "doc", "docx", "png", "jpg", "jpeg", "webp"]);
-const maximumFileSize = 10 * 1024 * 1024;
+const maximumFileSize = 50 * 1024 * 1024; // 50 MB max limit
 
 async function getRecords(userId?: string): Promise<DocumentRecord[]> {
   return readJsonStorage<DocumentRecord[]>("documents", "documents.json", [], userId);
