@@ -104,3 +104,20 @@ export async function POST(request: Request) {
   await writeJsonStorage("finance", "transactions.json", updated, userId);
   return Response.json(newTx, { status: 201 });
 }
+
+export async function DELETE(request: Request) {
+  const user = await getSessionUserFromRequest(request);
+  const userId = user?.id;
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id");
+
+  if (!id) {
+    return Response.json({ error: "Transaction ID is required." }, { status: 400 });
+  }
+
+  const userTx = await getUserTransactions(userId);
+  const updated = userTx.filter((t) => t.id !== id);
+  await writeJsonStorage("finance", "transactions.json", updated, userId);
+
+  return Response.json({ success: true, deletedId: id });
+}

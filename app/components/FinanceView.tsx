@@ -121,6 +121,20 @@ export default function FinanceView() {
     }
   }
 
+  async function handleDeleteTransaction(id: string, source?: string) {
+    if (source === "document") {
+      alert("This item was auto-generated from a document in your Vault.");
+      return;
+    }
+    if (!confirm("Are you sure you want to delete this transaction record?")) return;
+    try {
+      const res = await fetch(`/api/finance?id=${id}`, { method: "DELETE" });
+      if (res.ok) {
+        fetchFinanceData();
+      }
+    } catch {}
+  }
+
   async function handleClipboardAutoDetect() {
     try {
       if (typeof navigator !== "undefined" && navigator.clipboard) {
@@ -290,10 +304,33 @@ export default function FinanceView() {
                   >
                     {t.type === "Income" ? "+" : "-"}{formatCurrency(t.amount)}
                   </span>
-                  {t.source === "document" && (
+                  {t.source === "document" ? (
                     <span className="status-badge status-badge--active">
                       <IconSparkles size={12} style={{ display: "inline-block", marginRight: 4 }} /> Auto-Parsed
                     </span>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteTransaction(t.id, t.source)}
+                      title="Delete expense record"
+                      style={{
+                        background: "rgba(239, 68, 68, 0.1)",
+                        border: "1px solid rgba(239, 68, 68, 0.2)",
+                        color: "#ef4444",
+                        padding: "6px 10px",
+                        borderRadius: 10,
+                        cursor: "pointer",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 4,
+                        fontSize: 12,
+                        fontWeight: 700,
+                        transition: "all 0.2s ease"
+                      }}
+                    >
+                      <IconTrash size={14} />
+                      <span>Delete</span>
+                    </button>
                   )}
                 </div>
               </div>
