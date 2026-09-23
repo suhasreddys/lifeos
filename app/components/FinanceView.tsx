@@ -127,12 +127,28 @@ export default function FinanceView() {
       return;
     }
     if (!confirm("Are you sure you want to delete this transaction record?")) return;
+
+    // Optimistic UI update for instant (0ms) response
+    setData((prev) => {
+      const remainingTx = prev.transactions.filter((t) => t.id !== id);
+      const totalIncome = remainingTx.filter((t) => t.type === "Income").reduce((sum, t) => sum + t.amount, 0);
+      const totalExpenses = remainingTx.filter((t) => t.type === "Expense").reduce((sum, t) => sum + t.amount, 0);
+      return {
+        summary: {
+          netBalance: totalIncome - totalExpenses,
+          totalIncome,
+          totalExpenses,
+          transactionCount: remainingTx.length,
+        },
+        transactions: remainingTx,
+      };
+    });
+
     try {
-      const res = await fetch(`/api/finance?id=${id}`, { method: "DELETE" });
-      if (res.ok) {
-        fetchFinanceData();
-      }
-    } catch {}
+      await fetch(`/api/finance?id=${id}`, { method: "DELETE" });
+    } catch {
+      fetchFinanceData();
+    }
   }
 
   async function handleClipboardAutoDetect() {

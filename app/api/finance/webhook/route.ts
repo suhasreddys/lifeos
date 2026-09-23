@@ -142,9 +142,10 @@ Analyze the image (GPay, PhonePe, Paytm, Bank SMS screenshot, or receipt bill) a
     } else if (smsText.trim()) {
       parsed = parseSmsLocally(smsText);
 
-      // If local parse failed or lacks details, try Gemini AI text parser
-      const apiKey = process.env.GEMINI_API_KEY;
-      if (apiKey) {
+      // Only fallback to Gemini AI text parser if local regex parser couldn't find a valid amount
+      if (!parsed || !parsed.amount) {
+        const apiKey = process.env.GEMINI_API_KEY;
+        if (apiKey) {
         try {
           const model = process.env.GEMINI_MODEL || "gemini-2.5-flash";
           const prompt = `You are a financial SMS parser. Extract JSON from this bank/UPI SMS:
@@ -186,6 +187,7 @@ SMS TEXT: ${smsText}`;
         }
       }
     }
+  }
 
     if (!parsed || !parsed.amount) {
       return Response.json({ error: "Could not identify transaction amount from SMS or screenshot." }, { status: 422 });
