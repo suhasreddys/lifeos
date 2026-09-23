@@ -448,9 +448,17 @@ export default function FinanceView() {
             </form>
 
             <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid var(--line)", fontSize: 12, color: "var(--muted)" }}>
-              <strong>📲 Automatic Background SMS Syncing (Optional):</strong>
+              <strong>📲 Automatic Background SMS Syncing:</strong>
               <p style={{ margin: "4px 0 0", fontSize: 11.5, lineHeight: 1.4 }}>
-                You can set your Android phone (using Tasker or SMS Forwarder) to send bank SMS notifications to <code>https://lifeos-app-five-eosin.vercel.app/api/finance/webhook</code> to log transactions automatically without opening the app!
+                Download the native <strong>LifeOS Android App (APK)</strong> with built-in background bank SMS interceptor:{" "}
+                <a
+                  href="https://github.com/suhasreddys/lifeos/releases/download/v1.0.0/app-debug.apk"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ color: "#818cf8", fontWeight: 700, textDecoration: "underline" }}
+                >
+                  📥 Download LifeOS.apk Directly
+                </a>
               </p>
             </div>
           </div>

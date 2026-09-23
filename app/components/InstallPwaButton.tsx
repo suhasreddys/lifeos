@@ -39,12 +39,16 @@ export default function InstallPwaButton() {
         setDeferredPrompt(null);
       }
     } else {
-      // Show iOS / Desktop manual PWA install tip
-      const isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
-      if (isIos) {
-        setShowIosTip(true);
+      const isAndroid = /Android/i.test(navigator.userAgent);
+      if (isAndroid) {
+        window.open("https://github.com/suhasreddys/lifeos/releases/download/v1.0.0/app-debug.apk", "_blank");
       } else {
-        alert("To install LifeOS as an App:\n\n• On Windows/Mac (Chrome/Edge): Click the Install icon ⊕ in your address bar.\n• On Android: Tap Chrome Menu ⋮ -> Install App.");
+        const isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
+        if (isIos) {
+          setShowIosTip(true);
+        } else {
+          alert("To install LifeOS as an App:\n\n• On Windows/Mac (Chrome/Edge): Click the Install icon ⊕ in your address bar.\n• On Android: Download APK from https://github.com/suhasreddys/lifeos/releases/download/v1.0.0/app-debug.apk or tap Chrome Menu ⋮ -> Install App.");
+        }
       }
     }
   }
