@@ -121,6 +121,68 @@ export default function FinanceView() {
     }
   }
 
+  async function handleClipboardAutoDetect() {
+    try {
+      if (typeof navigator !== "undefined" && navigator.clipboard) {
+        const text = await navigator.clipboard.readText();
+        if (text && text.trim()) {
+          setTestSmsInput(text.trim());
+          setSyncMessage({ text: "📋 Auto-pasted from your phone clipboard!", isError: false });
+        } else {
+          setSyncMessage({ text: "Clipboard is empty. Copy a bank SMS or notification first.", isError: true });
+        }
+      }
+    } catch {
+      setSyncMessage({ text: "Tap & hold inside the box to paste your bank SMS.", isError: false });
+    }
+  }
+
+  async function handleScreenshotUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsTestingSms(true);
+    setSyncMessage({ text: "📷 Gemini AI is reading your payment screenshot...", isError: false });
+
+    try {
+      const reader = new FileReader();
+      reader.onload = async () => {
+        const base64Data = (reader.result as string).split(",")[1];
+        const res = await fetch("/api/finance/webhook", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            image: base64Data,
+            imageType: file.type || "image/png",
+          }),
+        });
+
+        const result = await res.json();
+        if (!res.ok) throw new Error(result.error || "Could not read screenshot.");
+
+        setSyncMessage({
+          text: `✨ Auto-Extracted! Logged: ${result.transaction.title} (${result.transaction.type === "Income" ? "+" : "-"}₹${result.transaction.amount})`,
+          isError: false,
+        });
+        fetchFinanceData();
+      };
+      reader.readAsDataURL(file);
+    } catch (err) {
+      setSyncMessage({
+        text: err instanceof Error ? err.message : "Failed to extract transaction from image.",
+        isError: true,
+      });
+    } finally {
+      setIsTestingSms(false);
+    }
+  }
+
+  useEffect(() => {
+    if (showSyncModal) {
+      handleClipboardAutoDetect().catch(() => {});
+    }
+  }, [showSyncModal]);
+
   const visibleTx = data.transactions.filter((t) => {
     if (activeFilter === "Income") return t.type === "Income";
     if (activeFilter === "Expenses") return t.type === "Expense";
@@ -336,20 +398,40 @@ export default function FinanceView() {
         </div>
       )}
 
-      {/* Auto SMS Parse Modal */}
+      {/* Auto SMS & Screenshot AI Extraction Modal */}
       {showSyncModal && (
         <div className="modal-backdrop" onClick={() => setShowSyncModal(false)}>
-          <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-            <h2 style={{ fontSize: 22, fontWeight: 800, marginBottom: 8 }}>AI Bank SMS & Receipt Parser</h2>
+          <div className="modal-card" onClick={(e) => e.stopPropagation()} style={{ maxWidth: 520 }}>
+            <h2 style={{ fontSize: 22, fontWeight: 800, marginBottom: 6 }}>✨ Instant Transaction AI Extractor</h2>
             <p style={{ color: "var(--muted)", fontSize: 13, marginBottom: 16 }}>
-              Paste a transaction SMS from HDFC, ICICI, SBI, GPay, or Paytm, and Gemini AI will automatically extract amount, type, merchant, and category.
+              No manual typing required! Auto-detect copied bank SMS text or upload a GPay / PhonePe / Paytm payment screenshot.
             </p>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
+              <button
+                type="button"
+                className="btn-secondary"
+                onClick={handleClipboardAutoDetect}
+                style={{ width: "100%", justifyContent: "center", fontSize: 12.5, padding: "10px" }}
+              >
+                📋 1-Tap Auto-Paste SMS
+              </button>
+
+              <label
+                className="btn-secondary"
+                style={{ width: "100%", justifyContent: "center", fontSize: 12.5, padding: "10px", cursor: "pointer", background: "rgba(168, 85, 247, 0.15)", color: "#c084fc", borderColor: "rgba(168, 85, 247, 0.3)" }}
+              >
+                <input type="file" accept="image/*" onChange={handleScreenshotUpload} style={{ display: "none" }} />
+                📷 Upload Screenshot / Receipt
+              </label>
+            </div>
+
             <form onSubmit={handleSmsParseSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               <textarea
                 rows={4}
                 value={testSmsInput}
                 onChange={(e) => setTestSmsInput(e.target.value)}
-                placeholder="Paste SMS text here, e.g. 'Rs 450.00 debited from A/c XX1234 at Swiggy on 23-Sep-2026...'"
+                placeholder="Or paste SMS text here, e.g. 'Rs 450.00 debited from A/c XX1234 at Swiggy on 23-Sep-2026...'"
                 style={{ padding: "12px 14px", borderRadius: 12, border: "1px solid var(--input-border)", background: "var(--input-bg)", color: "var(--ink)", font: "inherit", fontSize: 13 }}
               />
               {syncMessage && (
@@ -360,10 +442,17 @@ export default function FinanceView() {
                   Close
                 </button>
                 <button type="submit" className="primary-button" disabled={isTestingSms || !testSmsInput.trim()}>
-                  {isTestingSms ? "Parsing..." : "Extract & Save"}
+                  {isTestingSms ? "Extracting..." : "Extract & Save"}
                 </button>
               </div>
             </form>
+
+            <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid var(--line)", fontSize: 12, color: "var(--muted)" }}>
+              <strong>📲 Automatic Background SMS Syncing (Optional):</strong>
+              <p style={{ margin: "4px 0 0", fontSize: 11.5, lineHeight: 1.4 }}>
+                You can set your Android phone (using Tasker or SMS Forwarder) to send bank SMS notifications to <code>https://lifeos-app-five-eosin.vercel.app/api/finance/webhook</code> to log transactions automatically without opening the app!
+              </p>
+            </div>
           </div>
         </div>
       )}
