@@ -9,8 +9,12 @@ function parseSmsLocally(smsText: string): Partial<TransactionRecord> | null {
   const text = smsText.trim();
   if (!text) return null;
 
-  // Extract amount
-  const amountMatch = text.match(/(?:rs\.?|inr|₹)\s*([\d,]+(?:\.\d{1,2})?)/i) || text.match(/([\d,]+(?:\.\d{1,2})?)\s*(?:rs\.?|inr|₹)/i);
+  // Flexible amount extraction (Rs., INR, ₹, Amt, debited by, credited by)
+  const amountMatch =
+    text.match(/(?:rs\.?|inr|₹|amt|amount|debited by|credited by)\s*:?\s*([\d,]+(?:\.\d{1,2})?)/i) ||
+    text.match(/([\d,]+(?:\.\d{1,2})?)\s*(?:rs\.?|inr|₹)/i) ||
+    text.match(/(?:debited|credited|spent|paid|transferred)\s+([\d,]+(?:\.\d{1,2})?)/i);
+
   if (!amountMatch) return null;
 
   const rawAmount = amountMatch[1].replace(/,/g, "");
@@ -18,13 +22,15 @@ function parseSmsLocally(smsText: string): Partial<TransactionRecord> | null {
   if (isNaN(amount) || amount <= 0) return null;
 
   // Determine Income vs Expense
-  const isIncome = /credited|received|added|refund|cashback|deposited/i.test(text);
+  const isIncome = /credited|received|added|refund|cashback|deposited|received from/i.test(text);
   const type: "Income" | "Expense" = isIncome ? "Income" : "Expense";
 
   // Extract merchant / vendor
-  let title = "UPI Transaction";
-  const vendorMatch = text.match(/(?:to|at|info:)\s+([A-Za-z0-9\s.&'-]+?)(?=\s+(?:on|via|ref|bal|using|val|\.|,|$))/i) ||
-                      text.match(/vpa\s+([A-Za-z0-9.@_-]+)/i);
+  let title = "Bank Transaction";
+  const vendorMatch =
+    text.match(/(?:to|at|for|paid to|sent to|vpa|info:)\s+([A-Za-z0-9\s.&'-]+?)(?=\s+(?:on|via|ref|bal|using|val|vpa|\.|,|$))/i) ||
+    text.match(/vpa\s+([A-Za-z0-9.@_-]+)/i);
+
   if (vendorMatch && vendorMatch[1].trim().length > 1) {
     title = vendorMatch[1].trim();
   }
@@ -52,7 +58,7 @@ function parseSmsLocally(smsText: string): Partial<TransactionRecord> | null {
     type,
     category,
     date: new Date().toISOString().split("T")[0],
-    notes: `Auto-parsed from SMS: "${text.slice(0, 100)}..."`,
+    notes: `Auto-parsed SMS: "${text.slice(0, 100)}..."`,
     source: "user"
   };
 }
@@ -83,7 +89,7 @@ export async function POST(request: Request) {
       if (!apiKey) {
         return Response.json({ error: "GEMINI_API_KEY is required for screenshot OCR." }, { status: 500 });
       }
-      const model = process.env.GEMINI_MODEL || "gemini-3.5-flash";
+      const model = process.env.GEMINI_MODEL || "gemini-2.5-flash";
       const prompt = `You are an expert OCR financial receipt and payment screenshot parser for LifeOS.
 Analyze the image (GPay, PhonePe, Paytm, Bank SMS screenshot, or receipt bill) and extract JSON:
 {
@@ -140,7 +146,7 @@ Analyze the image (GPay, PhonePe, Paytm, Bank SMS screenshot, or receipt bill) a
       const apiKey = process.env.GEMINI_API_KEY;
       if (apiKey) {
         try {
-          const model = process.env.GEMINI_MODEL || "gemini-3.5-flash";
+          const model = process.env.GEMINI_MODEL || "gemini-2.5-flash";
           const prompt = `You are a financial SMS parser. Extract JSON from this bank/UPI SMS:
 "{ "title": "Merchant or Sender Name", "amount": number, "type": "Income" | "Expense", "category": "Food & Dining|Shopping|Rent|Utilities|Bills|Salary|Other" }"
 SMS TEXT: ${smsText}`;
