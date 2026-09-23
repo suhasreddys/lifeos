@@ -1,5 +1,7 @@
 # 🚀 LifeOS — Personal AI & Life Operating System
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsuhasreddys%2Flifeos&env=GEMINI_API_KEY)
+
 **LifeOS** is an intelligent, privacy-first personal command center that unifies your documents, daily schedule, task list, financial overview, and rental management into a single, beautiful dashboard powered by **Google Gemini Vision AI**.
 
 ---
