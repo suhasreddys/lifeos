@@ -2045,30 +2045,9 @@ input, textarea, [contenteditable="true"] {
     border-radius: 4px;
   }
 
-  /* Floating AI Button Positioned Safely Above Mobile Dock */
+  /* Hide floating AI corner button on mobile to prevent content overlap - Ask AI is in bottom dock */
   .floating-ai-wrapper {
-    bottom: 82px;
-    right: 14px;
-    z-index: 1050;
-  }
-  .floating-ai-button {
-    padding: 0;
-    width: 48px;
-    height: 48px;
-    border-radius: 999px;
-    display: grid;
-    place-items: center;
-    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.5);
-  }
-  .floating-ai-button span {
-    display: none;
-  }
-  .floating-ai-popover {
-    width: calc(100vw - 28px);
-    height: calc(100vh - 150px);
-    max-height: 520px;
-    margin-bottom: 12px;
-    border-radius: 20px;
+    display: none !important;
   }
 
   /* Topbar Mobile Polish */
@@ -2079,18 +2058,60 @@ input, textarea, [contenteditable="true"] {
     padding: 7px 10px;
   }
 
-  /* Mobile Bottom Dock */
+  /* Premium Mobile Floating Bottom Dock Capsule */
   .mobile-bottom-dock {
-    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
-    background: var(--topbar-bg);
-    backdrop-filter: blur(20px) saturate(180%);
-    border-top: 1px solid var(--line);
+    display: flex;
+    position: fixed;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
     z-index: 1000;
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 7px 8px calc(7px + env(safe-area-inset-bottom));
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
   }
+
   .mobile-dock-item {
-    font-size: 9.5px;
-    padding: 4px 6px;
-    gap: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 14px;
+    transition: all 160ms ease;
+    flex: 1;
+    text-align: center;
+  }
+
+  .mobile-dock-item:hover,
+  .mobile-dock-item--active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    font-weight: 800;
+  }
+
+  .mobile-dock-item--ai {
+    color: #c084fc;
+    background: rgba(168, 85, 247, 0.2);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+  }
+
+  .mobile-dock-item--ai.mobile-dock-item--active {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.5);
   }
 }
+
 

@@ -52,14 +52,21 @@ export default function Navbar() {
     } catch {}
   }
 
-  const navItems = [
+  const desktopNavItems = [
     { href: "/", label: "Home", icon: IconHome },
     { href: "/planner", label: "Planner", icon: IconPlanner },
     { href: "/documents", label: "Documents", icon: IconDocument },
     { href: "/calendar", label: "Calendar", icon: IconCalendar },
     { href: "/tasks", label: "Tasks", icon: IconCheckSquare },
     { href: "/finance", label: "Finance", icon: IconFinance },
-    { href: "/ai", label: "AI", icon: IconSparkles, isAi: true },
+  ];
+
+  const mobileNavItems = [
+    { href: "/", label: "Home", icon: IconHome },
+    { href: "/documents", label: "Vault", icon: IconDocument },
+    { href: "/calendar", label: "Calendar", icon: IconCalendar },
+    { href: "/tasks", label: "Tasks", icon: IconCheckSquare },
+    { href: "/ai", label: "Ask AI", icon: IconSparkles, isAi: true },
   ];
 
   const initial = user?.name ? user.name.charAt(0).toUpperCase() : "G";
@@ -79,7 +86,7 @@ export default function Navbar() {
 
         {/* Desktop Navigation Links */}
         <nav className="desktop-nav" aria-label="Main Navigation">
-          {navItems.slice(0, 6).map((item) => {
+          {desktopNavItems.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
             return (
@@ -180,7 +187,7 @@ export default function Navbar() {
 
       {/* Mobile Bottom Dock Bar */}
       <nav className="mobile-bottom-dock" aria-label="Mobile Navigation">
-        {navItems.map((item) => {
+        {mobileNavItems.map((item) => {
           const Icon = item.icon;
           const isActive = pathname === item.href;
           return (
