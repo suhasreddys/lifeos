@@ -189,7 +189,7 @@ export default function FinanceView() {
               transition: "all 0.2s"
             }}
           >
-            📱 Android SMS Auto-Sync
+            ⚡ Extract Copied SMS / Receipt
           </button>
           <button
             type="button"
@@ -392,17 +392,43 @@ export default function FinanceView() {
           <div className="modal-card" onClick={(e) => e.stopPropagation()} style={{ maxWidth: 520, padding: 24, borderRadius: 20 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
               <div>
-                <p className="eyebrow" style={{ color: "#34d399", margin: 0 }}>AUTOMATED FINANCE TRACKER</p>
-                <h2 style={{ margin: "2px 0 0", fontSize: "1.25rem", fontWeight: 800 }}>Android SMS & Webhook Auto-Sync</h2>
+                <p className="eyebrow" style={{ color: "#34d399", margin: 0 }}>DIRECT TRANSACTION EXTRACTOR</p>
+                <h2 style={{ margin: "2px 0 0", fontSize: "1.25rem", fontWeight: 800 }}>Extract SMS & Receipts Directly (No Extra Apps)</h2>
               </div>
               <button onClick={() => setShowSyncModal(false)} style={{ background: "none", border: 0, color: "var(--muted)", fontSize: "1.2rem", cursor: "pointer" }}>✕</button>
             </div>
 
             {/* LIVE SMS PARSER / TESTER */}
             <form onSubmit={handleSmsParseSubmit} style={{ background: "rgba(255, 255, 255, 0.03)", border: "1px solid rgba(255, 255, 255, 0.1)", borderRadius: 14, padding: 16, marginBottom: 20 }}>
-              <label style={{ display: "block", fontSize: "0.82rem", fontWeight: 700, marginBottom: 6, color: "var(--ink)" }}>
-                Paste or Test SMS Text:
-              </label>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                <label style={{ fontSize: "0.82rem", fontWeight: 700, color: "var(--ink)", margin: 0 }}>
+                  Paste Copied Bank / UPI SMS:
+                </label>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    try {
+                      if (navigator.clipboard) {
+                        const clipText = await navigator.clipboard.readText();
+                        if (clipText) setTestSmsInput(clipText);
+                      }
+                    } catch {}
+                  }}
+                  style={{
+                    background: "rgba(99, 102, 241, 0.15)",
+                    border: "1px solid rgba(99, 102, 241, 0.35)",
+                    color: "#a5b4fc",
+                    borderRadius: 6,
+                    padding: "3px 8px",
+                    fontSize: "0.75rem",
+                    fontWeight: 700,
+                    cursor: "pointer"
+                  }}
+                >
+                  📋 Auto-Paste Clipboard
+                </button>
+              </div>
+
               <textarea
                 rows={3}
                 value={testSmsInput}
@@ -463,59 +489,60 @@ export default function FinanceView() {
               </button>
             </form>
 
-            {/* WEBHOOK URL SETUP FOR MACRODROID / TASKER */}
+            {/* OPTIONAL AUTOMATION WEBHOOK INFO */}
             <div style={{ background: "rgba(99, 102, 241, 0.08)", border: "1px solid rgba(99, 102, 241, 0.25)", borderRadius: 14, padding: 16, textAlign: "left" }}>
               <strong style={{ fontSize: "0.88rem", color: "#a5b4fc", display: "block", marginBottom: 4 }}>
-                📱 Mobile Automation Webhook URL:
+                💡 Direct Method 2: Upload Receipt Screenshot / PDF
               </strong>
-              <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
-                <input
-                  type="text"
-                  readOnly
-                  value={typeof window !== "undefined" ? `${window.location.origin}/api/finance/webhook` : "/api/finance/webhook"}
-                  style={{
-                    flex: 1,
-                    padding: "8px 12px",
-                    borderRadius: 8,
-                    border: "1px solid var(--input-border)",
-                    background: "rgba(0,0,0,0.3)",
-                    color: "#fff",
-                    fontFamily: "monospace",
-                    fontSize: "0.8rem"
-                  }}
-                />
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (typeof window !== "undefined") {
-                      navigator.clipboard.writeText(`${window.location.origin}/api/finance/webhook`);
-                      setCopiedWebhook(true);
-                      setTimeout(() => setCopiedWebhook(false), 2000);
-                    }
-                  }}
-                  style={{
-                    padding: "8px 14px",
-                    borderRadius: 8,
-                    background: "rgba(99, 102, 241, 0.2)",
-                    border: "1px solid rgba(99, 102, 241, 0.4)",
-                    color: "#a5b4fc",
-                    fontWeight: 700,
-                    fontSize: "0.8rem",
-                    cursor: "pointer"
-                  }}
-                >
-                  {copiedWebhook ? "✓ Copied!" : "📋 Copy URL"}
-                </button>
-              </div>
+              <p style={{ fontSize: "0.8rem", color: "var(--muted)", margin: "0 0 10px 0", lineHeight: 1.45 }}>
+                No extra apps needed! Simply upload payment screenshots or bank statement PDFs in <b>Document Vault</b> or <b>Bills</b>. LifeOS Gemini AI automatically parses and logs transactions.
+              </p>
 
-              <div style={{ fontSize: "0.78rem", color: "var(--muted)", lineHeight: 1.5 }}>
-                <strong>3-Step Mobile Setup (MacroDroid / Tasker):</strong>
-                <ol style={{ paddingLeft: 16, margin: "6px 0 0" }}>
-                  <li>Install <b>MacroDroid</b> (Free on Play Store).</li>
-                  <li>Add Trigger: <b>SMS Received</b> (From HDFCBK, SBIBNK, PAYTM, ICICIB, PhonePe, GPay).</li>
-                  <li>Add Action: <b>HTTP Request (POST)</b> → Paste Webhook URL → Body: <code>{`{ "message": "{sms_body}" }`}</code>.</li>
-                </ol>
-              </div>
+              <details style={{ fontSize: "0.78rem", color: "var(--muted)", cursor: "pointer" }}>
+                <summary style={{ fontWeight: 700, color: "#a5b4fc" }}>Advanced: Optional Background SMS Webhook URL</summary>
+                <div style={{ marginTop: 8 }}>
+                  <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+                    <input
+                      type="text"
+                      readOnly
+                      value={typeof window !== "undefined" ? `${window.location.origin}/api/finance/webhook` : "/api/finance/webhook"}
+                      style={{
+                        flex: 1,
+                        padding: "6px 10px",
+                        borderRadius: 6,
+                        border: "1px solid var(--input-border)",
+                        background: "rgba(0,0,0,0.3)",
+                        color: "#fff",
+                        fontFamily: "monospace",
+                        fontSize: "0.76rem"
+                      }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (typeof window !== "undefined") {
+                          navigator.clipboard.writeText(`${window.location.origin}/api/finance/webhook`);
+                          setCopiedWebhook(true);
+                          setTimeout(() => setCopiedWebhook(false), 2000);
+                        }
+                      }}
+                      style={{
+                        padding: "6px 10px",
+                        borderRadius: 6,
+                        background: "rgba(99, 102, 241, 0.2)",
+                        border: "1px solid rgba(99, 102, 241, 0.4)",
+                        color: "#a5b4fc",
+                        fontWeight: 700,
+                        fontSize: "0.76rem",
+                        cursor: "pointer"
+                      }}
+                    >
+                      {copiedWebhook ? "Copied!" : "Copy URL"}
+                    </button>
+                  </div>
+                  <span>Post JSON <code>{`{ "message": "SMS TEXT" }`}</code> to auto-sync directly.</span>
+                </div>
+              </details>
             </div>
           </div>
         </div>
