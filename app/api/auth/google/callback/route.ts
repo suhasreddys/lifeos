@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { readJsonStorage, writeJsonStorage } from "@/lib/storage";
+import { findOrCreateGoogleUser } from "@/lib/users";
+import { createSessionToken, SESSION_COOKIE_NAME } from "@/lib/auth";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -39,8 +41,9 @@ export async function GET(request: Request) {
 
     const accessToken = tokenData.access_token;
 
-    // 2. Fetch User Profile Email
+    // 2. Fetch User Profile Email & Name
     let userEmail = "Google User";
+    let userName = "Google User";
     try {
       const userRes = await fetch("https://www.googleapis.com/oauth2/v2/userinfo", {
         headers: { Authorization: `Bearer ${accessToken}` }
@@ -48,6 +51,7 @@ export async function GET(request: Request) {
       if (userRes.ok) {
         const userInfo = await userRes.json();
         if (userInfo.email) userEmail = userInfo.email;
+        if (userInfo.name) userName = userInfo.name;
       }
     } catch {}
 
@@ -90,8 +94,24 @@ export async function GET(request: Request) {
     };
     await writeJsonStorage("calendar", "settings.json", settings);
 
-    return NextResponse.redirect(`${origin}/calendar?gcal_success=true&account=${encodeURIComponent(userEmail)}`);
+    // 4. Create LifeOS user session
+    const sessionUser = await findOrCreateGoogleUser(userName, userEmail);
+    const sessionToken = await createSessionToken(sessionUser);
+
+    const response = NextResponse.redirect(`${origin}/calendar?gcal_success=true&account=${encodeURIComponent(userEmail)}`);
+    response.cookies.set({
+      name: SESSION_COOKIE_NAME,
+      value: sessionToken,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 30, // 30 days
+      path: "/",
+    });
+
+    return response;
   } catch (err) {
     return NextResponse.redirect(`${origin}/calendar?gcal_error=unknown`);
   }
 }
+

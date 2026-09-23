@@ -5,7 +5,7 @@ export type GeminiResponse = {
 };
 
 /**
- * Robust Gemini API Client with automatic rate-limit backoff retries and fallback models.
+ * Robust Gemini API Client supporting text & multimodal (images, PDFs) with automatic backoff retries and fallback models.
  * Handles HTTP 429 and free tier quota limit errors gracefully.
  */
 export async function callGeminiApi(options: {
@@ -15,6 +15,7 @@ export async function callGeminiApi(options: {
   responseMimeType?: string;
   temperature?: number;
   maxRetries?: number;
+  inlineData?: { mimeType: string; data: string };
 }): Promise<GeminiResponse> {
   const {
     prompt,
@@ -22,7 +23,8 @@ export async function callGeminiApi(options: {
     model = process.env.GEMINI_MODEL || "gemini-3.5-flash",
     responseMimeType,
     temperature = 0.2,
-    maxRetries = 2
+    maxRetries = 2,
+    inlineData,
   } = options;
 
   // Fallback candidate models if primary model hits quota limits
@@ -32,11 +34,21 @@ export async function callGeminiApi(options: {
     "gemini-2.5-flash",
     "gemini-1.5-flash",
     "gemini-3.6-flash",
-    "gemini-3.8-flash"
+    "gemini-3.8-flash",
   ].filter((m, idx, arr) => Boolean(m) && arr.indexOf(m) === idx);
 
   let lastErrorMessage = "";
   let isRateLimitError = false;
+
+  const parts: any[] = [{ text: prompt }];
+  if (inlineData && inlineData.mimeType && inlineData.data) {
+    parts.push({
+      inlineData: {
+        mimeType: inlineData.mimeType,
+        data: inlineData.data,
+      },
+    });
+  }
 
   for (const currentModel of fallbackModels) {
     for (let attempt = 0; attempt <= maxRetries; attempt++) {
@@ -52,11 +64,11 @@ export async function callGeminiApi(options: {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              contents: [{ parts: [{ text: prompt }] }],
+              contents: [{ parts }],
               generationConfig: responseMimeType
                 ? { temperature, responseMimeType }
-                : { temperature }
-            })
+                : { temperature },
+            }),
           }
         );
 
@@ -97,12 +109,12 @@ export async function callGeminiApi(options: {
     return {
       text: "",
       isRateLimit: true,
-      error: "Gemini API rate limit reached (Free Tier 20 req/min limit). Please wait ~20-30 seconds and try again, or check your API key quota at ai.google.dev."
+      error: "Gemini API rate limit reached (Free Tier 20 req/min limit). Please wait ~20-30 seconds and try again, or check your API key quota at ai.google.dev.",
     };
   }
 
   return {
     text: "",
-    error: `Gemini API Error: ${lastErrorMessage}`
+    error: `Gemini API Error: ${lastErrorMessage}`,
   };
 }

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Navbar from "./components/Navbar";
 import FloatingAiButton from "./components/FloatingAiButton";
 import "./globals.css";
 
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="apple-touch-icon" href="/icon-192.png" />
       </head>
       <body className="min-h-full flex flex-col">
+        <Navbar />
         {children}
         <FloatingAiButton />
       </body>

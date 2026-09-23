@@ -2,6 +2,7 @@ import { readFile } from "fs/promises";
 import path from "path";
 import { callGeminiApi } from "../../../../../lib/gemini";
 import { getStorageDir, readJsonStorage, writeJsonStorage } from "@/lib/storage";
+import { getSessionUserFromRequest } from "@/lib/auth";
 import type { DocumentRecord, AnalysisRecord } from "../../route";
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -10,11 +11,13 @@ const pdf = require("pdf-parse/lib/pdf-parse.js");
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   if (!/^[0-9a-f-]{36}$/i.test(id)) return Response.json({ error: "Document not found." }, { status: 404 });
   try {
-    const records = await readJsonStorage<DocumentRecord[]>("documents", "documents.json", []);
+    const user = await getSessionUserFromRequest(request);
+    const userId = user?.id;
+    const records = await readJsonStorage<DocumentRecord[]>("documents", "documents.json", [], userId);
     const document = records.find((record) => record.id === id);
     if (!document) return Response.json({ error: "Document not found." }, { status: 404 });
     return Response.json(document.analysis ?? null);
@@ -23,20 +26,51 @@ export async function GET(_: Request, { params }: { params: Promise<{ id: string
   }
 }
 
-export async function POST(_: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   if (!/^[0-9a-f-]{36}$/i.test(id)) return Response.json({ error: "Document not found." }, { status: 404 });
 
   try {
-    const records = await readJsonStorage<DocumentRecord[]>("documents", "documents.json", []);
+    const user = await getSessionUserFromRequest(request);
+    const userId = user?.id;
+
+    const records = await readJsonStorage<DocumentRecord[]>("documents", "documents.json", [], userId);
     const docIndex = records.findIndex((record) => record.id === id);
     if (docIndex === -1) return Response.json({ error: "Document not found." }, { status: 404 });
     const document = records[docIndex];
-    if (document.type !== "application/pdf") return Response.json({ error: "AI analysis currently supports PDFs. You can still preview or download this file." }, { status: 400 });
 
-    const docsDir = getStorageDir("documents");
-    const parsed = await pdf(await readFile(path.join(docsDir, document.storedName)));
-    if (!parsed.text.trim()) return Response.json({ error: "This PDF has no readable text. Scanned-image support is the next AI improvement." }, { status: 400 });
+    const docsDir = getStorageDir("documents", userId);
+    const filePath = path.join(docsDir, document.storedName);
+    const fileBuffer = await readFile(filePath);
+
+    let documentText = "";
+    let inlineData: { mimeType: string; data: string } | undefined;
+
+    const isPdf = document.type.includes("pdf") || document.name.toLowerCase().endsWith(".pdf");
+    const isImage = document.type.includes("image") || ["png", "jpg", "jpeg", "webp"].some((ext) => document.name.toLowerCase().endsWith(`.${ext}`));
+
+    if (isPdf) {
+      try {
+        const parsed = await pdf(fileBuffer);
+        if (parsed && parsed.text && parsed.text.trim()) {
+          documentText = parsed.text.slice(0, 24000);
+        }
+      } catch {}
+
+      // Attach PDF inline data for Gemini multimodal vision analysis
+      inlineData = {
+        mimeType: "application/pdf",
+        data: fileBuffer.toString("base64"),
+      };
+    } else if (isImage) {
+      const mimeType = document.type || "image/png";
+      inlineData = {
+        mimeType,
+        data: fileBuffer.toString("base64"),
+      };
+    } else {
+      return Response.json({ error: "Supported document formats: PDF, PNG, JPG, JPEG, WEBP." }, { status: 400 });
+    }
 
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
@@ -44,7 +78,7 @@ export async function POST(_: Request, { params }: { params: Promise<{ id: strin
     }
 
     const model = process.env.GEMINI_MODEL || "gemini-3.5-flash";
-    const prompt = `You are a careful personal document organizer. Analyze the document text below.
+    const prompt = `You are an expert AI personal document organizer and optical reader. Analyze the document (text or visual image/PDF) below.
 Return only valid JSON with this exact shape:
 {
   "documentType": "string",
@@ -53,7 +87,7 @@ Return only valid JSON with this exact shape:
   "expiryDate": "string",
   "actionItems": ["string"],
   "confidence": "high|medium|low",
-  "detectedCategory": "Agreements|Bills|Insurance|ID & Passports|Medical|Financial|General",
+  "detectedCategory": "Agreements|Bills|Insurance|IDs & records|Certificates|Financial|General",
   "leaseDetails": {
     "isLeaseAgreement": boolean,
     "propertyName": "string",
@@ -66,16 +100,15 @@ Return only valid JSON with this exact shape:
   }
 }
 Use an empty string when an expiry date or text field is absent. Categorize the document accurately. If the document is a lease or rental agreement, set isLeaseAgreement to true and detectedCategory to Agreements.
-
-DOCUMENT TEXT:
-${parsed.text.slice(0, 24000)}`;
+${documentText ? `\nDOCUMENT TEXT:\n${documentText}` : ""}`;
 
     const geminiRes = await callGeminiApi({
       prompt,
       apiKey,
       model,
       responseMimeType: "application/json",
-      temperature: 0.1
+      temperature: 0.1,
+      inlineData,
     });
 
     if (geminiRes.error || !geminiRes.text) {
@@ -93,14 +126,14 @@ ${parsed.text.slice(0, 24000)}`;
 
     const analysisRecord: AnalysisRecord & { leaseDetails?: any } = {
       ...parsedPayload,
-      analyzedAt: new Date().toISOString()
+      analyzedAt: new Date().toISOString(),
     };
 
     // Auto-update document category if detectedCategory is specific or isLeaseAgreement
     let updatedCategory = document.category;
     if (parsedPayload.leaseDetails?.isLeaseAgreement) {
       updatedCategory = "Agreements";
-    } else if (document.category === "General" && parsedPayload.detectedCategory) {
+    } else if ((document.category === "General" || !document.category) && parsedPayload.detectedCategory) {
       updatedCategory = parsedPayload.detectedCategory;
     }
 
@@ -108,16 +141,16 @@ ${parsed.text.slice(0, 24000)}`;
     records[docIndex] = {
       ...document,
       category: updatedCategory,
-      analysis: analysisRecord
+      analysis: analysisRecord,
     };
-    await writeJsonStorage("documents", "documents.json", records);
+    await writeJsonStorage("documents", "documents.json", records, userId);
 
     // Auto-sync extracted dates to Calendar, Tasks, & Rental Manager
-    await autoSyncRemindersAndTasks(document.id, document.name, document.category, analysisRecord);
+    await autoSyncRemindersAndTasks(document.id, document.name, updatedCategory, analysisRecord, userId);
 
     return Response.json(analysisRecord);
   } catch (error) {
-    return Response.json({ error: "LifeOS could not analyze this PDF. " + (error instanceof Error ? error.message : "An error occurred.") }, { status: 500 });
+    return Response.json({ error: "LifeOS could not analyze this document. " + (error instanceof Error ? error.message : "An error occurred.") }, { status: 500 });
   }
 }
 
@@ -140,10 +173,10 @@ function parseToISODate(dateStr: string): string | null {
   return null;
 }
 
-async function autoSyncRemindersAndTasks(docId: string, docName: string, category: string, analysis: AnalysisRecord) {
+async function autoSyncRemindersAndTasks(docId: string, docName: string, category: string, analysis: AnalysisRecord, userId?: string) {
   try {
     // 1. Sync Calendar Events
-    let calEvents = await readJsonStorage<any[]>("calendar", "events.json", []);
+    let calEvents = await readJsonStorage<any[]>("calendar", "events.json", [], userId);
     const newCalEvents = [...calEvents];
 
     if (analysis.expiryDate) {
@@ -157,7 +190,7 @@ async function autoSyncRemindersAndTasks(docId: string, docName: string, categor
             date: parsedDate,
             category: "Document Expiry",
             description: `Document (${category}) expires on ${analysis.expiryDate}`,
-            createdAt: new Date().toISOString()
+            createdAt: new Date().toISOString(),
           });
         }
       }
@@ -174,16 +207,16 @@ async function autoSyncRemindersAndTasks(docId: string, docName: string, categor
             date: parsedDate,
             category: "Key Date",
             description: kd.context,
-            createdAt: new Date().toISOString()
+            createdAt: new Date().toISOString(),
           });
         }
       }
     });
 
-    await writeJsonStorage("calendar", "events.json", newCalEvents);
+    await writeJsonStorage("calendar", "events.json", newCalEvents, userId);
 
     // 2. Sync Tasks
-    let userTasks = await readJsonStorage<any[]>("tasks", "tasks.json", []);
+    let userTasks = await readJsonStorage<any[]>("tasks", "tasks.json", [], userId);
     const newTasks = [...userTasks];
     analysis.actionItems?.forEach((action, idx) => {
       const taskId = `auto-task-${docId}-${idx}`;
@@ -197,12 +230,12 @@ async function autoSyncRemindersAndTasks(docId: string, docName: string, categor
           source: "document",
           documentId: docId,
           documentName: docName,
-          createdAt: new Date().toISOString()
+          createdAt: new Date().toISOString(),
         });
       }
     });
 
-    await writeJsonStorage("tasks", "tasks.json", newTasks);
+    await writeJsonStorage("tasks", "tasks.json", newTasks, userId);
 
     // 3. Sync Rental Agreements to Tenant & Landlord Manager
     const lease = (analysis as any).leaseDetails;
@@ -211,7 +244,7 @@ async function autoSyncRemindersAndTasks(docId: string, docName: string, categor
     if (isRentalDoc) {
       let rentalData = await readJsonStorage<any>("rental", "rentals.json", {
         properties: [], payments: [], deposits: [], maintenance: [], meterReadings: [], notices: [], inspections: []
-      });
+      }, userId);
 
       const propId = `doc-lease-${docId}`;
       if (!rentalData.properties.some((p: any) => p.id === propId)) {
@@ -226,11 +259,10 @@ async function autoSyncRemindersAndTasks(docId: string, docName: string, categor
           leaseStart: lease?.leaseStart || new Date().toISOString().split("T")[0],
           leaseEnd: lease?.leaseEnd || analysis.expiryDate || new Date(Date.now() + 365 * 24 * 3600 * 1000).toISOString().split("T")[0],
           status: "Occupied",
-          createdAt: new Date().toISOString()
+          createdAt: new Date().toISOString(),
         };
         rentalData.properties.unshift(newProperty);
 
-        // Also record security deposit if applicable
         if (newProperty.securityDeposit > 0) {
           rentalData.deposits.unshift({
             id: `dep-${propId}`,
@@ -242,11 +274,11 @@ async function autoSyncRemindersAndTasks(docId: string, docName: string, categor
             paidDate: newProperty.leaseStart,
             status: "Held",
             notes: "Extracted from agreement document",
-            createdAt: new Date().toISOString()
+            createdAt: new Date().toISOString(),
           });
         }
 
-        await writeJsonStorage("rental", "rentals.json", rentalData);
+        await writeJsonStorage("rental", "rentals.json", rentalData, userId);
       }
     }
   } catch {

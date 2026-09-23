@@ -1,205 +1,481 @@
 [
   {
-    "id": "plan-1789197354114",
-    "date": "2026-09-12",
+    "id": "plan-1790147357709",
+    "date": "2026-09-23",
     "mode": "balanced",
-    "intentions": "https://www.youtube.com/watch?v=8c74mXV2lJ0&list=PLlGueSbLhZoBRnTsGiDJeTXuQCALOTN07",
+    "intentions": "https://www.youtube.com/watch?v=dqhhBt_YF0o&list=PLlGueSbLhZoBRnTsGiDJeTXuQCALOTN07&index=11",
     "targetHours": 6,
-    "focusMantra": "Embrace structured learning and consistent execution to turn every challenge into a stepping stone for academic excellence.",
-    "summary": "Today's balanced schedule prioritizes foundational Python programming in Kannada alongside backlog review and academic planning. We leverage your free Saturday window to strengthen your core technical skills and address pending university requirements.",
+    "focusMantra": "Master the fundamentals of Python loops today with unwavering clarity and disciplined consistency.",
+    "summary": "Today focuses on mastering Python for loops, range, enumerate, and nested loops via the 'Engineering in Kannada' tutorial, followed by structured practice and skill application.",
     "schedule": [
       {
         "timeBlock": "08:30 AM - 09:00 AM",
         "title": "Morning Kickoff, Priority Planning & Hydration",
         "category": "Personal",
-        "description": "Start the day with hydration, light stretching, and reviewing today's balanced focus targets.",
+        "description": "Start the day right with hydration, setting clear daily intentions, and reviewing today's focus on Python programming.",
         "isCalendarEvent": false,
         "actionItems": [
-          "Drink 500ml water and review daily objectives",
-          "Set up study workspace for Python learning"
+          "Drink 500ml of water",
+          "Review today's study plan"
         ]
       },
       {
         "timeBlock": "09:00 AM - 10:30 AM",
-        "title": "Deep Work / Study Focus Sprint 1: Python Basics in Kannada",
+        "title": "Deep Work / Study Focus Sprint 1: Python For Loops & Range",
         "category": "Study",
-        "description": "Begin the dedicated study session for 'Python in Kannada - Introduction to Coding and Python'.",
+        "description": "Watch and code along with the first half of the Python in Kannada tutorial focusing on for loops and the range function.",
         "isCalendarEvent": false,
         "actionItems": [
-          "Watch the introductory YouTube tutorial by Engineering in Kannada",
-          "Take notes on basic syntax, variables, and data types"
+          "Open IDE and set up working directory",
+          "Watch video segment on for loops and range",
+          "Type and execute code snippets"
         ]
       },
       {
         "timeBlock": "10:30 AM - 10:45 AM",
         "title": "Refresh Break",
         "category": "Break",
-        "description": "15-minute physical stretch, eye rest, and hydration to maintain cognitive energy.",
+        "description": "Rest eyes, stretch, and step away from the screen.",
         "isCalendarEvent": false,
         "actionItems": [
-          "Step away from the screen and perform eye exercises",
+          "Perform 15-minute eye rest and stretching",
           "Refill water bottle"
         ]
       },
       {
         "timeBlock": "10:45 AM - 12:15 PM",
-        "title": "Deep Work / Study Focus Sprint 2: Coding Concepts & Practice",
+        "title": "Deep Work / Study Focus Sprint 2: Enumerate & Nested Loops",
         "category": "Study",
-        "description": "Continue the video study session, focusing on core execution and hands-on code examples.",
+        "description": "Complete the second half of the Python tutorial covering enumerate and nested loops.",
         "isCalendarEvent": false,
         "actionItems": [
-          "Complete Topic Breakdown practice questions on Python introduction",
-          "Test basic code snippets in a local Python environment"
+          "Study enumerate function syntax and use cases",
+          "Practice writing nested loops",
+          "Complete tutorial exercises"
         ]
       },
       {
         "timeBlock": "12:15 PM - 01:15 PM",
         "title": "Healthy Lunch Reset & Mindful Disconnect",
         "category": "Personal",
-        "description": "Enjoy a nutritious meal away from screens to recharge for the afternoon.",
+        "description": "Enjoy a nutritious lunch away from work screens.",
         "isCalendarEvent": false,
         "actionItems": [
-          "Eat a balanced lunch and take a short walk"
+          "Eat a balanced meal",
+          "Take a short mindful walk"
         ]
       },
       {
         "timeBlock": "01:15 PM - 03:00 PM",
-        "title": "Afternoon Focus Sprint 3: Academic Backlog & Subject Review",
+        "title": "Afternoon Focus Sprint 3: Practice Questions & Revision",
         "category": "Study",
-        "description": "Review failed subjects (BCS501 Software Engineering & Project Management, BCS502 Computer Networks) referencing your SGPA report.",
+        "description": "Solve practice questions and quiz modules to reinforce Python loop concepts.",
         "isCalendarEvent": false,
         "actionItems": [
-          "Analyze weak areas in BCS501 and BCS502 syllabi",
-          "Draft talking points and questions for academic advisor consultation"
+          "Attempt study guide quiz questions",
+          "Write mini-scripts using range and enumerate"
         ]
       },
       {
         "timeBlock": "03:00 PM - 03:20 PM",
         "title": "Mid-Afternoon Movement & Coffee/Tea Reset",
         "category": "Break",
-        "description": "Re-energize with a brief physical reset and beverage.",
+        "description": "Re-energize with a brief physical reset.",
         "isCalendarEvent": false,
         "actionItems": [
-          "Light stretching or walking around",
-          "Hydrate or enjoy a cup of tea/coffee"
+          "Light stretching or walking",
+          "Hydrate or enjoy a hot beverage"
         ]
       },
       {
         "timeBlock": "03:20 PM - 04:30 PM",
         "title": "Life Admin, Pending Tasks Sync & Day Recap",
         "category": "Deep Work",
-        "description": "Organize pending tasks, finalize administrative notes for backlog clearance, and recap the day.",
+        "description": "Review daily accomplishments, organize notes, and plan ahead.",
         "isCalendarEvent": false,
         "actionItems": [
-          "Confirm advisor meeting action items",
-          "Organize notes from today's Python study session"
+          "Organize Python code notes",
+          "Review tomorrow's priorities"
         ]
       },
       {
         "timeBlock": "05:00 PM onwards",
-        "title": "Personal Evening Recharge, Fitness & Family Time",
+        "title": "Personal Evening Recharge & Fitness",
         "category": "Personal",
-        "description": "Unwind, engage in physical activity, and prepare for the upcoming week and Ganesh Chaturthi holiday.",
+        "description": "Wind down with personal fitness, relaxation, and family time.",
         "isCalendarEvent": false,
         "actionItems": [
-          "Evening workout or outdoor walk",
-          "Relax and disconnect for the evening"
+          "Evening physical activity or walk",
+          "Relax and disconnect"
         ]
       }
     ],
     "studyGuide": {
       "topicBreakdown": [
         {
-          "topic": "Python Introduction & Basics in Kannada",
+          "topic": "Python For Loops & Range Function",
           "keyConcepts": [
-            "What is Coding and Programming",
-            "Introduction to Python Language",
-            "Setting up Python Environment",
-            "Basic Syntax and Print Statements",
-            "Variables and Data Types"
+            "Iterating over sequences",
+            "Using range(start, stop, step)",
+            "Looping through strings and lists"
           ],
-          "suggestedDurationMinutes": 90,
-          "focusStrategy": "Watch the video with active note-taking in Kannada/English, write down code snippets verbatim, and execute them locally to build muscle memory.",
+          "suggestedDurationMinutes": 45,
+          "focusStrategy": "Active coding in terminal alongside video demonstration.",
           "practiceQuestions": [
             {
-              "question": "What is Python primarily classified as?",
+              "question": "What is the default start value of range(5)?",
               "options": [
-                "A high-level interpreted programming language",
-                "A hardware component",
-                "A low-level assembly language",
-                "An operating system kernel"
+                "-1",
+                "0",
+                "5",
+                "1"
               ],
-              "correctIndex": 0,
-              "explanation": "Python is a high-level, interpreted programming language known for its readability and simplicity."
+              "correctIndex": 1,
+              "explanation": "By default, range() starts at 0 if no start value is explicitly provided."
             },
             {
-              "question": "Which symbol is used in Python to write single-line comments?",
+              "question": "Which of the following generates numbers from 2 up to 8 with a step of 2?",
               "options": [
-                "#",
-                "/*",
-                "//",
-                "<!--"
+                "range(2, 8)",
+                "range(2, 8, 2)",
+                "range(2, 9, 2)",
+                "range(8, 2, -2)"
               ],
-              "correctIndex": 0,
-              "explanation": "In Python, the hash symbol (#) is used to denote single-line comments."
+              "correctIndex": 1,
+              "explanation": "range(2, 8, 2) starts at 2, stops before 8, and increments by 2 yielding 2, 4, 6."
             },
             {
-              "question": "Which of the following is a valid variable name in Python?",
+              "question": "What will 'for i in range(3): print(i, end=\"\")' output?",
               "options": [
-                "my-variable",
-                "class",
-                "variable_2",
-                "2nd_variable"
+                "0123",
+                "012",
+                "123",
+                "321"
               ],
-              "correctIndex": 2,
-              "explanation": "Variable names cannot start with a number, cannot contain hyphens, and cannot be reserved keywords like 'class'. 'variable_2' is valid."
+              "correctIndex": 1,
+              "explanation": "range(3) produces 0, 1, and 2, which are printed consecutively."
             },
             {
-              "question": "What function is used to output data to the console in Python?",
+              "question": "Can a for loop iterate directly over a string in Python?",
               "options": [
-                "echo()",
-                "display()",
-                "write()",
-                "print()"
+                "Only using a while loop",
+                "Only if the string has no spaces",
+                "No, strings must be converted to lists first",
+                "Yes, character by character"
               ],
               "correctIndex": 3,
-              "explanation": "The built-in print() function is used to display output on the console in Python."
+              "explanation": "Strings are iterable sequences in Python, allowing direct character iteration."
             },
             {
-              "question": "Which data type would be used to store a decimal number like 98.5 in Python?",
+              "question": "What happens if the stop value is smaller than the start value in range(start, stop, positive_step)?",
               "options": [
-                "bool",
-                "str",
-                "int",
-                "float"
+                "It returns an empty sequence",
+                "It defaults to 0",
+                "It throws an error",
+                "It loops backwards"
+              ],
+              "correctIndex": 0,
+              "explanation": "Without a negative step, a range with start > stop yields an empty sequence."
+            }
+          ]
+        },
+        {
+          "topic": "Enumerate & Nested Loops",
+          "keyConcepts": [
+            "Getting index and value simultaneously with enumerate()",
+            "Understanding loop within a loop execution order",
+            "Building matrices and multiplication tables using nested loops"
+          ],
+          "suggestedDurationMinutes": 45,
+          "focusStrategy": "Trace nested loop execution manually on paper before coding.",
+          "practiceQuestions": [
+            {
+              "question": "What does the enumerate() function return for each iteration?",
+              "options": [
+                "A tuple containing the index and the item",
+                "A boolean flag",
+                "Only the index",
+                "Only the item value"
+              ],
+              "correctIndex": 0,
+              "explanation": "enumerate() yields pairs containing a count (index) and the value obtained from iterating over the iterable."
+            },
+            {
+              "question": "How do you start enumerate indexing at 1 instead of 0?",
+              "options": [
+                "enumerate(iterable).offset(1)",
+                "enumerate(iterable, start=1)",
+                "enumerate(iterable, 1)",
+                "Both A and B"
               ],
               "correctIndex": 3,
-              "explanation": "Numbers with decimal points are represented by the float data type in Python."
+              "explanation": "Both enumerate(iterable, start=1) and enumerate(iterable, 1) correctly set the starting index to 1."
+            },
+            {
+              "question": "In a nested loop structure (outer loop runs 3 times, inner loop runs 2 times), how many total inner loop iterations occur?",
+              "options": [
+                "6",
+                "3",
+                "9",
+                "5"
+              ],
+              "correctIndex": 0,
+              "explanation": "Total iterations equal outer iterations multiplied by inner iterations (3 * 2 = 6)."
+            },
+            {
+              "question": "Which loop completes its full cycle first in a nested loop?",
+              "options": [
+                "The outer loop",
+                "Both finish simultaneously",
+                "It depends on the step size",
+                "The inner loop"
+              ],
+              "correctIndex": 3,
+              "explanation": "The inner loop runs to completion for every single iteration of the outer loop."
+            },
+            {
+              "question": "What is the output type of enumerate()?",
+              "options": [
+                "Dictionary",
+                "Enumerate object (iterator)",
+                "List",
+                "Tuple"
+              ],
+              "correctIndex": 1,
+              "explanation": "enumerate() returns an enumerate iterator object, which can be converted to a list or looped through."
             }
           ]
         }
       ],
       "focusTips": [
-        "Code along with the tutorial rather than just watching passively.",
-        "Pause the video when a new syntax is introduced and experiment with variations.",
-        "Use bilingual notes (Kannada terms paired with English code terms) for better retention."
+        "Type every line of code demonstrated in the tutorial rather than just reading.",
+        "Use print statements inside nested loops to visually understand the exact order of execution.",
+        "Experiment with changing start and step values in range() to build intuition."
       ]
     },
     "actionItems": [
       {
-        "title": "Review failed subjects: BCS501 Software Engineering & Project Management and BCS502 Computer Networks",
+        "title": "Complete Python For Loops & Enumerate Study Session",
         "category": "Work",
         "priority": "High",
-        "notes": "Analyze SGPA report (5.73 SGPA) and identify core weak topics for backlog preparation."
+        "notes": "Watch Engineering in Kannada video #10 and complete practice questions."
       },
       {
-        "title": "Consult academic advisor regarding backlog clearance",
+        "title": "Review Python Practice Scripts",
         "category": "Work",
-        "priority": "High",
-        "notes": "Prepare questions and schedule a meeting to map out the backlog clearance strategy for Semester 5."
+        "priority": "Medium",
+        "notes": "Test nested loop and range variations in local Python IDE."
       }
     ],
-    "createdAt": "2026-09-12T07:15:54.114Z"
+    "createdAt": "2026-09-23T07:09:17.709Z"
+  },
+  {
+    "id": "plan-1789201831187",
+    "date": "2026-09-12",
+    "mode": "balanced",
+    "intentions": "https://www.youtube.com/watch?v=8c74mXV2lJ0&list=PLlGueSbLhZoBRnTsGiDJeTXuQCALOTN07",
+    "targetHours": 6,
+    "focusMantra": "Master the fundamentals of Python with clarity and dedication, turning challenges into stepping stones for academic and technical excellence.",
+    "summary": "Today is dedicated to a structured study session on Python programming in Kannada, building strong foundational coding skills. We will balance intense focus blocks with restorative breaks, keeping academic progress on track.",
+    "schedule": [
+      {
+        "timeBlock": "08:30 AM - 09:00 AM",
+        "title": "🌅 Morning Kickoff, Priority Planning & Hydration",
+        "category": "Personal",
+        "description": "Start the day right with hydration, light stretching, and reviewing today's learning objectives for Python programming.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Drink 500ml of water",
+          "Review daily schedule and study goals",
+          "Set up distraction-free workspace"
+        ]
+      },
+      {
+        "timeBlock": "09:00 AM - 10:30 AM",
+        "title": "💻 Deep Work / Study Focus Sprint 1: Introduction to Coding & Python Basics",
+        "category": "Study",
+        "description": "Begin the YouTube tutorial 'Python in Kannada - Introduction to Coding and Python | Full Course for Beginners - #1'. Focus on understanding what coding is and setting up the Python environment.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Watch video segment 00:00 to 30:00",
+          "Take structured notes on fundamental concepts",
+          "Install Python and test simple print statements"
+        ]
+      },
+      {
+        "timeBlock": "10:30 AM - 10:45 AM",
+        "title": "☕ Refresh Break",
+        "category": "Break",
+        "description": "Take a 15-minute screen break to rest your eyes, stretch, and hydrate.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Perform eye exercises (20-20-20 rule)",
+          "Walk around for light physical movement"
+        ]
+      },
+      {
+        "timeBlock": "10:45 AM - 12:15 PM",
+        "title": "📚 Deep Work / Study Focus Sprint 2: Core Syntax & Variables",
+        "category": "Study",
+        "description": "Continue the Python course focusing on variables, data types, and basic syntax rules explained in Kannada.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Watch video segment 30:00 to end",
+          "Practice declaring variables and checking data types in IDLE or VS Code",
+          "Summarize syntax rules in your own words"
+        ]
+      },
+      {
+        "timeBlock": "12:15 PM - 01:15 PM",
+        "title": "🥗 Healthy Lunch Reset & Mindful Disconnect",
+        "category": "Personal",
+        "description": "Enjoy a nutritious lunch, step away from screens, and give your mind a complete rest.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Eat a balanced meal",
+          "Take a short walk outdoors or relax away from monitors"
+        ]
+      },
+      {
+        "timeBlock": "01:15 PM - 03:00 PM",
+        "title": "⚡ Afternoon Focus Sprint 3: Practice Questions & Coding Exercises",
+        "category": "Study",
+        "description": "Apply the concepts learned in the morning session through hands-on coding practice and quiz review.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Write and execute basic Python scripts",
+          "Complete the study guide practice quiz",
+          "Debug any error messages encountered during coding"
+        ]
+      },
+      {
+        "timeBlock": "03:00 PM - 03:20 PM",
+        "title": "🏃 Mid-Afternoon Movement & Coffee/Tea Reset",
+        "category": "Break",
+        "description": "Refresh with a warm beverage and light stretching to maintain alertness for evening wrap-up.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Hydrate and stretch posture",
+          "Review remaining daily checklist items"
+        ]
+      },
+      {
+        "timeBlock": "03:20 PM - 04:30 PM",
+        "title": "📋 Life Admin, Pending Tasks Sync & Day Recap",
+        "category": "Deep Work",
+        "description": "Organize notes, review upcoming weekly calendar events (such as Ganesh Chaturthi on Sep 14 and personal birthday on Sep 15), and plan ahead.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Organize Python code files into dedicated folders",
+          "Check upcoming week calendar commitments",
+          "Write a brief daily review and prep for tomorrow"
+        ]
+      },
+      {
+        "timeBlock": "05:00 PM onwards",
+        "title": "🌱 Personal Evening Recharge, Fitness & Family Time",
+        "category": "Personal",
+        "description": "Unplug for the evening, engage in physical activity, and spend quality time relaxing.",
+        "isCalendarEvent": false,
+        "actionItems": [
+          "Light physical workout or sport",
+          "Unwind with reading or hobbies"
+        ]
+      }
+    ],
+    "studyGuide": {
+      "topicBreakdown": [
+        {
+          "topic": "Introduction to Coding and Python Basics",
+          "keyConcepts": [
+            "What is programming and coding",
+            "Introduction to Python and its applications",
+            "Installing Python and setting up an IDE",
+            "Writing the first 'Hello, World!' program",
+            "Understanding variables and basic data types (int, float, string)"
+          ],
+          "suggestedDurationMinutes": 90,
+          "focusStrategy": "Active coding alongside the video tutorial; pause to test every code snippet independently in your terminal or editor.",
+          "practiceQuestions": [
+            {
+              "question": "Which of the following is the correct extension for Python source files?",
+              "options": [
+                ".pt",
+                ".pyth",
+                ".py",
+                ".p"
+              ],
+              "correctIndex": 2,
+              "explanation": "Python source code files use the .py extension by convention."
+            },
+            {
+              "question": "Which function is used to output text to the console in Python?",
+              "options": [
+                "display()",
+                "print()",
+                "write()",
+                "echo()"
+              ],
+              "correctIndex": 1,
+              "explanation": "The built-in print() function is used to display output on the console screen."
+            },
+            {
+              "question": "What is a variable in Python?",
+              "options": [
+                "A reserved keyword used to define functions",
+                "A fixed numerical value that cannot be changed",
+                "An error handling mechanism",
+                "A container used to store data values in memory"
+              ],
+              "correctIndex": 3,
+              "explanation": "Variables are containers for storing data values referenced by a specific name."
+            },
+            {
+              "question": "Which of the following data types would be used to store a decimal number like 98.5 in Python?",
+              "options": [
+                "float",
+                "string",
+                "boolean",
+                "int"
+              ],
+              "correctIndex": 0,
+              "explanation": "The 'float' data type represents floating-point numbers containing decimal points."
+            },
+            {
+              "question": "How do you write a single-line comment in Python?",
+              "options": [
+                "# This is a comment",
+                "/* This is a comment */",
+                "// This is a comment",
+                "<!-- This is a comment -->"
+              ],
+              "correctIndex": 0,
+              "explanation": "In Python, single-line comments begin with the hash/pound symbol (#)."
+            }
+          ]
+        }
+      ],
+      "focusTips": [
+        "Type every line of code yourself rather than just watching passively.",
+        "Experiment with intentional syntax errors to understand how Python error messages work.",
+        "Take concise notes in your own words to reinforce memory retention."
+      ]
+    },
+    "actionItems": [
+      {
+        "title": "Complete Python Video Tutorial #1 & Coding Exercises",
+        "category": "Work",
+        "priority": "High",
+        "notes": "Watch the YouTube video by Engineering in Kannada and complete all practice exercises."
+      },
+      {
+        "title": "Review Upcoming Week Schedule & Holidays",
+        "category": "Personal",
+        "priority": "Medium",
+        "notes": "Prepare for Ganesh Chaturthi on Sep 14 and birthday on Sep 15."
+      }
+    ],
+    "createdAt": "2026-09-12T08:30:31.187Z"
   },
   {
     "id": "plan-1789007128297",

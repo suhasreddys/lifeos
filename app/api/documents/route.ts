@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from "fs/promises";
 import path from "path";
 import { getStorageDir, readJsonStorage, writeJsonStorage } from "@/lib/storage";
+import { getSessionUserFromRequest } from "@/lib/auth";
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const pdf = require("pdf-parse/lib/pdf-parse.js");
@@ -30,13 +31,16 @@ export type DocumentRecord = {
 const allowedExtensions = new Set(["pdf", "doc", "docx", "png", "jpg", "jpeg", "webp"]);
 const maximumFileSize = 10 * 1024 * 1024;
 
-async function getRecords(): Promise<DocumentRecord[]> {
-  return readJsonStorage<DocumentRecord[]>("documents", "documents.json", []);
+async function getRecords(userId?: string): Promise<DocumentRecord[]> {
+  return readJsonStorage<DocumentRecord[]>("documents", "documents.json", [], userId);
 }
 
-export async function GET() { return Response.json(await getRecords()); }
+export async function GET(request: Request) {
+  const user = await getSessionUserFromRequest(request);
+  return Response.json(await getRecords(user?.id));
+}
 
-async function autoCategorizeAndSync(docId: string, fileName: string, fileBuffer: Buffer, fileType: string, initialCategory: string) {
+async function autoCategorizeAndSync(docId: string, fileName: string, fileBuffer: Buffer, fileType: string, initialCategory: string, userId?: string) {
   try {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) return;
@@ -58,83 +62,67 @@ Analyze the document text or image below and return JSON:
   "securityDeposit": number,
   "leaseStart": "YYYY-MM-DD",
   "leaseEnd": "YYYY-MM-DD"
-}
-Be precise. If it is a lease, tenancy, rental agreement, or rent receipt, set isLeaseAgreement to true.`;
+}`;
 
-    if (fileType.startsWith("image/")) {
-      contents = [{
-        parts: [
-          { inlineData: { mimeType: fileType || "image/jpeg", data: fileBuffer.toString("base64") } },
-          { text: promptText }
-        ]
-      }];
-    } else {
-      let docText = "";
-      if (fileType === "application/pdf" || fileName.toLowerCase().endsWith(".pdf")) {
-        try {
-          const parsed = await pdf(fileBuffer);
-          docText = parsed?.text || "";
-        } catch {
-          docText = "";
+    if (fileType.includes("pdf")) {
+      const pdfData = await pdf(fileBuffer);
+      contents = [{ role: "user", parts: [{ text: `${promptText}\n\nDocument Text:\n${pdfData.text.slice(0, 8000)}` }] }];
+    } else if (fileType.includes("image")) {
+      contents = [
+        {
+          role: "user",
+          parts: [
+            { text: promptText },
+            { inlineData: { mimeType: fileType, data: fileBuffer.toString("base64") } }
+          ]
         }
-      } else {
-        docText = fileBuffer.toString("utf8");
-      }
-      if (!docText.trim()) return;
-
-      contents = [{
-        parts: [{ text: `${promptText}\n\nDOCUMENT TEXT:\n${docText.slice(0, 24000)}` }]
-      }];
+      ];
+    } else {
+      return;
     }
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents,
-          generationConfig: { temperature: 0.1, responseMimeType: "application/json" }
-        })
-      }
-    );
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ contents, generationConfig: { responseMimeType: "application/json" } })
+    });
 
-    if (!response.ok) return;
-    const payload = await response.json();
-    const textResult = payload.candidates?.[0]?.content?.parts?.[0]?.text;
-    if (!textResult) return;
-    const parsedResult = JSON.parse(textResult);
-    const records = await getRecords();
-    const docIndex = records.findIndex(r => r.id === docId);
+    if (!res.ok) return;
+    const data = await res.json();
+    const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    if (!rawText) return;
 
-    if (docIndex !== -1 && parsedResult.detectedCategory) {
-      if (initialCategory === "General" || parsedResult.isLeaseAgreement) {
-        const newCategory = parsedResult.isLeaseAgreement ? "Agreements" : parsedResult.detectedCategory;
-        records[docIndex].category = newCategory;
-        await writeJsonStorage("documents", "documents.json", records);
+    const parsed = JSON.parse(rawText);
+
+    // Update document record if category detected
+    if (parsed.detectedCategory) {
+      const docs = await getRecords(userId);
+      const targetDoc = docs.find((d) => d.id === docId);
+      if (targetDoc && (initialCategory === "General" || !initialCategory)) {
+        targetDoc.category = parsed.detectedCategory;
+        await writeJsonStorage("documents", "documents.json", docs, userId);
       }
     }
 
-    if (parsedResult.isLeaseAgreement || initialCategory === "Agreements" || fileName.toLowerCase().includes("lease") || fileName.toLowerCase().includes("rent")) {
-      let rentalData: { properties: any[]; payments: any[]; deposits: any[]; maintenance: any[]; meterReadings: any[]; notices: any[]; inspections: any[] } = await readJsonStorage("rental", "rentals.json", {
-        properties: [], payments: [], deposits: [], maintenance: [], meterReadings: [], notices: [], inspections: []
-      });
+    // Auto-create Rental Property if it's a lease agreement
+    if (parsed.isLeaseAgreement && parsed.propertyName) {
+      const rentalData = await readJsonStorage<any>("rental", "rentals.json", { properties: [], deposits: [], tickets: [] }, userId);
+      const exists = rentalData.properties?.some((p: any) => p.name?.toLowerCase() === parsed.propertyName?.toLowerCase());
 
-      const propId = `doc-vault-${docId}`;
-      if (!rentalData.properties.some(p => p.id === propId)) {
+      if (!exists && rentalData.properties) {
+        const propId = `prop-${Date.now()}`;
         const newProperty = {
           id: propId,
-          name: parsedResult.propertyName?.trim() || fileName.replace(/\.[^/.]+$/, ""),
-          unit: parsedResult.unit?.trim() || "Main Unit",
-          address: parsedResult.address?.trim() || "Agreed Premises",
-          tenantName: parsedResult.tenantName?.trim() || "Tenant",
-          tenantPhone: parsedResult.tenantPhone?.trim() || undefined,
-          tenantEmail: parsedResult.tenantEmail?.trim() || undefined,
-          monthlyRent: Number(parsedResult.monthlyRent || 0),
-          securityDeposit: Number(parsedResult.securityDeposit || parsedResult.monthlyRent || 0),
-          leaseStart: parsedResult.leaseStart || new Date().toISOString().split("T")[0],
-          leaseEnd: parsedResult.leaseEnd || new Date(Date.now() + 365 * 24 * 3600 * 1000).toISOString().split("T")[0],
-          status: "Occupied",
+          name: parsed.propertyName,
+          unit: parsed.unit || "Unit 1",
+          address: parsed.address || "Address from lease",
+          tenantName: parsed.tenantName || "Tenant",
+          tenantPhone: parsed.tenantPhone || "",
+          tenantEmail: parsed.tenantEmail || "",
+          monthlyRent: parsed.monthlyRent || 0,
+          securityDeposit: parsed.securityDeposit || 0,
+          leaseStart: parsed.leaseStart || new Date().toISOString().split("T")[0],
+          leaseEnd: parsed.leaseEnd || "",
           createdAt: new Date().toISOString()
         };
 
@@ -155,7 +143,7 @@ Be precise. If it is a lease, tenancy, rental agreement, or rent receipt, set is
           });
         }
 
-        await writeJsonStorage("rental", "rentals.json", rentalData);
+        await writeJsonStorage("rental", "rentals.json", rentalData, userId);
       }
     }
   } catch {
@@ -165,7 +153,10 @@ Be precise. If it is a lease, tenancy, rental agreement, or rent receipt, set is
 
 export async function POST(request: Request) {
   try {
-    const docsDir = getStorageDir("documents");
+    const user = await getSessionUserFromRequest(request);
+    const userId = user?.id;
+
+    const docsDir = getStorageDir("documents", userId);
     await mkdir(docsDir, { recursive: true });
 
     const formData = await request.formData();
@@ -209,20 +200,20 @@ export async function POST(request: Request) {
       category: initialCategory,
       uploadedAt: new Date().toISOString()
     };
-    const records = await getRecords();
+    const records = await getRecords(userId);
     const fileBuffer = Buffer.from(await file.arrayBuffer());
 
     await writeFile(path.join(/*turbopackIgnore: true*/ docsDir, storedName), fileBuffer);
-    await writeJsonStorage("documents", "documents.json", [record, ...records]);
+    await writeJsonStorage("documents", "documents.json", [record, ...records], userId);
 
-    // Safely execute Gemini Auto-Categorization & Syncing before completing response
+    // Safely execute Gemini Auto-Categorization & Syncing
     try {
-      await autoCategorizeAndSync(id, file.name, fileBuffer, record.type, category);
+      await autoCategorizeAndSync(id, file.name, fileBuffer, record.type, category, userId);
     } catch {
-      // Fail silently on AI auto-categorization so file upload always succeeds
+      // Fail silently
     }
 
-    const updatedRecords = await getRecords();
+    const updatedRecords = await getRecords(userId);
     const finalRecord = updatedRecords.find((r) => r.id === id) || record;
 
     return Response.json(finalRecord, { status: 201 });

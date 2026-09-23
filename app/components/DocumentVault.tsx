@@ -3,9 +3,18 @@
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { DocumentRecord } from "../api/documents/route";
+import {
+  IconDocument,
+  IconUpload,
+  IconSearch,
+  IconTrash,
+  IconShieldCheck,
+  IconClock,
+  IconCheckSquare,
+  IconSparkles,
+} from "./Icons";
 
 const categories = ["Agreements", "Certificates", "IDs & records", "Bills", "Insurance", "General"];
-const categoryIcons = ["✦", "✓", "▣", "₹", "♡", "📁"];
 const categoryDescriptions = [
   "Contracts and leases",
   "Education and achievements",
@@ -67,7 +76,6 @@ export default function DocumentVault() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [documents, setDocuments] = useState<DocumentRecord[]>([]);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [category, setCategory] = useState(categories[0]);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [isSaving, setIsSaving] = useState(false);
@@ -93,7 +101,7 @@ export default function DocumentVault() {
 
   useEffect(() => {
     fetch("/api/documents")
-      .then(async (response) => response.ok ? (response.json() as Promise<DocumentRecord[]>) : Promise.reject())
+      .then(async (response) => (response.ok ? (response.json() as Promise<DocumentRecord[]>) : Promise.reject()))
       .then((savedDocuments) => setDocuments(savedDocuments))
       .catch(() => setMessage("Your saved documents could not be loaded."));
   }, []);
@@ -104,9 +112,10 @@ export default function DocumentVault() {
     setMessage("");
   }
 
-  const visibleDocuments = documents.filter((document) =>
-    document.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-    matchCategory(document.category, activeCategory),
+  const visibleDocuments = documents.filter(
+    (document) =>
+      document.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      matchCategory(document.category, activeCategory)
   );
 
   const urgentDocuments = documents.filter((doc) => {
@@ -177,38 +186,60 @@ export default function DocumentVault() {
     <>
       {!isAlertDismissed && urgentDocuments.length > 0 && (
         <section className="expiry-alert-banner" aria-label="Urgent document alerts">
-          <span className="expiry-alert-icon">⚠️</span>
+          <span className="expiry-alert-icon">
+            <IconClock size={20} />
+          </span>
           <div>
             <strong>Reminders & Renewal Alerts</strong>
             <p>You have {urgentDocuments.length} document(s) requiring attention or with upcoming renewal dates.</p>
           </div>
-          <button
-            className="alert-dismiss-btn"
-            type="button"
-            onClick={dismissAlert}
-            title="Dismiss warning banner"
-          >
+          <button className="alert-dismiss-btn" type="button" onClick={dismissAlert} title="Dismiss warning banner">
             ✕ Dismiss
           </button>
         </section>
       )}
 
       <section className="vault-summary" aria-label="Document summary">
-        <div><strong>{documents.length}</strong><span>{documents.length === 1 ? "document saved" : "documents saved"}</span></div>
-        <p>Your files are saved locally in your LifeOS project with automatic Gemini AI analysis and renewal tracking.</p>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <IconShieldCheck size={28} style={{ color: "#10b981" }} />
+          <div>
+            <strong style={{ fontSize: 28, lineHeight: 1 }}>{documents.length}</strong>
+            <span style={{ display: "block", color: "var(--muted)", fontSize: 13 }}>
+              {documents.length === 1 ? "document saved in vault" : "documents saved in vault"}
+            </span>
+          </div>
+        </div>
+        <p>Your files are saved securely in your LifeOS project with automatic AI categorization, OCR analysis, and renewal tracking.</p>
       </section>
 
       <section className="upload-panel" aria-labelledby="upload-title">
-        <div><p className="eyebrow">ADD A DOCUMENT</p><h2 id="upload-title">Save something important</h2><p>PDFs, images, and common document files are supported.</p></div>
+        <div>
+          <p className="eyebrow">ADD A DOCUMENT</p>
+          <h2 id="upload-title">Save something important</h2>
+          <p>PDFs, images, receipts, and common document files are supported.</p>
+        </div>
         <form className="upload-form" onSubmit={handleUpload}>
-          <label className="file-picker" style={{ flex: 1 }}><input ref={inputRef} type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.webp" onChange={chooseFile} /><span>{selectedFile ? selectedFile.name : "Choose a file"}</span><b>Browse</b></label>
-          <button className="primary-button" type="submit" disabled={isSaving}>{isSaving ? "Saving…" : "Save document"}</button>
+          <label className="file-picker" style={{ flex: 1 }}>
+            <input ref={inputRef} type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.webp" onChange={chooseFile} />
+            <IconUpload size={18} />
+            <span>{selectedFile ? selectedFile.name : "Choose or drag a document file"}</span>
+            <b>Browse</b>
+          </label>
+          <button className="primary-button" type="submit" disabled={isSaving}>
+            <IconSparkles size={16} />
+            <span>{isSaving ? "Analyzing..." : "Save document"}</span>
+          </button>
         </form>
         {message && <p className="upload-message" role="status">{message}</p>}
       </section>
 
       <section className="section" aria-labelledby="categories-title">
-        <div className="section-heading"><div><p className="eyebrow">CATEGORIES</p><h2 id="categories-title">Organize from the start</h2></div></div>
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">CATEGORIES</p>
+            <h2 id="categories-title">Organize from the start</h2>
+          </div>
+        </div>
         <div className="category-grid">
           {categories.map((item, index) => (
             <button
@@ -217,11 +248,14 @@ export default function DocumentVault() {
               type="button"
               onClick={() => setActiveCategory(activeCategory === item ? "All" : item)}
             >
-              <span className="category-card__icon" aria-hidden="true">{categoryIcons[index]}</span>
+              <span className="category-card__icon" aria-hidden="true">
+                <IconDocument size={22} />
+              </span>
               <h3>{item}</h3>
               <p>{categoryDescriptions[index]}</p>
               <span className="category-card__count">
-                {documents.filter((document) => matchCategory(document.category, item)).length} {documents.filter((document) => matchCategory(document.category, item)).length === 1 ? "document" : "documents"}
+                {documents.filter((document) => matchCategory(document.category, item)).length}{" "}
+                {documents.filter((document) => matchCategory(document.category, item)).length === 1 ? "document" : "documents"}
               </span>
             </button>
           ))}
@@ -229,34 +263,85 @@ export default function DocumentVault() {
       </section>
 
       <section className="document-list section" aria-labelledby="documents-title">
-        <div className="section-heading"><div><p className="eyebrow">YOUR DOCUMENTS</p><h2 id="documents-title">Recent uploads</h2></div><span className="result-count">{visibleDocuments.length} shown</span></div>
-        <div className="vault-tools"><label className="search-box"><span aria-hidden="true">⌕</span><input value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="Search documents" type="search" /></label><div className="filter-pills">{["All", ...categories].map((item) => <button className={activeCategory === item ? "filter-pill filter-pill--active" : "filter-pill"} key={item} type="button" onClick={() => setActiveCategory(item)}>{item}</button>)}</div></div>
-        {documents.length === 0 ? <div className="empty-state"><span className="empty-state__icon" aria-hidden="true">📄</span><h2>Your vault is ready</h2><p>Your uploaded documents will appear here.</p></div> : visibleDocuments.length === 0 ? <div className="empty-state"><span className="empty-state__icon" aria-hidden="true">⌕</span><h2>No matching documents</h2><p>Try a different search or choose another category.</p></div> : <div className="document-rows">{visibleDocuments.map((document) => {
-          const status = getExpiryStatus(document);
-          return (
-            <div className="document-row" key={document.id}>
-              <Link className="document-row-content" href={`/documents/${document.id}`}>
-                <span className="document-type">{documentIcon(document.type)}</span>
-                <div>
-                  <h3>{document.name}</h3>
-                  <p>{document.category} · {formatSize(document.size)} · Added {new Date(document.uploadedAt).toLocaleDateString()}</p>
-                </div>
-                {status && <span className={`status-badge status-badge--${status.type}`}>{status.label}</span>}
-                {document.analysis?.actionItems && document.analysis.actionItems.length > 0 && <span className="status-badge status-badge--action">Follow-up</span>}
-                <span className="document-open" aria-hidden="true">Open →</span>
-              </Link>
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">YOUR DOCUMENTS</p>
+            <h2 id="documents-title">Vault Records</h2>
+          </div>
+          <span className="result-count">{visibleDocuments.length} shown</span>
+        </div>
+        <div className="vault-tools">
+          <label className="search-box">
+            <span aria-hidden="true">
+              <IconSearch size={16} />
+            </span>
+            <input value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="Search documents..." type="search" />
+          </label>
+          <div className="filter-pills">
+            {["All", ...categories].map((item) => (
               <button
-                className="delete-doc-button"
+                className={activeCategory === item ? "filter-pill filter-pill--active" : "filter-pill"}
+                key={item}
                 type="button"
-                onClick={() => handleDelete(document.id, document.name)}
-                title={`Delete ${document.name}`}
-                aria-label={`Delete ${document.name}`}
+                onClick={() => setActiveCategory(item)}
               >
-                Delete
+                {item}
               </button>
-            </div>
-          );
-        })}</div>}
+            ))}
+          </div>
+        </div>
+        {documents.length === 0 ? (
+          <div className="empty-state">
+            <span className="empty-state__icon" aria-hidden="true">
+              <IconDocument size={36} />
+            </span>
+            <h2>Your vault is ready</h2>
+            <p>Upload your first document above to start automatic organization.</p>
+          </div>
+        ) : visibleDocuments.length === 0 ? (
+          <div className="empty-state">
+            <span className="empty-state__icon" aria-hidden="true">
+              <IconSearch size={36} />
+            </span>
+            <h2>No matching documents</h2>
+            <p>Try a different search or choose another category.</p>
+          </div>
+        ) : (
+          <div className="document-rows">
+            {visibleDocuments.map((document) => {
+              const status = getExpiryStatus(document);
+              return (
+                <div className="document-row" key={document.id}>
+                  <Link className="document-row-content" href={`/documents/${document.id}`}>
+                    <span className="document-type">{documentIcon(document.type)}</span>
+                    <div>
+                      <h3>{document.name}</h3>
+                      <p>
+                        {document.category} · {formatSize(document.size)} · Added {new Date(document.uploadedAt).toLocaleDateString()}
+                      </p>
+                    </div>
+                    {status && <span className={`status-badge status-badge--${status.type}`}>{status.label}</span>}
+                    {document.analysis?.actionItems && document.analysis.actionItems.length > 0 && (
+                      <span className="status-badge status-badge--action">Follow-up</span>
+                    )}
+                    <span className="document-open" aria-hidden="true">
+                      Open →
+                    </span>
+                  </Link>
+                  <button
+                    className="delete-doc-button"
+                    type="button"
+                    onClick={() => handleDelete(document.id, document.name)}
+                    title={`Delete ${document.name}`}
+                    aria-label={`Delete ${document.name}`}
+                  >
+                    <IconTrash size={14} />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </section>
     </>
   );

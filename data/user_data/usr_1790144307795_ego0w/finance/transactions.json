@@ -1,0 +1,13 @@
+[
+  {
+    "id": "0ad51949-2a8b-4f40-bb69-1038a09790fc",
+    "title": "vegies",
+    "amount": 300,
+    "type": "Income",
+    "category": "Bills",
+    "date": "2026-09-12",
+    "notes": "phone pay",
+    "source": "user",
+    "createdAt": "2026-09-12T08:36:05.487Z"
+  }
+]

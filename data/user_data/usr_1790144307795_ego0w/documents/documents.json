@@ -1,0 +1,107 @@
+[
+  {
+    "id": "46772514-3b55-4fd2-a734-a37f0fd6a19e",
+    "name": "Gagan.Reddy-Aadhaar card.pdf",
+    "storedName": "46772514-3b55-4fd2-a734-a37f0fd6a19e.pdf",
+    "size": 200704,
+    "type": "application/pdf",
+    "category": "IDs & records",
+    "uploadedAt": "2026-09-23T04:20:38.147Z"
+  },
+  {
+    "id": "067f49b2-1423-45ca-acd6-c3c7d2360c99",
+    "name": "BCS501-important-question.pdf",
+    "storedName": "067f49b2-1423-45ca-acd6-c3c7d2360c99.pdf",
+    "size": 7108146,
+    "type": "application/pdf",
+    "category": "General",
+    "uploadedAt": "2026-09-12T08:32:51.529Z"
+  },
+  {
+    "id": "33a5beb6-bdd1-4719-a292-965bc7f4f083",
+    "name": "pay_Sqs6oAAMblJopP.pdf",
+    "storedName": "33a5beb6-bdd1-4719-a292-965bc7f4f083.pdf",
+    "size": 30966,
+    "type": "application/pdf",
+    "category": "General",
+    "uploadedAt": "2026-09-12T07:47:10.301Z"
+  },
+  {
+    "id": "d97c5c53-b30d-4ed0-9896-cfc8c640d6fc",
+    "name": "VTU_SGPA_Report_1BC23AI024 (5).pdf",
+    "storedName": "d97c5c53-b30d-4ed0-9896-cfc8c640d6fc.pdf",
+    "size": 155236,
+    "type": "application/pdf",
+    "category": "Certificates",
+    "uploadedAt": "2026-09-12T07:04:22.917Z",
+    "analysis": {
+      "documentType": "SGPA Report / Grade Card",
+      "summary": "Semester 5 SGPA Report for student Suhas Reddy (USN: 1BC23AI024) in Artificial Intelligence & Machine Learning, showing an SGPA of 5.73 with fails in 2 subjects.",
+      "keyDates": [
+        {
+          "label": "Report Generation Date",
+          "date": "2026-05-22",
+          "context": "Date when the SGPA report was generated"
+        }
+      ],
+      "expiryDate": "",
+      "actionItems": [
+        "Review failed subjects: BCS501 Software Engineering & Project Management and BCS502 Computer Networks",
+        "Consult academic advisor regarding backlog clearance"
+      ],
+      "confidence": "high",
+      "detectedCategory": "Certificates",
+      "leaseDetails": {
+        "isLeaseAgreement": false,
+        "propertyName": "",
+        "unit": "",
+        "tenantName": "",
+        "monthlyRent": 0,
+        "securityDeposit": 0,
+        "leaseStart": "",
+        "leaseEnd": ""
+      },
+      "analyzedAt": "2026-09-12T07:07:23.868Z"
+    }
+  },
+  {
+    "id": "ef3de94e-ef13-4a96-88a8-5876d76f09f8",
+    "name": "Gagan Reddy resume.pdf",
+    "storedName": "ef3de94e-ef13-4a96-88a8-5876d76f09f8.pdf",
+    "size": 113440,
+    "type": "application/pdf",
+    "category": "Certificates",
+    "uploadedAt": "2026-09-09T16:37:05.977Z",
+    "analysis": {
+      "documentType": "Resume",
+      "summary": "Resume of Gagan Reddy S, an aspiring pilot and student highlighting education, skills, languages, hobbies, and co-curricular achievements such as football captaincy and event hosting.",
+      "keyDates": [
+        {
+          "label": "Education 10th STD",
+          "date": "2022-2023",
+          "context": "Swamy vivekananda vidya nikethana school"
+        },
+        {
+          "label": "Education 10+2 STD",
+          "date": "2023-2025",
+          "context": "Sri swaminarayan gurukul pu college"
+        }
+      ],
+      "expiryDate": "",
+      "actionItems": [],
+      "confidence": "high",
+      "detectedCategory": "General",
+      "leaseDetails": {
+        "isLeaseAgreement": false,
+        "propertyName": "",
+        "unit": "",
+        "tenantName": "",
+        "monthlyRent": 0,
+        "securityDeposit": 0,
+        "leaseStart": "",
+        "leaseEnd": ""
+      },
+      "analyzedAt": "2026-09-12T07:18:26.405Z"
+    }
+  }
+]

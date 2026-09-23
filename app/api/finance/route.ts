@@ -1,4 +1,5 @@
 import { readJsonStorage, writeJsonStorage } from "@/lib/storage";
+import { getSessionUserFromRequest } from "@/lib/auth";
 import type { DocumentRecord } from "../documents/route";
 
 export type TransactionRecord = {
@@ -15,13 +16,13 @@ export type TransactionRecord = {
   createdAt: string;
 };
 
-async function getUserTransactions(): Promise<TransactionRecord[]> {
-  return readJsonStorage<TransactionRecord[]>("finance", "transactions.json", []);
+async function getUserTransactions(userId?: string): Promise<TransactionRecord[]> {
+  return readJsonStorage<TransactionRecord[]>("finance", "transactions.json", [], userId);
 }
 
-async function getDocumentFinancials(): Promise<TransactionRecord[]> {
+async function getDocumentFinancials(userId?: string): Promise<TransactionRecord[]> {
   try {
-    const docs = await readJsonStorage<DocumentRecord[]>("documents", "documents.json", []);
+    const docs = await readJsonStorage<DocumentRecord[]>("documents", "documents.json", [], userId);
     const items: TransactionRecord[] = [];
 
     docs.forEach((doc) => {
@@ -29,7 +30,7 @@ async function getDocumentFinancials(): Promise<TransactionRecord[]> {
         items.push({
           id: `doc-fin-${doc.id}`,
           title: doc.name,
-          amount: doc.analysis?.summary ? 0 : 0, // Recorded document reference
+          amount: 0,
           type: "Expense",
           category: doc.category,
           date: doc.uploadedAt.split("T")[0],
@@ -37,7 +38,7 @@ async function getDocumentFinancials(): Promise<TransactionRecord[]> {
           source: "document",
           documentId: doc.id,
           documentName: doc.name,
-          createdAt: doc.uploadedAt
+          createdAt: doc.uploadedAt,
         });
       }
     });
@@ -48,9 +49,12 @@ async function getDocumentFinancials(): Promise<TransactionRecord[]> {
   }
 }
 
-export async function GET() {
-  const userTx = await getUserTransactions();
-  const docTx = await getDocumentFinancials();
+export async function GET(request: Request) {
+  const user = await getSessionUserFromRequest(request);
+  const userId = user?.id;
+
+  const userTx = await getUserTransactions(userId);
+  const docTx = await getDocumentFinancials(userId);
   const allTx = [...userTx, ...docTx];
 
   const totalIncome = userTx
@@ -68,19 +72,22 @@ export async function GET() {
       netBalance,
       totalIncome,
       totalExpenses,
-      transactionCount: allTx.length
+      transactionCount: allTx.length,
     },
-    transactions: allTx
+    transactions: allTx,
   });
 }
 
 export async function POST(request: Request) {
-  const body = await request.json() as Partial<TransactionRecord>;
+  const user = await getSessionUserFromRequest(request);
+  const userId = user?.id;
+
+  const body = (await request.json()) as Partial<TransactionRecord>;
   if (!body.title || body.amount === undefined || !body.type) {
     return Response.json({ error: "Title, amount, and type are required." }, { status: 400 });
   }
 
-  const userTx = await getUserTransactions();
+  const userTx = await getUserTransactions(userId);
   const newTx: TransactionRecord = {
     id: crypto.randomUUID(),
     title: body.title.trim(),
@@ -90,10 +97,10 @@ export async function POST(request: Request) {
     date: body.date || new Date().toISOString().split("T")[0],
     notes: body.notes?.trim() || undefined,
     source: "user",
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
   };
 
   const updated = [newTx, ...userTx];
-  await writeJsonStorage("finance", "transactions.json", updated);
+  await writeJsonStorage("finance", "transactions.json", updated, userId);
   return Response.json(newTx, { status: 201 });
 }

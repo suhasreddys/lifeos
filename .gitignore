@@ -43,3 +43,6 @@ next-env.d.ts
 # private LifeOS document uploads
 /data/documents/
 /.npm-cache/
+/lifeos/
+/android/
+

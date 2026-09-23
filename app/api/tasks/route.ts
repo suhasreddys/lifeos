@@ -1,4 +1,5 @@
 import { readJsonStorage, writeJsonStorage } from "@/lib/storage";
+import { getSessionUserFromRequest } from "@/lib/auth";
 import type { DocumentRecord } from "../documents/route";
 
 export type TaskRecord = {
@@ -15,21 +16,21 @@ export type TaskRecord = {
   createdAt: string;
 };
 
-async function getUserTasks(): Promise<TaskRecord[]> {
-  return readJsonStorage<TaskRecord[]>("tasks", "tasks.json", []);
+async function getUserTasks(userId?: string): Promise<TaskRecord[]> {
+  return readJsonStorage<TaskRecord[]>("tasks", "tasks.json", [], userId);
 }
 
-async function getDeletedTaskIds(): Promise<string[]> {
-  return readJsonStorage<string[]>("tasks", "deleted.json", []);
+async function getDeletedTaskIds(userId?: string): Promise<string[]> {
+  return readJsonStorage<string[]>("tasks", "deleted.json", [], userId);
 }
 
-async function saveDeletedTaskIds(ids: string[]): Promise<void> {
-  await writeJsonStorage("tasks", "deleted.json", ids);
+async function saveDeletedTaskIds(ids: string[], userId?: string): Promise<void> {
+  await writeJsonStorage("tasks", "deleted.json", ids, userId);
 }
 
-async function getDocumentActionItems(): Promise<TaskRecord[]> {
+async function getDocumentActionItems(userId?: string): Promise<TaskRecord[]> {
   try {
-    const docs = await readJsonStorage<DocumentRecord[]>("documents", "documents.json", []);
+    const docs = await readJsonStorage<DocumentRecord[]>("documents", "documents.json", [], userId);
     const items: TaskRecord[] = [];
 
     docs.forEach((doc) => {
@@ -44,7 +45,7 @@ async function getDocumentActionItems(): Promise<TaskRecord[]> {
           source: "document",
           documentId: doc.id,
           documentName: doc.name,
-          createdAt: doc.uploadedAt
+          createdAt: doc.uploadedAt,
         });
       });
     });
@@ -55,10 +56,13 @@ async function getDocumentActionItems(): Promise<TaskRecord[]> {
   }
 }
 
-export async function GET() {
-  const userTasks = await getUserTasks();
-  const docActionItems = await getDocumentActionItems();
-  const deletedIds = new Set(await getDeletedTaskIds());
+export async function GET(request: Request) {
+  const user = await getSessionUserFromRequest(request);
+  const userId = user?.id;
+
+  const userTasks = await getUserTasks(userId);
+  const docActionItems = await getDocumentActionItems(userId);
+  const deletedIds = new Set(await getDeletedTaskIds(userId));
 
   const seenTitles = new Set<string>();
   const uniqueTasks: TaskRecord[] = [];
@@ -75,12 +79,15 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const body = await request.json() as Partial<TaskRecord>;
+  const user = await getSessionUserFromRequest(request);
+  const userId = user?.id;
+
+  const body = (await request.json()) as Partial<TaskRecord>;
   if (!body.title) {
     return Response.json({ error: "Task title is required." }, { status: 400 });
   }
 
-  const userTasks = await getUserTasks();
+  const userTasks = await getUserTasks(userId);
   const newTask: TaskRecord = {
     id: crypto.randomUUID(),
     title: body.title.trim(),
@@ -90,25 +97,28 @@ export async function POST(request: Request) {
     dueDate: body.dueDate || undefined,
     notes: body.notes?.trim() || undefined,
     source: "user",
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
   };
 
   const updated = [newTask, ...userTasks];
-  await writeJsonStorage("tasks", "tasks.json", updated);
+  await writeJsonStorage("tasks", "tasks.json", updated, userId);
   return Response.json(newTask, { status: 201 });
 }
 
 export async function PATCH(request: Request) {
-  const body = await request.json() as { id: string; completed: boolean };
+  const user = await getSessionUserFromRequest(request);
+  const userId = user?.id;
+
+  const body = (await request.json()) as { id: string; completed: boolean };
   if (!body.id) {
     return Response.json({ error: "Task ID is required." }, { status: 400 });
   }
 
-  const userTasks = await getUserTasks();
+  const userTasks = await getUserTasks(userId);
   const index = userTasks.findIndex((t) => t.id === body.id);
   if (index !== -1) {
     userTasks[index].completed = body.completed;
-    await writeJsonStorage("tasks", "tasks.json", userTasks);
+    await writeJsonStorage("tasks", "tasks.json", userTasks, userId);
     return Response.json(userTasks[index]);
   }
 
@@ -116,12 +126,15 @@ export async function PATCH(request: Request) {
 }
 
 export async function DELETE(request: Request) {
+  const user = await getSessionUserFromRequest(request);
+  const userId = user?.id;
+
   const { searchParams } = new URL(request.url);
   let id = searchParams.get("id");
 
   if (!id) {
     try {
-      const body = await request.json() as { id?: string };
+      const body = (await request.json()) as { id?: string };
       id = body.id || null;
     } catch {}
   }
@@ -130,16 +143,16 @@ export async function DELETE(request: Request) {
     return Response.json({ error: "Task ID is required." }, { status: 400 });
   }
 
-  const userTasks = await getUserTasks();
+  const userTasks = await getUserTasks(userId);
   const updatedUserTasks = userTasks.filter((t) => t.id !== id);
   if (updatedUserTasks.length !== userTasks.length) {
-    await writeJsonStorage("tasks", "tasks.json", updatedUserTasks);
+    await writeJsonStorage("tasks", "tasks.json", updatedUserTasks, userId);
   }
 
-  const deletedIds = await getDeletedTaskIds();
+  const deletedIds = await getDeletedTaskIds(userId);
   if (!deletedIds.includes(id)) {
     deletedIds.push(id);
-    await saveDeletedTaskIds(deletedIds);
+    await saveDeletedTaskIds(deletedIds, userId);
   }
 
   return Response.json({ success: true, id });
