@@ -145,7 +145,13 @@ export default function FinanceView() {
     });
 
     try {
-      await fetch(`/api/finance?id=${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/finance?id=${id}`, { method: "DELETE" });
+      if (res.ok) {
+        fetchFinanceData();
+      } else {
+        alert("Could not delete expense. Refreshing data...");
+        fetchFinanceData();
+      }
     } catch {
       fetchFinanceData();
     }

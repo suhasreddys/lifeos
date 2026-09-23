@@ -115,9 +115,17 @@ export async function DELETE(request: Request) {
     return Response.json({ error: "Transaction ID is required." }, { status: 400 });
   }
 
+  // Delete from user storage
   const userTx = await getUserTransactions(userId);
-  const updated = userTx.filter((t) => t.id !== id);
-  await writeJsonStorage("finance", "transactions.json", updated, userId);
+  const updatedUserTx = userTx.filter((t) => t.id !== id);
+  await writeJsonStorage("finance", "transactions.json", updatedUserTx, userId);
+
+  // Delete from root storage if present
+  const rootTx = await getUserTransactions(undefined);
+  if (rootTx.some((t) => t.id === id)) {
+    const updatedRootTx = rootTx.filter((t) => t.id !== id);
+    await writeJsonStorage("finance", "transactions.json", updatedRootTx, undefined);
+  }
 
   return Response.json({ success: true, deletedId: id });
 }
